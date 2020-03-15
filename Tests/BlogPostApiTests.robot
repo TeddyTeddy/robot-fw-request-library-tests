@@ -114,16 +114,16 @@ Query & Verify Pre-Set Postings
     ...                 If there are pre-existing postings in the system, we check if each posting's fields
     ...                 are matching against the POSTING_SPEC. That is, each pre-set posting has all the fields
     ...                 specified in POSTING_SPEC. If not, the test fails. If success, then we store the
-    ...                 pre-set postings into @{PRE-SET-POSTINGS} suite variable for later use
+    ...                 pre-set postings into @{PRE_SET_POSTINGS} suite variable for later use
     [Tags]              smoke-admin
     @{pre-set-postings} =   Get Postings
     Verify Postings Against Posting Spec    postings=${pre-set-postings}
 
     # if execution reaches here, all pre-set-postings are valid againist the API's POSTING_SPEC
-    Set Suite Variable      @{PRE-SET-POSTINGS}     @{pre-set-postings}
+    Set Suite Variable      @{PRE_SET_POSTINGS}     @{pre-set-postings}
 
 Make POST Requests: Create New Postings
-    [Documentation]     Having set @{PRE-SET-POSTINGS} in the previous test case, we now will create
+    [Documentation]     Having set @{PRE_SET_POSTINGS} in the previous test case, we now will create
     ...                 new postings as specified in  @{POSTINGS_TO_CREATE}. Test part: For each posting in @{POSTINGS_TO_CREATE}
     ...                 we will make a seperate POST request.
     ...                 Verification part: After executing the POST requests, we will query the API for
@@ -225,8 +225,8 @@ Make DELETE Requests : Deleting Previously Updated Postings
     ...                 We make a DELETE Request for that very ptd. Once all DELETE request(s) are done,
     ...                 a GET request is made into @{registered_postings}. Then verification begins.
     ...
-    ...                 Verification phase one: all the remaining entries in the system are summed up to @{PRE-SET-POSTINGS}.
-    ...                 (i.e. @{registered_postings} == @{PRE-SET-POSTINGS})
+    ...                 Verification phase one: all the remaining entries in the system are summed up to @{PRE_SET_POSTINGS}.
+    ...                 (i.e. @{registered_postings} == @{PRE_SET_POSTINGS})
     ...
     ...                 Verification phase two: all the remaining entries in the system are according to ${POSTING_SPEC}
     ...
@@ -242,12 +242,17 @@ Make DELETE Requests : Deleting Previously Updated Postings
     END
 
     # verify that postings in @{POSTINGS_TO_DELETE} indeed got deleted
-    @{registered_postings} =   Get Postings  # i.e.
-    Verify Postings Against Posting Spec    postings=${registered_postings}  # verification phase two
+    @{registered_postings} =   Get Postings
+
+    # Verification phase one
+    Should Be True  $registered_postings == $PRE_SET_POSTINGS
+    # verification phase two
+    Verify Postings Against Posting Spec    postings=${registered_postings}
     # @{registered_postings} = [
     #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/2/', 'id': 2, 'user': 1, 'title': 'My Second Posting', 'content': "My Second Blog's content", 'timestamp': '2019-12-18T17:07:34.938150+02:00'},
     #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+02:00'},
     # ]
+    # verification phase three
     FOR     ${ptd}    IN  @{POSTINGS_TO_DELETE}  # ptd: posting_to_delete
         ${is_match}   ${matched_posting} =    Is Match    expected_posting=${ptd}    registered_postings=${registered_postings}
         Should Not Be True  $is_match

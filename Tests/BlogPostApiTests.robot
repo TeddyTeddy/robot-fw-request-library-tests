@@ -100,7 +100,7 @@ Check BlogPostAPI specification
     ...
     ...                 Ensure that the response's JSON payload matches EXPECTED_API_SPEC
     ...                 Set ${options_response.json()}[actions][POST] as suite variable POSTING_SPEC for later use
-    [Tags]              smoke
+    [Tags]              smoke-as-admin
     ${options_response} =   Options Request     alias=${SESSION_ALIAS}   uri=${POSTINGS_URI}    headers=${OPTIONS_REQUEST_HEADERS}
     Verify Options Response     options_response=${options_response}
 
@@ -115,7 +115,7 @@ Query & Verify Pre-Set Postings
     ...                 are matching against the POSTING_SPEC. That is, each pre-set posting has all the fields
     ...                 specified in POSTING_SPEC. If not, the test fails. If success, then we store the
     ...                 pre-set postings into @{PRE_SET_POSTINGS} suite variable for later use
-    [Tags]              smoke-admin
+    [Tags]              smoke-as-admin
     @{pre-set-postings} =   Get Postings
     Verify Postings Against Posting Spec    postings=${pre-set-postings}
 

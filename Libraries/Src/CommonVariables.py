@@ -1,6 +1,6 @@
 def get_variables():
     variables = {
-        'SESSION_ALIAS': 'Common Session For All Requests',
+        'ADMIN_SESSION': 'Common Session For All Requests As Admin',
         'API_BASE_URL': 'https://glacial-earth-31542.herokuapp.com',
         'OPTIONS_REQUEST_HEADERS': {
             'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x',

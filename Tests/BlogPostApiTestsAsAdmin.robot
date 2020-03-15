@@ -12,16 +12,16 @@ Suite Setup      Suite Setup
 Suite Teardown   Suite Teardown
 
 # To Run
-# python -m robot  --pythonpath Libraries/Src --noncritical failure-expected -d Results/ Tests/BlogPostApiTests.robot
+# python -m robot  --pythonpath Libraries/Src --noncritical failure-expected -d Results/ Tests/BlogPostApiTestsAsAdmin.robot
 
 *** Keywords ***
 Suite Setup
-    Create Session  alias=${SESSION_ALIAS}   url=${API_BASE_URL}  cookies={}    verify=${True}
+    Create Session  alias=${ADMIN_SESSION}   url=${API_BASE_URL}  cookies={}    verify=${True}
 
 Suite Teardown
     Delete All Sessions
 
-Verify Options Response
+Verify OPTIONS Response (Admin)
     [Arguments]   ${options_response}
     Should Be Equal As Integers 	${options_response.status_code} 	200
     # make sure that expected & observed response headers match
@@ -47,27 +47,27 @@ Verify Postings Against Posting Spec
         Do Verify Posting Fields    posting=${p}
     END
 
-Make POST Request
+Make POST Request (Admin)
     [Arguments]       ${posting}
-    ${response} =     Post Request      alias=${SESSION_ALIAS}    uri=${POSTINGS_URI}    headers=${POST_REQUEST_HEADERS}  data=${posting}
+    ${response} =     Post Request      alias=${ADMIN_SESSION}    uri=${POSTINGS_URI}    headers=${POST_REQUEST_HEADERS}  data=${posting}
     Should Be Equal As Integers 	${response.status_code} 	201  # Created
 
-Make PUT Request
+Make PUT Request (Admin)
     [Arguments]        ${posting}
     Set To Dictionary    dictionary=${PUT_REQUEST_HEADERS}       Referer=${posting}[url]
     ${put_request_uri}=     Get Uri  url=${posting}[url]
-    ${response} =     Put Request      alias=${SESSION_ALIAS}    uri=${put_request_uri}    headers=${PUT_REQUEST_HEADERS}  data=${posting}
+    ${response} =     Put Request      alias=${ADMIN_SESSION}    uri=${put_request_uri}    headers=${PUT_REQUEST_HEADERS}  data=${posting}
     Should Be Equal As Integers 	${response.status_code} 	200  # OK
 
-Make DELETE Request
+Make DELETE Request (Admin)
     [Arguments]     ${posting}
     Set To Dictionary    dictionary=${DELETE_REQUEST_HEADERS}       Referer=${posting}[url]
     ${delete_request_uri}=     Get Uri  url=${posting}[url]
-    ${response} =     Delete Request      alias=${SESSION_ALIAS}    uri=${delete_request_uri}   headers=${DELETE_REQUEST_HEADERS}  data=None
+    ${response} =     Delete Request      alias=${ADMIN_SESSION}    uri=${delete_request_uri}   headers=${DELETE_REQUEST_HEADERS}  data=None
     Should Be Equal As Integers 	${response.status_code} 	200  # OK
 
-Get Postings
-    ${response} =   Get Request     alias=${SESSION_ALIAS}    uri=${POSTINGS_URI}    headers=${GET_REQUEST_HEADERS}
+Make GET Request (Admin) : Query For All Postings
+    ${response} =   Get Request     alias=${ADMIN_SESSION}    uri=${POSTINGS_URI}    headers=${GET_REQUEST_HEADERS}
     Should Be Equal As Integers 	${response.status_code} 	200
     [Return]        ${response.json()}
 
@@ -91,7 +91,7 @@ Is Match
 
 
 *** Test Cases ***
-Check BlogPostAPI specification
+Check BlogPostAPI specification (Admin)
     [Documentation]     Make an OPTIONS Request to BlogPostAPI:
     ...                 https://glacial-earth-31542.herokuapp.com/api/postings/
     ...
@@ -101,14 +101,14 @@ Check BlogPostAPI specification
     ...                 Ensure that the response's JSON payload matches EXPECTED_API_SPEC
     ...                 Set ${options_response.json()}[actions][POST] as suite variable POSTING_SPEC for later use
     [Tags]              smoke-as-admin
-    ${options_response} =   Options Request     alias=${SESSION_ALIAS}   uri=${POSTINGS_URI}    headers=${OPTIONS_REQUEST_HEADERS}
-    Verify Options Response     options_response=${options_response}
+    ${options_response} =   Options Request     alias=${ADMIN_SESSION}   uri=${POSTINGS_URI}    headers=${OPTIONS_REQUEST_HEADERS}
+    Verify OPTIONS Response (Admin)     options_response=${options_response}
 
     # if execution reaches here, that means the api spec has not changed
     # Set the content fields of POSTING (i.e. ${options_response.json()}[actions][POST]) as a suite variable POSTING_SPEC
     Set Suite Variable  ${POSTING_SPEC}      ${options_response.json()}[actions][POST]
 
-Query & Verify Pre-Set Postings
+Query & Verify Pre-Set Postings (Admin)
     [Documentation]     In the previous test case, we verified the BlogPostAPI's specification.
     ...                 In this test case, we query the API for existing postings in the system.
     ...                 If there are pre-existing postings in the system, we check if each posting's fields
@@ -116,13 +116,13 @@ Query & Verify Pre-Set Postings
     ...                 specified in POSTING_SPEC. If not, the test fails. If success, then we store the
     ...                 pre-set postings into @{PRE_SET_POSTINGS} suite variable for later use
     [Tags]              smoke-as-admin
-    @{pre-set-postings} =   Get Postings
+    @{pre-set-postings} =   Make GET Request (Admin) : Query For All Postings
     Verify Postings Against Posting Spec    postings=${pre-set-postings}
 
     # if execution reaches here, all pre-set-postings are valid againist the API's POSTING_SPEC
     Set Suite Variable      @{PRE_SET_POSTINGS}     @{pre-set-postings}
 
-Make POST Requests: Create New Postings
+Make POST Requests (Admin): Create New Postings
     [Documentation]     Having set @{PRE_SET_POSTINGS} in the previous test case, we now will create
     ...                 new postings as specified in  @{POSTINGS_TO_CREATE}. Test part: For each posting in @{POSTINGS_TO_CREATE}
     ...                 we will make a seperate POST request.
@@ -136,11 +136,11 @@ Make POST Requests: Create New Postings
     [Tags]              CRUD-operations-as-admin
     # test
     FOR     ${p}    IN  @{POSTINGS_TO_CREATE}
-        Make POST Request     posting=${p}
+        Make POST Request (Admin)     posting=${p}
     END
 
     # verify that postings in @{POSTINGS_TO_CREATE} indeed got created
-    @{registered_postings} =   Get Postings
+    @{registered_postings} =   Make GET Request (Admin) : Query For All Postings
     # @{registered_postings} = [
     #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/2/', 'id': 2, 'user': 1, 'title': 'My Second Posting', 'content': "My Second Blog's content", 'timestamp': '2019-12-18T17:07:34.938150+02:00'},
     #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+02:00'},
@@ -159,7 +159,7 @@ Make POST Requests: Create New Postings
     Set Suite Variable      @{REGISTERED_POSTINGS}      @{registered_postings}
     Set Suite Variable      @{POSTINGS_TO_MODIFY}       @{POSTINGS_TO_CREATE}  # to be semantically correct in the next test
 
-Make PUT Requests : Modify The Contents Of Previously Created Postings
+Make PUT Requests (Admin) : Modify The Contents Of Previously Created Postings
     [Documentation]         In the previous test, we stored @{POSTINGS_TO_CREATE} as @{POSTINGS_TO_MODIFY}.
     ...                     (i.e. the newly created postings are stored as @{POSTINGS_TO_MODIFY},
     ...                     where each posting posting to modify (i.e. ptm in short) has only 'title' and 'content'
@@ -193,12 +193,12 @@ Make PUT Requests : Modify The Contents Of Previously Created Postings
         ${is_match}   ${registered_posting} =  Is Match    expected_posting=${ptm}    registered_postings=${REGISTERED_POSTINGS}
         Should Be True     $is_match
         Set To Dictionary       dictionary=${registered_posting}       content=modified content   #  << modifying the content
-        Make PUT Request    posting=${registered_posting}              # test call: supposed to update the system
+        Make PUT Request (Admin)    posting=${registered_posting}              # test call: supposed to update the system
         Append To List      ${expected_modified_postings}       ${registered_posting}
     END
 
     # verify that postings in @{POSTINGS_TO_MODIFY} indeed got modified
-    @{registered_postings} =   Get Postings  # i.e.
+    @{registered_postings} =   Make GET Request (Admin) : Query For All Postings  # i.e.
     Verify Postings Against Posting Spec    postings=${registered_postings}  # Verification part one
     # @{registered_postings} = [
     #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/2/', 'id': 2, 'user': 1, 'title': 'My Second Posting', 'content': "My Second Blog's content", 'timestamp': '2019-12-18T17:07:34.938150+02:00'},
@@ -217,7 +217,7 @@ Make PUT Requests : Modify The Contents Of Previously Created Postings
     # to be used by the next test case
     Set Suite Variable      @{POSTINGS_TO_DELETE}       @{expected_modified_postings}  # to be semantically correct in the next test
 
-Make DELETE Requests : Deleting Previously Updated Postings
+Make DELETE Requests (Admin) : Deleting Previously Updated Postings
     [Documentation]     In the previous test case, we updated specific posting(s) (i.e. @{expected_modified_postings})
     ...                 in the system. These postings have been passed as @{POSTINGS_TO_DELETE} to this test case.
     ...
@@ -238,11 +238,11 @@ Make DELETE Requests : Deleting Previously Updated Postings
     # in the previous test case, we set @{POSTINGS_TO_DELETE}
     # now, we are going to delete the postings in @{POSTINGS_TO_DELETE}
     FOR     ${ptd}    IN  @{POSTINGS_TO_DELETE}  # ptd: posting_to_delete
-        Make DELETE Request    posting=${ptd}
+        Make DELETE Request (Admin)    posting=${ptd}
     END
 
     # verify that postings in @{POSTINGS_TO_DELETE} indeed got deleted
-    @{registered_postings} =   Get Postings
+    @{registered_postings} =   Make GET Request (Admin) : Query For All Postings
 
     # Verification phase one
     Should Be True  $registered_postings == $PRE_SET_POSTINGS

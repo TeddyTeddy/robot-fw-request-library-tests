@@ -49,25 +49,25 @@ Verify Postings Against Posting Spec
 
 Make POST Request (Admin)
     [Arguments]       ${posting}
-    ${response} =     Post Request      alias=${ADMIN_SESSION}    uri=${POSTINGS_URI}    headers=${POST_REQUEST_HEADERS}  data=${posting}
+    ${response} =     Post Request      alias=${ADMIN_SESSION}    uri=${POSTINGS_URI}    headers=${ADMIN}[POST_REQUEST_HEADERS]  data=${posting}
     Should Be Equal As Integers 	${response.status_code} 	201  # Created
 
 Make PUT Request (Admin)
     [Arguments]        ${posting}
-    Set To Dictionary    dictionary=${PUT_REQUEST_HEADERS}       Referer=${posting}[url]
+    Set To Dictionary    dictionary=${ADMIN}[PUT_REQUEST_HEADERS]       Referer=${posting}[url]
     ${put_request_uri}=     Get Uri  url=${posting}[url]
-    ${response} =     Put Request      alias=${ADMIN_SESSION}    uri=${put_request_uri}    headers=${PUT_REQUEST_HEADERS}  data=${posting}
+    ${response} =     Put Request      alias=${ADMIN_SESSION}    uri=${put_request_uri}    headers=${ADMIN}[PUT_REQUEST_HEADERS]  data=${posting}
     Should Be Equal As Integers 	${response.status_code} 	200  # OK
 
 Make DELETE Request (Admin)
     [Arguments]     ${posting}
-    Set To Dictionary    dictionary=${DELETE_REQUEST_HEADERS}       Referer=${posting}[url]
+    Set To Dictionary    dictionary=${ADMIN}[DELETE_REQUEST_HEADERS]       Referer=${posting}[url]
     ${delete_request_uri}=     Get Uri  url=${posting}[url]
-    ${response} =     Delete Request      alias=${ADMIN_SESSION}    uri=${delete_request_uri}   headers=${DELETE_REQUEST_HEADERS}  data=None
+    ${response} =     Delete Request      alias=${ADMIN_SESSION}    uri=${delete_request_uri}   headers=${ADMIN}[DELETE_REQUEST_HEADERS]  data=None
     Should Be Equal As Integers 	${response.status_code} 	200  # OK
 
 Make GET Request (Admin) : Query For All Postings
-    ${response} =   Get Request     alias=${ADMIN_SESSION}    uri=${POSTINGS_URI}    headers=${GET_REQUEST_HEADERS}
+    ${response} =   Get Request     alias=${ADMIN_SESSION}    uri=${POSTINGS_URI}    headers=${ADMIN}[GET_REQUEST_HEADERS]
     Should Be Equal As Integers 	${response.status_code} 	200
     [Return]        ${response.json()}
 
@@ -101,7 +101,7 @@ Check BlogPostAPI specification (Admin)
     ...                 Ensure that the response's JSON payload matches EXPECTED_API_SPEC
     ...                 Set ${options_response.json()}[actions][POST] as suite variable POSTING_SPEC for later use
     [Tags]              smoke-as-admin
-    ${options_response} =   Options Request     alias=${ADMIN_SESSION}   uri=${POSTINGS_URI}    headers=${OPTIONS_REQUEST_HEADERS}
+    ${options_response} =   Options Request     alias=${ADMIN_SESSION}   uri=${POSTINGS_URI}    headers=${ADMIN}[OPTIONS_REQUEST_HEADERS]
     Verify OPTIONS Response (Admin)     options_response=${options_response}
 
     # if execution reaches here, that means the api spec has not changed

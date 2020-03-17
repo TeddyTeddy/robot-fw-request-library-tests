@@ -76,10 +76,7 @@ Modify The Contents Of "Additional Postings"
     Set Test Variable  @{EXPECTED_MODIFIED_POSTINGS}    @{expected_modified_postings}
 
 Verify "Additional Postings" Modified
-    FOR     ${emp}    IN  @{EXPECTED_MODIFIED_POSTINGS}  # emp: expected_modified_posting
-        ${is_match}   ${matched_posting} =    Is Match    expected_posting=${emp}    postings_set=${registered_postings}
-        Should Be True  $is_match
-    END
+    Is Subset   subset=${EXPECTED_MODIFIED_POSTINGS}    superset=${REGISTERED_POSTINGS}
 
 Delete "Additional Postings"
     FOR     ${ptd}    IN  @{POSTINGS_TO_DELETE}  # ptd: posting_to_delete

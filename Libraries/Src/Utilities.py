@@ -1,8 +1,9 @@
 from urllib.parse import urlparse
+from robot.api.deco import keyword
 import re
 import CommonVariables
 
-
+@keyword
 def validate_url(url):
     try:
         result = urlparse(url)

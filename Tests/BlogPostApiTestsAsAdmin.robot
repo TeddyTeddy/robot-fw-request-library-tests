@@ -16,20 +16,8 @@ Suite Teardown   Suite Teardown
 Suite Teardown
     Delete All Sessions
 
-Do Verify Posting Fields
-    [Documentation]     For each field in @{POSTING_SPEC}, check the following:
-    ...                 The field must exist in the posting, if not fail
-    ...                 If the field is url field, then value it has must be a valid url, if not fail
-    [Arguments]  ${posting}
-    FOR   ${field}   IN   @{POSTING_SPEC}
-        Should Be True      $field in $posting
-        Run keyword If      $field=='url'    validate url   url=${posting}[url]  # fails if not valid url
-    END
-
 Verify "Registered Postings" Against Posting Spec
-    FOR  ${p}     IN  @{REGISTERED_POSTINGS}
-        Do Verify Posting Fields    posting=${p}
-    END
+    Verify All Postings     postings_to_verify=${REGISTERED_POSTINGS}   posting_spec=${POSTING_SPEC}
 
 Create Posting
     [Arguments]       ${posting}

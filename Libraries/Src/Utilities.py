@@ -20,3 +20,17 @@ def get_uri(url):
     return match.groups()[0]    # /api/postings/11/
 
 
+def verify_fields(posting, posting_spec):
+    for field in posting_spec:
+        assert field in posting
+
+@keyword
+def verify_all_postings(postings_to_verify, posting_spec):
+    """
+    :param postings_to_verify: a list of postings, where each posting needs to be verified against posting_spec
+    :param posting_spec: a dict containing keys, which map to posting fields
+    :return: None
+    """
+    for p in postings_to_verify:
+        verify_fields(p, posting_spec)
+

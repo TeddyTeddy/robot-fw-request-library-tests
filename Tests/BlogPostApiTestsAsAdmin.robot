@@ -34,10 +34,7 @@ Create "Additional Postings"
     END
 
 Verify "Additional Postings" Created
-    FOR     ${expected_posting}    IN  @{POSTINGS_TO_CREATE}
-        ${is_match}   ${matched_posting} =    Is Match    expected_posting=${expected_posting}    registered_postings=${REGISTERED_POSTINGS}
-        Should Be True  $is_match
-    END
+    Is Subset   subset=${POSTINGS_TO_CREATE}   superset=${REGISTERED_POSTINGS}
 
 Update Posting
     [Arguments]        ${posting}
@@ -68,7 +65,7 @@ Query BlogPostAPI Specification
 Modify The Contents Of "Additional Postings"
     @{expected_modified_postings} =     Create List
     FOR     ${ptm}    IN  @{POSTINGS_TO_MODIFY}  # ptm: posting_to_modify
-        ${is_match}   ${registered_posting} =  Is Match    expected_posting=${ptm}    registered_postings=${REGISTERED_POSTINGS}
+        ${is_match}   ${registered_posting} =  Is Match    expected_posting=${ptm}    postings_set=${REGISTERED_POSTINGS}
         Should Be True     $is_match
         Set To Dictionary       dictionary=${registered_posting}       content=modified content   #  << modifying the content
         Update Posting    posting=${registered_posting}              # test call: supposed to update the system
@@ -78,7 +75,7 @@ Modify The Contents Of "Additional Postings"
 
 Verify "Additional Postings" Modified
     FOR     ${emp}    IN  @{EXPECTED_MODIFIED_POSTINGS}  # emp: expected_modified_posting
-        ${is_match}   ${matched_posting} =    Is Match    expected_posting=${emp}    registered_postings=${registered_postings}
+        ${is_match}   ${matched_posting} =    Is Match    expected_posting=${emp}    postings_set=${registered_postings}
         Should Be True  $is_match
     END
 

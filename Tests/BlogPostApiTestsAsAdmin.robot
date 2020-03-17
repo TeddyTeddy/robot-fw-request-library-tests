@@ -55,24 +55,6 @@ Read "Registered Postings"
     @{registered_postings} =    Set Variable  ${GET_RESPONSE.json()}
     Set Suite Variable   @{REGISTERED_POSTINGS}     @{registered_postings}
 
-Is Match
-    [Documentation]     Note that registered_postings is a list of postings, which are dictionaries.
-    ...                 Each posting in registered postings have 'title' & 'content' keys.
-    ...                 expected_posting is a dictionary with keys 'title' and 'content' as well.
-    ...                 For each posting in registered_postings, we try to find a match its title & its content
-    ...                 to that of expected_posting's title & content respectively. If such a match occurs,
-    ...                 we return True, otherwise we return false
-
-    [Arguments]    ${expected_posting}    ${registered_postings}
-    ${is_match}=     Set Variable    ${False}
-    ${matched_posting} =    Set Variable   ${None}
-    FOR     ${rp}   IN   @{registered_postings}  # rp: registered_posting
-        ${is_match}=     Evaluate   $rp['title']==$expected_posting['title'] and $rp['content']==$expected_posting['content']
-        ${matched_posting} =    Set Variable If   $is_match       ${rp}       ${None}
-        Exit For Loop If    $is_match
-    END
-    [Return]    ${is_match}     ${matched_posting}
-
 Verify BlogPostAPI Specification
     Verify Options Response     options_response=${OPTIONS_RESPONSE}
 

@@ -34,3 +34,14 @@ def verify_all_postings(postings_to_verify, posting_spec):
     for p in postings_to_verify:
         verify_fields(p, posting_spec)
 
+@keyword
+def is_match(expected_posting, registered_postings):
+    is_match_found = False
+    matched_posting = None
+    for rp in registered_postings:
+        is_match_found = rp['title'] == expected_posting['title'] and rp['content'] == expected_posting['content']
+        if is_match_found:
+            matched_posting = rp
+            break
+    return is_match_found, matched_posting
+

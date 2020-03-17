@@ -16,16 +16,6 @@ Suite Teardown   Suite Teardown
 Suite Teardown
     Delete All Sessions
 
-Verify OPTIONS Response (Admin)
-    [Arguments]   ${options_response}
-    Should Be Equal As Integers 	${options_response.status_code} 	200
-    # make sure that expected & observed response headers match
-    Should Be True     $options_response.headers['Allow']==$OPTIONS_RESPONSE_HEADERS['Allow']
-    Should Be True     $options_response.headers['Vary']==$OPTIONS_RESPONSE_HEADERS['Vary']
-    Should Be True     $options_response.headers['Content-Type']==$OPTIONS_RESPONSE_HEADERS['Content-Type']
-    # make sure that API spec matches
-    Should Be True     $options_response.json()==${ADMIN}[EXPECTED_API_SPEC]
-
 Do Verify Posting Fields
     [Documentation]     For each field in @{POSTING_SPEC}, check the following:
     ...                 The field must exist in the posting, if not fail
@@ -155,7 +145,7 @@ Test Creating "Additional Postings"
 
 Test Modifying The Contents Of "Additional Postings"
     [Tags]                  CRUD-operations-as-admin
-    Modify The Contents of "Additional Postings"  # test
+    Modify The Contents Of "Additional Postings"  # test
 
     Read "Registered Postings"
     Verify "Registered Postings" Against Posting Spec

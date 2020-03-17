@@ -13,7 +13,6 @@ def validate_url(url):
         assert False
 
 
-@keyword
 def get_uri(url):
     # url is for ex: 'https://glacial-earth-31542.herokuapp.com/api/postings/11/'
     api_base_url = CommonVariables.get_variables()['API_BASE_URL']  # 'https://glacial-earth-31542.herokuapp.com'

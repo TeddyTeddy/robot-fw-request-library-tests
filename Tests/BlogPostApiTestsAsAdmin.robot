@@ -63,10 +63,8 @@ Verify "Additional Postings" Created
 
 Make PUT Request (Admin)
     [Arguments]        ${posting}
-    Set To Dictionary    dictionary=${ADMIN}[PUT_REQUEST_HEADERS]       Referer=${posting}[url]
-    ${put_request_uri}=     Get Uri  url=${posting}[url]
-    ${response} =     Put Request      alias=${ADMIN_SESSION}    uri=${put_request_uri}    headers=${ADMIN}[PUT_REQUEST_HEADERS]  data=${posting}
-    Should Be Equal As Integers 	${response.status_code} 	200  # OK
+    ${PUT_RESPONSE} =   Make Put Request  posting=${posting}
+    Should Be Equal As Integers 	${PUT_RESPONSE.status_code} 	200  # OK
 
 Make DELETE Request (Admin)
     [Arguments]     ${posting}
@@ -109,6 +107,23 @@ Query BlogPostAPI Specification
     ${OPTIONS_RESPONSE} =       Make Options Request
     Set Test Variable   ${OPTIONS_RESPONSE}
 
+Modify The Contents Of "Additional Postings"
+    @{expected_modified_postings} =     Create List
+    FOR     ${ptm}    IN  @{POSTINGS_TO_MODIFY}  # ptm: posting_to_modify
+        ${is_match}   ${registered_posting} =  Is Match    expected_posting=${ptm}    registered_postings=${REGISTERED_POSTINGS}
+        Should Be True     $is_match
+        Set To Dictionary       dictionary=${registered_posting}       content=modified content   #  << modifying the content
+        Make PUT Request (Admin)    posting=${registered_posting}              # test call: supposed to update the system
+        Append To List      ${expected_modified_postings}       ${registered_posting}
+    END
+    Set Test Variable  @{EXPECTED_MODIFIED_POSTINGS}    @{expected_modified_postings}
+
+Verify "Additional Postings" Modified
+    FOR     ${emp}    IN  @{EXPECTED_MODIFIED_POSTINGS}  # emp: expected_modified_posting
+        ${is_match}   ${matched_posting} =    Is Match    expected_posting=${emp}    registered_postings=${registered_postings}
+        Should Be True  $is_match
+    END
+
 *** Test Cases ***
 Check BlogPostAPI specification
     [Tags]              smoke-as-admin
@@ -138,63 +153,16 @@ Test Creating "Additional Postings"
     # to be used by the next test case
     Set Suite Variable      @{POSTINGS_TO_MODIFY}       @{POSTINGS_TO_CREATE}  # to be semantically correct
 
-Make PUT Requests (Admin) : Modify The Contents Of Previously Created Postings
-    [Documentation]         In the previous test, we stored @{POSTINGS_TO_CREATE} as @{POSTINGS_TO_MODIFY}.
-    ...                     (i.e. the newly created postings are stored as @{POSTINGS_TO_MODIFY},
-    ...                     where each posting posting to modify (i.e. ptm in short) has only 'title' and 'content'
-    ...                     fields (i.e. an incomplete posting entry with missing fields url, id, user, timestamp).
-    ...                     ptm(s) cannot be updated into system via PUT request.
-    ...                     However, for each ptm, there is a matching complete posting entry in @{REGISTERED_POSTINGS};
-    ...                     matching via title & content fields. We use that entry to make a PUT request.
-    ...                     Before making the PUT request, we make a deliberate modification to the entry's
-    ...                     content field and after that we make a PUT request passing the entry.
-    ...                     The entry is stored into @{expected_modified_postings} for verification phase two.
-    ...
-    ...                     We also know the currently available postings in the system via @{REGISTERED_POSTINGS}
-    ...                     (i.e. pre-set-postings + newly created postings).
-    ...
-    ...                     After having made the PUT request(s) and formed @{expected_modified_postings},
-    ...                     we make a GET request to have all the postings stored (& updated) in the system. The json
-    ...                     payload of the GET request is stored into @{registered_postings}.
-
-    ...                     Verification part one: we will ensure that each posting in @{registered_postings}
-    ...                     is according to the posting spec (i.e. each posting has all the fields in ${POSTING_SPEC})
-    ...
-    ...                     Verfication phase two: for each expected modified posting (aka. emp in short; an entry
-    ...                     in @{expected_modified_postings}), there must be a matching entry in @{registered_postings};
-    ...                     matching should be via title & content fields
+Test Modifying The Contents Of "Additional Postings"
     [Tags]                  CRUD-operations-as-admin
-    # test
-    # in the previous test case, we have created the postings in @{POSTINGS_TO_CREATE}
-    # now, we are going to modify the postings in @{POSTINGS_TO_CREATE}
-    @{expected_modified_postings} =     Create List
-    FOR     ${ptm}    IN  @{POSTINGS_TO_MODIFY}  # ptm: posting_to_modify
-        ${is_match}   ${registered_posting} =  Is Match    expected_posting=${ptm}    registered_postings=${REGISTERED_POSTINGS}
-        Should Be True     $is_match
-        Set To Dictionary       dictionary=${registered_posting}       content=modified content   #  << modifying the content
-        Make PUT Request (Admin)    posting=${registered_posting}              # test call: supposed to update the system
-        Append To List      ${expected_modified_postings}       ${registered_posting}
-    END
+    Modify The Contents of "Additional Postings"  # test
 
-    # verify that postings in @{POSTINGS_TO_MODIFY} indeed got modified
     Read "Registered Postings"
     Verify "Registered Postings" Against Posting Spec
-    # @{registered_postings} = [
-    #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/2/', 'id': 2, 'user': 1, 'title': 'My Second Posting', 'content': "My Second Blog's content", 'timestamp': '2019-12-18T17:07:34.938150+02:00'},
-    #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+02:00'},
-    #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/11/', 'id': 11, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-11T14:48:37.229023+02:00'},
-    #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/12/', 'id': 12, 'user': 1, 'title': 'Posting 2', 'content': 'modified content', 'timestamp': '2020-03-11T14:48:37.462976+02:00'},
-    #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/13/', 'id': 13, 'user': 1, 'title': 'Posting 3', 'content': 'modified content', 'timestamp': '2020-03-11T14:48:37.724016+02:00'}
-    # ]
-    # Verfication phase two
-    FOR     ${emp}    IN  @{expected_modified_postings}  # emp: expected_modified_posting
-        ${is_match}   ${matched_posting} =    Is Match    expected_posting=${emp}    registered_postings=${registered_postings}
-        Should Be True  $is_match
-    END
+    Verify "Additional Postings" Modified
 
-    # at this point we know that the postings we made PUT requests for have indeed been updated in the system
     # to be used by the next test case
-    Set Suite Variable      @{POSTINGS_TO_DELETE}       @{expected_modified_postings}  # to be semantically correct in the next test
+    Set Suite Variable      @{POSTINGS_TO_DELETE}       @{EXPECTED_MODIFIED_POSTINGS}  # to be semantically correct in the next test
 
 Make DELETE Requests (Admin) : Deleting Previously Updated Postings
     [Documentation]     In the previous test case, we updated specific posting(s) (i.e. @{expected_modified_postings})

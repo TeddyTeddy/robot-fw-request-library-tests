@@ -1,5 +1,6 @@
 from LibraryLoader import LibraryLoader
 from robot.api.deco import keyword
+from Utilities import get_uri
 from robot.api import logger
 
 
@@ -43,6 +44,13 @@ class AdminUser:
     def make_get_request(self):
         return self._loader.rl.get_request(alias=self._session_alias, uri=self._postings_uri,
                                            headers=self._admin['GET_REQUEST_HEADERS'])
+    @keyword
+    def make_put_request(self, posting):
+        self._admin['PUT_REQUEST_HEADERS']['Referer'] = posting['url']
+        put_request_uri = get_uri(posting['url'])
+        return self._loader.rl.put_request(alias=self._session_alias, uri=put_request_uri,
+                                           headers=self._admin['PUT_REQUEST_HEADERS'],  data=posting)
+
 
 
 

@@ -27,14 +27,14 @@ Create Posting
 Verify Post Request Success
     Should Be Equal As Integers 	${POST_RESPONSE.status_code} 	201  # Created
 
-Create "Additional Postings"
-    FOR     ${p}    IN  @{POSTINGS_TO_CREATE}
+Create "Target Postings"
+    FOR     ${p}    IN  @{TARGET_POSTINGS}
         Create Posting     posting=${p}
         Verify Post Request Success
     END
 
-Verify "Additional Postings" Created
-    Is Subset   subset=${POSTINGS_TO_CREATE}   superset=${REGISTERED_POSTINGS}
+Verify "Target Postings" Created
+    Is Subset   subset=${TARGET_POSTINGS}   superset=${REGISTERED_POSTINGS}
 
 Update Posting
     [Arguments]        ${posting}
@@ -63,9 +63,9 @@ Query BlogPostAPI Specification
     ${OPTIONS_RESPONSE} =       Make Options Request
     Set Test Variable   ${OPTIONS_RESPONSE}
 
-Modify The Contents Of "Additional Postings"
+Modify The Contents Of "Target Postings"
     @{expected_modified_postings} =     Create List
-    FOR     ${ptm}    IN  @{POSTINGS_TO_MODIFY}  # ptm: posting_to_modify
+    FOR     ${ptm}    IN  @{TARGET_POSTINGS}  # ptm: posting_to_modify
         ${is_match}   ${registered_posting} =  Is Match    expected_posting=${ptm}    postings_set=${REGISTERED_POSTINGS}
         Should Be True     $is_match
         Set To Dictionary       dictionary=${registered_posting}       content=modified content   #  << modifying the content
@@ -75,10 +75,10 @@ Modify The Contents Of "Additional Postings"
     END
     Set Test Variable  @{EXPECTED_MODIFIED_POSTINGS}    @{expected_modified_postings}
 
-Verify "Additional Postings" Modified
+Verify "Target Postings" Modified
     Is Subset   subset=${EXPECTED_MODIFIED_POSTINGS}    superset=${REGISTERED_POSTINGS}
 
-Delete "Additional Postings"
+Delete "Target Postings"
     FOR     ${ptd}    IN  @{POSTINGS_TO_DELETE}  # ptd: posting_to_delete
         Delete Posting    posting=${ptd}
     END
@@ -97,33 +97,29 @@ Query & Verify Pre-Set Postings (Admin)
     [Tags]              smoke-as-admin
     Read "Registered Postings"
     Verify "Registered Postings" Against Posting Spec
-    # to be used in later
+    # to be used later
     Set Suite Variable      @{PRE_SET_POSTINGS}     @{REGISTERED_POSTINGS}
 
-Test Creating "Additional Postings"
+Test Creating "Target Postings"
     [Tags]              CRUD-operations-as-admin
-    Create "Additional Postings"  # test
+    Create "Target Postings"  # test
     Read "Registered Postings"
     Verify "Registered Postings" Against Posting Spec
-    Verify "Additional Postings" Created
+    Verify "Target Postings" Created
 
-    # to be used by the next test case
-    Set Suite Variable      @{POSTINGS_TO_MODIFY}       @{POSTINGS_TO_CREATE}  # to be semantically correct
-
-Test Modifying The Contents Of "Additional Postings"
+Test Modifying The Contents Of "Target Postings"
     [Tags]                  CRUD-operations-as-admin
-    Modify The Contents Of "Additional Postings"  # test
-
+    Modify The Contents Of "Target Postings"  # test
     Read "Registered Postings"
     Verify "Registered Postings" Against Posting Spec
-    Verify "Additional Postings" Modified
+    Verify "Target Postings" Modified
 
     # to be used by the next test case
     Set Suite Variable      @{POSTINGS_TO_DELETE}       @{EXPECTED_MODIFIED_POSTINGS}  # to be semantically correct in the next test
 
-Deleting "Additional Postings"
+Deleting "Target Postings"
     [Tags]                  CRUD-operations-as-admin
-    Delete "Additional Postings"    # test
+    Delete "Target Postings"    # test
     Read "Registered Postings"
     Verify "Registered Postings" Against Posting Spec
     Verify Only "Pre-Set Postings" Left

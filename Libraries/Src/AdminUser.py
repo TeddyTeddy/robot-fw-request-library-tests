@@ -34,6 +34,18 @@ class AdminUser:
         assert options_response.headers['Content-Type'] == self._expected_options_response_headers['Content-Type']
         assert options_response.json() == self._admin['EXPECTED_API_SPEC']
 
+    @keyword
+    def make_post_request(self, posting):
+        return self._loader.rl.post_request(alias=self._session_alias, uri=self._postings_uri,
+                                            headers=self._admin['POST_REQUEST_HEADERS'],  data=posting)
+
+    @keyword
+    def make_get_request(self):
+        return self._loader.rl.get_request(alias=self._session_alias, uri=self._postings_uri,
+                                           headers=self._admin['GET_REQUEST_HEADERS'])
+
+
+
 
 
 

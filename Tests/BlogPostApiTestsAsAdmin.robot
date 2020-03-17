@@ -36,16 +36,30 @@ Do Verify Posting Fields
         Run keyword If      $field=='url'    validate url   url=${posting}[url]  # fails if not valid url
     END
 
-Verify Postings Against Posting Spec
-    [Arguments]     ${postings}
-    FOR  ${p}     IN  @{postings}
+Verify "Registered Postings" Against Posting Spec
+    FOR  ${p}     IN  @{REGISTERED_POSTINGS}
         Do Verify Posting Fields    posting=${p}
     END
 
-Make POST Request (Admin)
+Create Posting
     [Arguments]       ${posting}
-    ${response} =     Post Request      alias=${ADMIN_SESSION}    uri=${POSTINGS_URI}    headers=${ADMIN}[POST_REQUEST_HEADERS]  data=${posting}
-    Should Be Equal As Integers 	${response.status_code} 	201  # Created
+    ${POST_RESPONSE} =  Make Post Request  posting=${posting}
+    Set Test Variable   ${POST_RESPONSE}
+
+Verify Post Request Success
+    Should Be Equal As Integers 	${POST_RESPONSE.status_code} 	201  # Created
+
+Create "Additional Postings"
+    FOR     ${p}    IN  @{POSTINGS_TO_CREATE}
+        Create Posting     posting=${p}
+        Verify Post Request Success
+    END
+
+Verify "Additional Postings" Created
+    FOR     ${expected_posting}    IN  @{POSTINGS_TO_CREATE}
+        ${is_match}   ${matched_posting} =    Is Match    expected_posting=${expected_posting}    registered_postings=${REGISTERED_POSTINGS}
+        Should Be True  $is_match
+    END
 
 Make PUT Request (Admin)
     [Arguments]        ${posting}
@@ -61,10 +75,11 @@ Make DELETE Request (Admin)
     ${response} =     Delete Request      alias=${ADMIN_SESSION}    uri=${delete_request_uri}   headers=${ADMIN}[DELETE_REQUEST_HEADERS]  data=None
     Should Be Equal As Integers 	${response.status_code} 	200  # OK
 
-Make GET Request (Admin) : Query For All Postings
-    ${response} =   Get Request     alias=${ADMIN_SESSION}    uri=${POSTINGS_URI}    headers=${ADMIN}[GET_REQUEST_HEADERS]
-    Should Be Equal As Integers 	${response.status_code} 	200
-    [Return]        ${response.json()}
+Read "Registered Postings"
+    ${GET_RESPONSE} =   Make Get Request
+    Should Be Equal As Integers 	${GET_RESPONSE.status_code} 	200
+    @{registered_postings} =    Set Variable  ${GET_RESPONSE.json()}
+    Set Suite Variable   @{REGISTERED_POSTINGS}     @{registered_postings}
 
 Is Match
     [Documentation]     Note that registered_postings is a list of postings, which are dictionaries.
@@ -87,7 +102,7 @@ Is Match
 Verify BlogPostAPI Specification
     Verify Options Response     options_response=${OPTIONS_RESPONSE}
 
-Set Posting Spec
+Set "Posting Spec"
     Set Suite Variable  ${POSTING_SPEC}      ${OPTIONS_RESPONSE.json()}[actions][POST]
 
 Query BlogPostAPI Specification
@@ -99,7 +114,7 @@ Check BlogPostAPI specification
     [Tags]              smoke-as-admin
     Query BlogPostAPI Specification
     Verify BlogPostAPI Specification
-    Set Posting Spec  # for later use in upcoming test cases
+    Set "Posting Spec"  # for later use in upcoming test cases
 
 Query & Verify Pre-Set Postings (Admin)
     [Documentation]     In the previous test case, we verified the BlogPostAPI's specification.
@@ -109,48 +124,19 @@ Query & Verify Pre-Set Postings (Admin)
     ...                 specified in POSTING_SPEC. If not, the test fails. If success, then we store the
     ...                 pre-set postings into @{PRE_SET_POSTINGS} suite variable for later use
     [Tags]              smoke-as-admin
-    @{pre-set-postings} =   Make GET Request (Admin) : Query For All Postings
-    Verify Postings Against Posting Spec    postings=${pre-set-postings}
+    Read "Registered Postings"
+    Verify "Registered Postings" Against Posting Spec
+    Set Suite Variable      @{PRE_SET_POSTINGS}     @{REGISTERED_POSTINGS}
 
-    # if execution reaches here, all pre-set-postings are valid againist the API's POSTING_SPEC
-    Set Suite Variable      @{PRE_SET_POSTINGS}     @{pre-set-postings}
-
-Make POST Requests (Admin): Create New Postings
-    [Documentation]     Having set @{PRE_SET_POSTINGS} in the previous test case, we now will create
-    ...                 new postings as specified in  @{POSTINGS_TO_CREATE}. Test part: For each posting in @{POSTINGS_TO_CREATE}
-    ...                 we will make a seperate POST request.
-    ...                 Verification part: After executing the POST requests, we will query the API for
-    ...                 all the postings into @{registered_postings}.
-    ...                 First, We ensure that each posting in @{registered_postings}, have all the required
-    ...                 fields in ${POSTING_SPEC}. Once that first verification step is successful, we move into the second
-    ...                 step of verification; we check that all the postings in
-    ...                 @{POSTINGS_TO_CREATE} have indeed been created in the system; i.e. we compare each posting
-    ...                 in @{POSTINGS_TO_CREATE} against @{registered_postings}; there has to be a match of title & content
+Test Creating "Additional Postings"
     [Tags]              CRUD-operations-as-admin
-    # test
-    FOR     ${p}    IN  @{POSTINGS_TO_CREATE}
-        Make POST Request (Admin)     posting=${p}
-    END
-
-    # verify that postings in @{POSTINGS_TO_CREATE} indeed got created
-    @{registered_postings} =   Make GET Request (Admin) : Query For All Postings
-    # @{registered_postings} = [
-    #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/2/', 'id': 2, 'user': 1, 'title': 'My Second Posting', 'content': "My Second Blog's content", 'timestamp': '2019-12-18T17:07:34.938150+02:00'},
-    #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+02:00'},
-    #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/11/', 'id': 11, 'user': 1, 'title': 'Posting 1', 'content': 'Posting 1 content', 'timestamp': '2020-03-11T14:48:37.229023+02:00'},
-    #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/12/', 'id': 12, 'user': 1, 'title': 'Posting 2', 'content': 'Posting 2 content', 'timestamp': '2020-03-11T14:48:37.462976+02:00'},
-    #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/13/', 'id': 13, 'user': 1, 'title': 'Posting 3', 'content': 'Posting 3 content', 'timestamp': '2020-03-11T14:48:37.724016+02:00'}
-    # ]
-    Verify Postings Against Posting Spec    postings=${registered_postings}  # first phase of verification
-    # second phase of verification starts here
-    FOR     ${expected_posting}    IN  @{POSTINGS_TO_CREATE}
-        ${is_match}   ${matched_posting} =    Is Match    expected_posting=${expected_posting}    registered_postings=${registered_postings}
-        Should Be True  $is_match
-    END
+    Create "Additional Postings"  # test
+    Read "Registered Postings"
+    Verify "Registered Postings" Against Posting Spec
+    Verify "Additional Postings" Created
 
     # to be used by the next test case
-    Set Suite Variable      @{REGISTERED_POSTINGS}      @{registered_postings}
-    Set Suite Variable      @{POSTINGS_TO_MODIFY}       @{POSTINGS_TO_CREATE}  # to be semantically correct in the next test
+    Set Suite Variable      @{POSTINGS_TO_MODIFY}       @{POSTINGS_TO_CREATE}  # to be semantically correct
 
 Make PUT Requests (Admin) : Modify The Contents Of Previously Created Postings
     [Documentation]         In the previous test, we stored @{POSTINGS_TO_CREATE} as @{POSTINGS_TO_MODIFY}.
@@ -191,8 +177,8 @@ Make PUT Requests (Admin) : Modify The Contents Of Previously Created Postings
     END
 
     # verify that postings in @{POSTINGS_TO_MODIFY} indeed got modified
-    @{registered_postings} =   Make GET Request (Admin) : Query For All Postings  # i.e.
-    Verify Postings Against Posting Spec    postings=${registered_postings}  # Verification part one
+    Read "Registered Postings"
+    Verify "Registered Postings" Against Posting Spec
     # @{registered_postings} = [
     #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/2/', 'id': 2, 'user': 1, 'title': 'My Second Posting', 'content': "My Second Blog's content", 'timestamp': '2019-12-18T17:07:34.938150+02:00'},
     #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+02:00'},
@@ -235,12 +221,12 @@ Make DELETE Requests (Admin) : Deleting Previously Updated Postings
     END
 
     # verify that postings in @{POSTINGS_TO_DELETE} indeed got deleted
-    @{registered_postings} =   Make GET Request (Admin) : Query For All Postings
+    Read "Registered Postings"
 
     # Verification phase one
-    Should Be True  $registered_postings == $PRE_SET_POSTINGS
+    Should Be True  $REGISTERED_POSTINGS == $PRE_SET_POSTINGS
     # verification phase two
-    Verify Postings Against Posting Spec    postings=${registered_postings}
+    Verify "Registered Postings" Against Posting Spec
     # @{registered_postings} = [
     #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/2/', 'id': 2, 'user': 1, 'title': 'My Second Posting', 'content': "My Second Blog's content", 'timestamp': '2019-12-18T17:07:34.938150+02:00'},
     #    {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+02:00'},

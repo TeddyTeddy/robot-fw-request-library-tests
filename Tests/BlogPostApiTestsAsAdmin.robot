@@ -39,7 +39,8 @@ Verify "Additional Postings" Created
 Update Posting
     [Arguments]        ${posting}
     ${PUT_RESPONSE} =   Make Put Request  posting=${posting}
-    Should Be Equal As Integers 	${PUT_RESPONSE.status_code} 	200  # OK
+    Set Test Variable   ${PUT_RESPONSE}
+
 
 Delete Posting
     [Arguments]     ${posting}
@@ -69,6 +70,7 @@ Modify The Contents Of "Additional Postings"
         Should Be True     $is_match
         Set To Dictionary       dictionary=${registered_posting}       content=modified content   #  << modifying the content
         Update Posting    posting=${registered_posting}              # test call: supposed to update the system
+        Should Be Equal As Integers 	${PUT_RESPONSE.status_code} 	200  # OK
         Append To List      ${expected_modified_postings}       ${registered_posting}
     END
     Set Test Variable  @{EXPECTED_MODIFIED_POSTINGS}    @{expected_modified_postings}

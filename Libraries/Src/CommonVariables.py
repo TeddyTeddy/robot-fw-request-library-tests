@@ -1,6 +1,6 @@
 def get_variables():
     variables = {
-        'ADMIN_SESSION': 'Common Session For All Requests As Admin',
+        'ADMIN_SESSION': 'Admin Session',
         'API_BASE_URL': 'https://glacial-earth-31542.herokuapp.com',
         'ADMIN': {
             'OPTIONS_REQUEST_HEADERS': {
@@ -89,6 +89,61 @@ def get_variables():
                 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8',
                 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x',
             },
+            'EXPECTED_API_SPEC': {
+                'name': 'Blog Post Api',
+                'description': '',
+                'renders': [
+                    'application/json',
+                    'text/html'
+                ],
+                'parses': [
+                    'application/json',
+                    'application/x-www-form-urlencoded',
+                    'multipart/form-data'
+                ],
+                'actions': {
+                    'POST': {
+                        'url': {
+                            'type': 'field',
+                            'required': False,
+                            'read_only': True,
+                            'label': 'Url'
+                        },
+                        'id': {
+                            'type': 'integer',
+                            'required': False,
+                            'read_only': True,
+                            'label': 'ID'
+                        },
+                        'user': {
+                            'type': 'field',
+                            'required': False,
+                            'read_only': True,
+                            'label': 'User'
+                        },
+                        'title': {
+                            'type': 'string',
+                            'required': False,
+                            'read_only': False,
+                            'label': 'Title',
+                            'max_length': 120
+                        },
+                        'content': {
+                            'type': 'string',
+                            'required': False,
+                            'read_only': False,
+                            'label': 'Content',
+                            'max_length': 120
+                        },
+                        'timestamp': {
+                            'type': 'datetime',
+                            'required': False,
+                            'read_only': True,
+                            'label': 'Timestamp'
+                        }
+                    }
+                }
+            },
         },
         'POSTINGS_TO_CREATE': [
             {'title': 'Posting 1', 'content': 'Posting 1 content'},
@@ -101,62 +156,6 @@ def get_variables():
             'Vary': 'Accept, Cookie',
             'Content-Type': 'application/json',
         },
-        'EXPECTED_API_SPEC': {
-            'name': 'Blog Post Api',
-            'description': '',
-            'renders': [
-                'application/json',
-                'text/html'
-            ],
-            'parses': [
-                'application/json',
-                'application/x-www-form-urlencoded',
-                'multipart/form-data'
-            ],
-            'actions': {
-                'POST': {
-                    'url': {
-                        'type': 'field',
-                        'required': False,
-                        'read_only': True,
-                        'label': 'Url'
-                    },
-                    'id': {
-                        'type': 'integer',
-                        'required': False,
-                        'read_only': True,
-                        'label': 'ID'
-                    },
-                    'user': {
-                        'type': 'field',
-                        'required': False,
-                        'read_only': True,
-                        'label': 'User'
-                    },
-                    'title': {
-                        'type': 'string',
-                        'required': False,
-                        'read_only': False,
-                        'label': 'Title',
-                        'max_length': 120
-                    },
-                    'content': {
-                        'type': 'string',
-                        'required': False,
-                        'read_only': False,
-                        'label': 'Content',
-                        'max_length': 120
-                    },
-                    'timestamp': {
-                        'type': 'datetime',
-                        'required': False,
-                        'read_only': True,
-                        'label': 'Timestamp'
-                    }
-                }
-            }
-        },
-
     }
     return variables
 

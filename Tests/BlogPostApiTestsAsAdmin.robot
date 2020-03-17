@@ -4,20 +4,15 @@ Documentation    This test suite uses robotframework-request library to test Blo
 ...              https://glacial-earth-31542.herokuapp.com/api/postings/
 ...              If you want to update/delete a posting, then you need to use its url. For example:
 ...              https://glacial-earth-31542.herokuapp.com/api/postings/26/
-Resource         ../Libraries/Src/CommonLibraryImport.robot
 Library 	     RequestsLibrary
 Library          Collections
-
-Suite Setup      Suite Setup
+Resource         ../Libraries/Src/CommonLibraryImport.robot
 Suite Teardown   Suite Teardown
 
 # To Run
 # python -m robot  --pythonpath Libraries/Src --noncritical failure-expected -d Results/ Tests/BlogPostApiTestsAsAdmin.robot
 
 *** Keywords ***
-Suite Setup
-    Create Session  alias=${ADMIN_SESSION}   url=${API_BASE_URL}  cookies={}    verify=${True}
-
 Suite Teardown
     Delete All Sessions
 
@@ -29,7 +24,7 @@ Verify OPTIONS Response (Admin)
     Should Be True     $options_response.headers['Vary']==$OPTIONS_RESPONSE_HEADERS['Vary']
     Should Be True     $options_response.headers['Content-Type']==$OPTIONS_RESPONSE_HEADERS['Content-Type']
     # make sure that API spec matches
-    Should Be True     $options_response.json()==$EXPECTED_API_SPEC
+    Should Be True     $options_response.json()==${ADMIN}[EXPECTED_API_SPEC]
 
 Do Verify Posting Fields
     [Documentation]     For each field in @{POSTING_SPEC}, check the following:
@@ -89,24 +84,22 @@ Is Match
     END
     [Return]    ${is_match}     ${matched_posting}
 
+Verify BlogPostAPI Specification
+    Verify Options Response     options_response=${OPTIONS_RESPONSE}
+
+Set Posting Spec
+    Set Suite Variable  ${POSTING_SPEC}      ${OPTIONS_RESPONSE.json()}[actions][POST]
+
+Query BlogPostAPI Specification
+    ${OPTIONS_RESPONSE} =       Make Options Request
+    Set Test Variable   ${OPTIONS_RESPONSE}
 
 *** Test Cases ***
-Check BlogPostAPI specification (Admin)
-    [Documentation]     Make an OPTIONS Request to BlogPostAPI:
-    ...                 https://glacial-earth-31542.herokuapp.com/api/postings/
-    ...
-    ...                 Ensure that the following response headers are correct:
-    ...                 Allow, Vary, Content-Type
-    ...
-    ...                 Ensure that the response's JSON payload matches EXPECTED_API_SPEC
-    ...                 Set ${options_response.json()}[actions][POST] as suite variable POSTING_SPEC for later use
+Check BlogPostAPI specification
     [Tags]              smoke-as-admin
-    ${options_response} =   Options Request     alias=${ADMIN_SESSION}   uri=${POSTINGS_URI}    headers=${ADMIN}[OPTIONS_REQUEST_HEADERS]
-    Verify OPTIONS Response (Admin)     options_response=${options_response}
-
-    # if execution reaches here, that means the api spec has not changed
-    # Set the content fields of POSTING (i.e. ${options_response.json()}[actions][POST]) as a suite variable POSTING_SPEC
-    Set Suite Variable  ${POSTING_SPEC}      ${options_response.json()}[actions][POST]
+    Query BlogPostAPI Specification
+    Verify BlogPostAPI Specification
+    Set Posting Spec  # for later use in upcoming test cases
 
 Query & Verify Pre-Set Postings (Admin)
     [Documentation]     In the previous test case, we verified the BlogPostAPI's specification.

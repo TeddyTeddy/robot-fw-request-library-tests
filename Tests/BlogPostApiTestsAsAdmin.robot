@@ -88,14 +88,14 @@ Query & Verify Pre-Set Postings (Admin)
     # to be used later
     Set Suite Variable      @{PRE_SET_POSTINGS}     @{REGISTERED_POSTINGS}
 
-Test Creating "Target Postings"
+Creating "Target Postings"
     [Tags]              CRUD-operations-as-admin
     Create "Target Postings"  # test
     Read "Registered Postings"
     Verify "Registered Postings" Against Posting Spec
     Verify "Target Postings" Created
 
-Test Updating "Target Postings"
+Updating "Target Postings"
     [Tags]                  CRUD-operations-as-admin
     Update Target Postings  # test
     Read "Registered Postings"

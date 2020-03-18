@@ -4,7 +4,7 @@ import re
 import CommonVariables
 from LibraryLoader import LibraryLoader
 
-@keyword
+
 def validate_url(url):
     try:
         result = urlparse(url)
@@ -24,6 +24,8 @@ def get_uri(url):
 def verify_fields(posting, posting_spec):
     for field in posting_spec:
         assert field in posting
+        if field == 'url':
+            validate_url(posting['url'])
 
 @keyword
 def verify_all_postings(postings_to_verify, posting_spec):

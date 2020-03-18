@@ -81,7 +81,7 @@ Check BlogPostAPI specification
     Verify BlogPostAPI Specification
     Set "Posting Spec"  # for later use in upcoming test cases
 
-Query & Verify Pre-Set Postings (Admin)
+Query & Verify Pre-Set Postings
     [Tags]              smoke-as-admin
     Read "Registered Postings"
     Verify "Registered Postings" Against Posting Spec

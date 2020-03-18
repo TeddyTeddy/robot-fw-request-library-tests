@@ -1,9 +1,10 @@
 *** Settings ***
-Documentation    This test suite uses robotframework-request library to test BlogPostAPI
-...              Note that the API supports only: 'GET, POST, HEAD, OPTIONS' methods on URL:
+Documentation    This test suite uses Admin request headers to test BlogPostAPI.
+...              For an admin, BlogPostAPI provides GET, POST, PUT, DELETE methods
+...              as well as OPTIONS method. The URL of the API is:
 ...              https://glacial-earth-31542.herokuapp.com/api/postings/
-...              If you want to update/delete a posting, then you need to use its url. For example:
-...              https://glacial-earth-31542.herokuapp.com/api/postings/26/
+Metadata         Version    1.0
+Metadata         OS         Linux
 Library 	     RequestsLibrary
 Library          Collections
 Resource         ../Libraries/Src/CommonLibraryImport.robot

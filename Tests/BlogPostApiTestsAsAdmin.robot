@@ -24,13 +24,13 @@ Create Posting
     ${POST_RESPONSE} =  Make Post Request  posting=${posting}
     Set Test Variable   ${POST_RESPONSE}
 
-Verify Post Request Success
+Verify Post Response Success Code
     Should Be Equal As Integers 	${POST_RESPONSE.status_code} 	201  # Created
 
 Create "Target Postings"
     FOR     ${p}    IN  @{TARGET_POSTINGS}
         Create Posting     posting=${p}
-        Verify Post Request Success
+        Verify Post Response Success Code
     END
 
 Verify "Target Postings" Created
@@ -45,7 +45,7 @@ Update Posting
 Delete Posting
     [Arguments]     ${posting}
     ${DELETE_RESPONSE} =     Make Delete Request    posting=${posting}
-    Should Be Equal As Integers 	${DELETE_RESPONSE.status_code} 	200  # OK
+    Set Test Variable       ${DELETE_RESPONSE}
 
 Read "Registered Postings"
     ${GET_RESPONSE} =   Make Get Request
@@ -66,9 +66,13 @@ Query BlogPostAPI Specification
 Verify "Target Postings" Modified
     Is Subset   subset=${EXPECTED_MODIFIED_POSTINGS}    superset=${REGISTERED_POSTINGS}
 
+Verify Delete Response Success Code
+    Should Be Equal As Integers 	${DELETE_RESPONSE.status_code} 	200  # OK
+
 Delete "Target Postings"
     FOR     ${ptd}    IN  @{POSTINGS_TO_DELETE}  # ptd: posting_to_delete
         Delete Posting    posting=${ptd}
+        Verify Delete Response Success Code
     END
 
 Verify Only "Pre-Set Postings" Left

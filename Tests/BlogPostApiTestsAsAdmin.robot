@@ -5,8 +5,6 @@ Documentation    This test suite uses Admin request headers to test BlogPostAPI.
 ...              https://glacial-earth-31542.herokuapp.com/api/postings/
 Metadata         Version    1.0
 Metadata         OS         Linux
-Library 	     RequestsLibrary
-Library          Collections
 Resource         ../Libraries/Src/CommonLibraryImport.robot
 Suite Teardown   Suite Teardown
 

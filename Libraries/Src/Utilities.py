@@ -38,13 +38,13 @@ def verify_all_postings(postings_to_verify, posting_spec):
         verify_fields(p, posting_spec)
 
 
-def is_match(expected_posting, postings_set):
+def is_match(expected_posting, super_set):
     is_match_found = False
     matched_posting = None
-    for rp in postings_set:
-        is_match_found = rp['title'] == expected_posting['title'] and rp['content'] == expected_posting['content']
+    for p in super_set:
+        is_match_found = p['title'] == expected_posting['title'] and p['content'] == expected_posting['content']
         if is_match_found:
-            matched_posting = rp
+            matched_posting = p
             break
     return is_match_found, matched_posting
 
@@ -52,7 +52,7 @@ def is_match(expected_posting, postings_set):
 @keyword
 def is_subset(subset, superset):
     for posting in subset:
-        is_match_found, matched_posting = is_match(expected_posting=posting, postings_set=superset)
+        is_match_found, matched_posting = is_match(expected_posting=posting, super_set=superset)
         assert is_match_found
 
 
@@ -75,7 +75,7 @@ def update_target_postings():
     registered_postings = loader.builtin.get_variable_value("${REGISTERED_POSTINGS}")
     expected_modified_postings = []
     for tp in target_postings:  # tp: target_posting
-        is_match_found, matched_posting = is_match(expected_posting=tp, postings_set=registered_postings)
+        is_match_found, matched_posting = is_match(expected_posting=tp, super_set=registered_postings)
         assert is_match_found
         matched_posting['content'] = 'modified content'
         # test call:

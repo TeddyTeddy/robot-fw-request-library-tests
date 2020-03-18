@@ -2,6 +2,7 @@ from urllib.parse import urlparse
 from robot.api.deco import keyword
 import re
 import CommonVariables
+from LibraryLoader import LibraryLoader
 
 @keyword
 def validate_url(url):
@@ -34,7 +35,7 @@ def verify_all_postings(postings_to_verify, posting_spec):
     for p in postings_to_verify:
         verify_fields(p, posting_spec)
 
-@keyword
+
 def is_match(expected_posting, postings_set):
     is_match_found = False
     matched_posting = None
@@ -45,8 +46,25 @@ def is_match(expected_posting, postings_set):
             break
     return is_match_found, matched_posting
 
+
 @keyword
 def is_subset(subset, superset):
     for posting in subset:
         is_match_found, matched_posting = is_match(expected_posting=posting, postings_set=superset)
         assert is_match_found
+
+
+@keyword
+def update_target_postings():
+    loader = LibraryLoader.get_instance()  # singleton
+    target_postings = loader.builtin.get_variable_value("${TARGET_POSTINGS}")
+    registered_postings = loader.builtin.get_variable_value("${REGISTERED_POSTINGS}")
+    expected_modified_postings = []
+    for ptm in target_postings:
+        is_match_found, matched_posting = is_match(expected_posting=ptm, postings_set=registered_postings)
+        assert is_match_found
+        matched_posting['content'] = 'modified content'
+        # test call:
+        loader.builtin.run_keyword('Make Put Request',  matched_posting) # TODO: Cannot receive put response
+        expected_modified_postings.append(matched_posting)
+    loader.builtin.set_test_variable('${EXPECTED_MODIFIED_POSTINGS}', expected_modified_postings)

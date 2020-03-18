@@ -63,18 +63,6 @@ Query BlogPostAPI Specification
     ${OPTIONS_RESPONSE} =       Make Options Request
     Set Test Variable   ${OPTIONS_RESPONSE}
 
-Modify The Contents Of "Target Postings"
-    @{expected_modified_postings} =     Create List
-    FOR     ${ptm}    IN  @{TARGET_POSTINGS}  # ptm: posting_to_modify
-        ${is_match}   ${registered_posting} =  Is Match    expected_posting=${ptm}    postings_set=${REGISTERED_POSTINGS}
-        Should Be True     $is_match
-        Set To Dictionary       dictionary=${registered_posting}       content=modified content   #  << modifying the content
-        Update Posting    posting=${registered_posting}              # test call: supposed to update the system
-        Should Be Equal As Integers 	${PUT_RESPONSE.status_code} 	200  # OK
-        Append To List      ${expected_modified_postings}       ${registered_posting}
-    END
-    Set Test Variable  @{EXPECTED_MODIFIED_POSTINGS}    @{expected_modified_postings}
-
 Verify "Target Postings" Modified
     Is Subset   subset=${EXPECTED_MODIFIED_POSTINGS}    superset=${REGISTERED_POSTINGS}
 
@@ -107,9 +95,9 @@ Test Creating "Target Postings"
     Verify "Registered Postings" Against Posting Spec
     Verify "Target Postings" Created
 
-Test Modifying The Contents Of "Target Postings"
+Test Updating "Target Postings"
     [Tags]                  CRUD-operations-as-admin
-    Modify The Contents Of "Target Postings"  # test
+    Update Target Postings  # test
     Read "Registered Postings"
     Verify "Registered Postings" Against Posting Spec
     Verify "Target Postings" Modified

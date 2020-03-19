@@ -100,14 +100,14 @@ Query & Verify Pre-Set Postings
     Set Suite Variable      @{PRE_SET_POSTINGS}     @{REGISTERED_POSTINGS}
 
 Creating "Target Postings"
-    [Tags]              CRUD-operations-as-admin
+    [Tags]              CRUD-operations-as-admin    CRUD-success-as-admin
     When "Target Postings" Are Created
     Then "Registered Postings" Are Read
     Then "Registered Postings" Comply With "Posting Spec"
     Then "Target Postings" Are Registered In The System
 
 Updating "Target Postings"
-    [Tags]                  CRUD-operations-as-admin
+    [Tags]                  CRUD-operations-as-admin    CRUD-success-as-admin
     When Target Postings Are Updated
     Then "Registered Postings" Are Read
     Then "Registered Postings" Comply With "Posting Spec"
@@ -117,11 +117,14 @@ Updating "Target Postings"
     Set Suite Variable      @{POSTINGS_TO_DELETE}       @{EXPECTED_MODIFIED_POSTINGS}  # to be semantically correct in the next test
 
 Deleting "Target Postings"
-    [Tags]                  CRUD-operations-as-admin
+    [Tags]                  CRUD-operations-as-admin     CRUD-success-as-admin
     When "Target Postings" Are Deleted    # test
     Then "Registered Postings" Are Read
     Then "Registered Postings" Comply With "Posting Spec"
     Then Only "Pre-Set Postings" Are Left In The System
+
+
+
 
 
 

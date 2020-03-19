@@ -138,11 +138,12 @@ Deleting "Target Postings"
     Then "Registered Postings" Comply With "Posting Spec"
     Then Only "Pre-Set Postings" Are Left In The System
 
-Attempting To Delete Non-Existing "Target Postings"
+Attempting To Delete Non-Existing "Target Postings" Fails
     [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
     Given "Target Postings" Are Not Registered
     When "Target Postings" Are Attempted To Be Deleted
     Then All Delete Responses Have Status Code "404-Not Found"
+
 
 
 

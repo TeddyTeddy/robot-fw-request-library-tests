@@ -82,8 +82,23 @@ Verify Delete Response Success Code
         Verify Delete Response Success Code
     END
 
+"Target Postings" Are Attempted To Be Deleted
+    ${ALL_DELETE_ATTEMPTS_FAILED_WITH_404} =     Set Variable  ${True}
+    FOR     ${ptd}    IN  @{POSTINGS_TO_DELETE}  # ptd: posting_to_delete
+        Delete Posting    posting=${ptd}
+        ${ALL_DELETE_ATTEMPTS_FAILED_WITH_404} =     Evaluate    $ALL_DELETE_ATTEMPTS_FAILED_WITH_404 and $DELETE_RESPONSE.status_code==404
+    END
+    Set Test Variable   ${ALL_DELETE_ATTEMPTS_FAILED_WITH_404}
+
+All Delete Responses Have Status Code "404-Not Found"
+    Should Be True   ${ALL_DELETE_ATTEMPTS_FAILED_WITH_404}
+
 Only "Pre-Set Postings" Are Left In The System
     Should Be True  $REGISTERED_POSTINGS == $PRE_SET_POSTINGS
+
+"Target Postings" Are Not Registered
+    "Registered Postings" Are Read
+    Only "Pre-Set Postings" Are Left In The System
 
 *** Test Cases ***
 Check BlogPostAPI specification
@@ -123,7 +138,11 @@ Deleting "Target Postings"
     Then "Registered Postings" Comply With "Posting Spec"
     Then Only "Pre-Set Postings" Are Left In The System
 
-
+Deleting Non-Existing "Target Postings"
+    [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
+    Given "Target Postings" Are Not Registered
+    When "Target Postings" Are Attempted To Be Deleted
+    Then All Delete Responses Have Status Code "404-Not Found"
 
 
 

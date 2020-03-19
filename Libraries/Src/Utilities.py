@@ -57,7 +57,7 @@ def is_subset(subset, superset):
 
 
 @keyword
-def update_target_postings():
+def target_postings_are_updated():
     """
     EXPECTED PRECONDITION: When this method is called, REGISTERED_POSTINGS = pre-set postings + target postings.
     Note that REGISTERED_POSTINGS are the the postings that have been read from the API in the previous test case:

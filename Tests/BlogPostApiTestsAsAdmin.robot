@@ -23,7 +23,7 @@ ${PRE_SET_POSTINGS}         A list of pre-existing postings in the system before
 Suite Teardown
     Delete All Sessions
 
-Verify "Registered Postings" Against Posting Spec
+"Registered Postings" Comply With "Posting Spec"
     Verify All Postings     postings_to_verify=${REGISTERED_POSTINGS}   posting_spec=${POSTING_SPEC}
 
 Create Posting
@@ -34,13 +34,13 @@ Create Posting
 Verify Post Response Success Code
     Should Be Equal As Integers 	${POST_RESPONSE.status_code} 	201  # Created
 
-Create "Target Postings"
+"Target Postings" Are Created
     FOR     ${p}    IN  @{TARGET_POSTINGS}
         Create Posting     posting=${p}
         Verify Post Response Success Code
     END
 
-Verify "Target Postings" Created
+"Target Postings" Are Registered In The System
     Is Subset   subset=${TARGET_POSTINGS}   superset=${REGISTERED_POSTINGS}
 
 Update Posting
@@ -54,74 +54,74 @@ Delete Posting
     ${DELETE_RESPONSE} =     Make Delete Request    posting=${posting}
     Set Test Variable       ${DELETE_RESPONSE}
 
-Read "Registered Postings"
+"Registered Postings" Are Read
     ${GET_RESPONSE} =   Make Get Request
     Should Be Equal As Integers 	${GET_RESPONSE.status_code} 	200
     @{registered_postings} =    Set Variable  ${GET_RESPONSE.json()}
     Set Suite Variable   @{REGISTERED_POSTINGS}     @{registered_postings}
 
-Verify BlogPostAPI Specification
+BlogPostAPI Specification Is Correct
     Verify Options Response     options_response=${OPTIONS_RESPONSE}
 
 Set "Posting Spec"
     Set Suite Variable  ${POSTING_SPEC}      ${OPTIONS_RESPONSE.json()}[actions][POST]
 
-Query BlogPostAPI Specification
+BlogPostAPI Specification Is Queried
     ${OPTIONS_RESPONSE} =       Make Options Request
     Set Test Variable   ${OPTIONS_RESPONSE}
 
-Verify "Target Postings" Modified
+"Target Postings" Are Updated In The System
     Is Subset   subset=${EXPECTED_MODIFIED_POSTINGS}    superset=${REGISTERED_POSTINGS}
 
 Verify Delete Response Success Code
     Should Be Equal As Integers 	${DELETE_RESPONSE.status_code} 	200  # OK
 
-Delete "Target Postings"
+"Target Postings" Are Deleted
     FOR     ${ptd}    IN  @{POSTINGS_TO_DELETE}  # ptd: posting_to_delete
         Delete Posting    posting=${ptd}
         Verify Delete Response Success Code
     END
 
-Verify Only "Pre-Set Postings" Left
+Only "Pre-Set Postings" Are Left In The System
     Should Be True  $REGISTERED_POSTINGS == $PRE_SET_POSTINGS
 
 *** Test Cases ***
 Check BlogPostAPI specification
     [Tags]              smoke-as-admin
-    Query BlogPostAPI Specification
-    Verify BlogPostAPI Specification
+    When BlogPostAPI Specification Is Queried
+    Then BlogPostAPI Specification Is Correct
     Set "Posting Spec"  # for later use in upcoming test cases
 
 Query & Verify Pre-Set Postings
     [Tags]              smoke-as-admin
-    Read "Registered Postings"
-    Verify "Registered Postings" Against Posting Spec
+    When "Registered Postings" Are Read
+    Then "Registered Postings" Comply With "Posting Spec"
     # to be used later
     Set Suite Variable      @{PRE_SET_POSTINGS}     @{REGISTERED_POSTINGS}
 
 Creating "Target Postings"
     [Tags]              CRUD-operations-as-admin
-    Create "Target Postings"  # test
-    Read "Registered Postings"
-    Verify "Registered Postings" Against Posting Spec
-    Verify "Target Postings" Created
+    When "Target Postings" Are Created
+    Then "Registered Postings" Are Read
+    Then "Registered Postings" Comply With "Posting Spec"
+    Then "Target Postings" Are Registered In The System
 
 Updating "Target Postings"
     [Tags]                  CRUD-operations-as-admin
-    Update Target Postings  # test
-    Read "Registered Postings"
-    Verify "Registered Postings" Against Posting Spec
-    Verify "Target Postings" Modified
+    When Target Postings Are Updated
+    Then "Registered Postings" Are Read
+    Then "Registered Postings" Comply With "Posting Spec"
+    Then "Target Postings" Are Updated In The System
 
     # to be used by the next test case
     Set Suite Variable      @{POSTINGS_TO_DELETE}       @{EXPECTED_MODIFIED_POSTINGS}  # to be semantically correct in the next test
 
 Deleting "Target Postings"
     [Tags]                  CRUD-operations-as-admin
-    Delete "Target Postings"    # test
-    Read "Registered Postings"
-    Verify "Registered Postings" Against Posting Spec
-    Verify Only "Pre-Set Postings" Left
+    When "Target Postings" Are Deleted    # test
+    Then "Registered Postings" Are Read
+    Then "Registered Postings" Comply With "Posting Spec"
+    Then Only "Pre-Set Postings" Are Left In The System
 
 
 

@@ -40,6 +40,17 @@ Verify Post Response Success Code
         Verify Post Response Success Code
     END
 
+"Target Postings" Are Attempted To Be Re-Created
+    ${ALL_CREATE_ATTEMPTS_FAILED_WITH_400} =    Set Variable    ${True}
+    FOR     ${p}    IN  @{TARGET_POSTINGS}
+        Create Posting     posting=${p}
+        ${ALL_CREATE_ATTEMPTS_FAILED_WITH_400} =    Evaluate    $ALL_CREATE_ATTEMPTS_FAILED_WITH_400 and $POST_RESPONSE.status_code==400
+    END
+    Set Test Variable    ${ALL_CREATE_ATTEMPTS_FAILED_WITH_400}
+
+All Create Responses Have Status Code "400-Bad Request"
+    Should Be True      ${ALL_CREATE_ATTEMPTS_FAILED_WITH_400}
+
 "Target Postings" Are Registered In The System
     Is Subset   subset=${TARGET_POSTINGS}   superset=${REGISTERED_POSTINGS}
 
@@ -144,8 +155,20 @@ Attempting To Delete Non-Existing "Target Postings" Fails
     When "Target Postings" Are Attempted To Be Deleted
     Then All Delete Responses Have Status Code "404-Not Found"
 
+Attempting To Re-Create Already Registered "Target Postings" Fails
+    [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
+    Given "Target Postings" Are Created
+    Given "Registered Postings" Are Read
+    Given Target Postings Are Updated  # @{EXPECTED_MODIFIED_POSTINGS} gets set
+    Given "Target Postings" Are Updated In The System
+    Given Set Suite Variable      @{POSTINGS_TO_DELETE}       @{EXPECTED_MODIFIED_POSTINGS}
 
-
+    When "Target Postings" Are Attempted To Be Re-Created
+    Then All Create Responses Have Status Code "400-Bad Request"    # test verification
+    # test teardown & its verification
+    Then "Target Postings" Are Deleted  # test-teardown
+    Then "Registered Postings" Are Read
+    Then Only "Pre-Set Postings" Are Left In The System  # test-teardown verification
 
 
 

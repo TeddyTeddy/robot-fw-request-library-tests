@@ -134,6 +134,7 @@ Creating "Target Postings"
 
 Updating "Target Postings"
     [Tags]                  CRUD-operations-as-admin    CRUD-success-as-admin
+    Given "Target Postings" Are Registered In The System
     When Target Postings Are Updated
     Then "Registered Postings" Are Read
     Then "Registered Postings" Comply With "Posting Spec"

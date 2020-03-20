@@ -51,10 +51,13 @@ def is_match(expected_posting, super_set):
 
 @keyword
 def is_subset(subset, superset):
+    result = True
     for posting in subset:
         is_match_found, matched_posting = is_match(expected_posting=posting, super_set=superset)
-        assert is_match_found
-
+        result = result and is_match_found
+        if not result:
+            break
+    return result
 
 @keyword
 def target_postings_are_updated():
@@ -71,14 +74,26 @@ def target_postings_are_updated():
     :return: None
     """
     loader = LibraryLoader.get_instance()  # singleton
-    target_postings = loader.builtin.get_variable_value("${TARGET_POSTINGS}")
+    incomplete_target_postings = loader.builtin.get_variable_value("${INCOMPLETE_TARGET_POSTINGS}")
     registered_postings = loader.builtin.get_variable_value("${REGISTERED_POSTINGS}")
-    expected_modified_postings = []
-    for tp in target_postings:  # tp: target_posting
+    for tp in incomplete_target_postings:  # tp: target_posting
         is_match_found, matched_posting = is_match(expected_posting=tp, super_set=registered_postings)
         assert is_match_found
         matched_posting['content'] = 'modified content'
         # test call:
         loader.builtin.run_keyword('Make Put Request',  matched_posting)  # TODO: Cannot receive put response
-        expected_modified_postings.append(matched_posting)
-    loader.builtin.set_test_variable('${EXPECTED_MODIFIED_POSTINGS}', expected_modified_postings)
+        tp['content'] = 'modified content'
+
+    loader.builtin.set_test_variable('${INCOMPLETE_TARGET_POSTINGS}', incomplete_target_postings)
+
+
+@keyword
+def get_subset(subset, superset):
+    result = []
+    for partial_posting in subset:
+        is_match_found, matched_posting = is_match(expected_posting=partial_posting, super_set=superset)
+        if is_match_found:
+            result.append(matched_posting)
+    return result
+
+

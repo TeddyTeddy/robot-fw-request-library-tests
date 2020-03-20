@@ -23,7 +23,7 @@ ${PRE_SET_POSTINGS}         A list of pre-existing postings in the system before
 Suite Teardown
     Delete All Sessions
 
-"Registered Postings" Comply With "Posting Spec"
+"Registered Postings" Must Comply With "Posting Spec"
     Verify All Postings     postings_to_verify=${REGISTERED_POSTINGS}   posting_spec=${POSTING_SPEC}
 
 Create Posting
@@ -35,14 +35,14 @@ Verify Post Response Success Code
     Should Be Equal As Integers 	${POST_RESPONSE.status_code} 	201  # Created
 
 "Target Postings" Are Created
-    FOR     ${p}    IN  @{TARGET_POSTINGS}
+    FOR     ${p}    IN  @{INCOMPLETE_TARGET_POSTINGS}
         Create Posting     posting=${p}
         Verify Post Response Success Code
     END
 
 "Target Postings" Are Attempted To Be Re-Created
     ${ALL_CREATE_ATTEMPTS_FAILED_WITH_400} =    Set Variable    ${True}
-    FOR     ${p}    IN  @{TARGET_POSTINGS}
+    FOR     ${p}    IN  @{INCOMPLETE_TARGET_POSTINGS}
         Create Posting     posting=${p}
         ${ALL_CREATE_ATTEMPTS_FAILED_WITH_400} =    Evaluate    $ALL_CREATE_ATTEMPTS_FAILED_WITH_400 and $POST_RESPONSE.status_code==400
     END
@@ -51,8 +51,14 @@ Verify Post Response Success Code
 All Create Responses Have Status Code "400-Bad Request"
     Should Be True      ${ALL_CREATE_ATTEMPTS_FAILED_WITH_400}
 
+"Target Postings" List Is Not Empty
+    ${is_empty} =  Evaluate     len($TARGET_POSTINGS) == 0
+    Should Not Be True  ${is_empty}
+
 "Target Postings" Are Registered In The System
-    Is Subset   subset=${TARGET_POSTINGS}   superset=${REGISTERED_POSTINGS}
+    "Target Postings" List Is Not Empty
+    ${is_subset} =  Is Subset   subset=${TARGET_POSTINGS}   superset=${INCOMPLETE_TARGET_POSTINGS}
+    Should Be True  ${is_subset}
 
 Update Posting
     [Arguments]        ${posting}
@@ -71,6 +77,11 @@ Delete Posting
     @{registered_postings} =    Set Variable  ${GET_RESPONSE.json()}
     Set Suite Variable   @{REGISTERED_POSTINGS}     @{registered_postings}
 
+"Target Postings" Are Read
+    "Registered Postings" Are Read
+    @{target_postings} =    Get Subset  subset=${INCOMPLETE_TARGET_POSTINGS}   superset=${REGISTERED_POSTINGS}
+    Set Suite Variable      @{TARGET_POSTINGS}     @{target_postings}
+
 BlogPostAPI Specification Is Correct
     Verify Options Response     options_response=${OPTIONS_RESPONSE}
 
@@ -81,21 +92,22 @@ BlogPostAPI Specification Is Queried
     ${OPTIONS_RESPONSE} =       Make Options Request
     Set Test Variable   ${OPTIONS_RESPONSE}
 
-"Target Postings" Are Updated In The System
-    Is Subset   subset=${EXPECTED_MODIFIED_POSTINGS}    superset=${REGISTERED_POSTINGS}
+"Target Postings" Must Have Been Updated In The System
+    ${is_subset} =  Is Subset   subset=${INCOMPLETE_TARGET_POSTINGS}    superset=${REGISTERED_POSTINGS}
+    Should Be True   ${is_subset}
 
 Verify Delete Response Success Code
     Should Be Equal As Integers 	${DELETE_RESPONSE.status_code} 	200  # OK
 
 "Target Postings" Are Deleted
-    FOR     ${ptd}    IN  @{POSTINGS_TO_DELETE}  # ptd: posting_to_delete
+    FOR     ${ptd}    IN  @{TARGET_POSTINGS}  # ptd: posting_to_delete
         Delete Posting    posting=${ptd}
         Verify Delete Response Success Code
     END
 
 "Target Postings" Are Attempted To Be Deleted
     ${ALL_DELETE_ATTEMPTS_FAILED_WITH_404} =     Set Variable  ${True}
-    FOR     ${ptd}    IN  @{POSTINGS_TO_DELETE}  # ptd: posting_to_delete
+    FOR     ${ptd}    IN  @{TARGET_POSTINGS}  # ptd: posting_to_delete
         Delete Posting    posting=${ptd}
         ${ALL_DELETE_ATTEMPTS_FAILED_WITH_404} =     Evaluate    $ALL_DELETE_ATTEMPTS_FAILED_WITH_404 and $DELETE_RESPONSE.status_code==404
     END
@@ -121,7 +133,7 @@ Check BlogPostAPI specification
 Query & Verify Pre-Set Postings
     [Tags]              smoke-as-admin
     When "Registered Postings" Are Read
-    Then "Registered Postings" Comply With "Posting Spec"
+    Then "Registered Postings" Must Comply With "Posting Spec"
     # to be used later
     Set Suite Variable      @{PRE_SET_POSTINGS}     @{REGISTERED_POSTINGS}
 
@@ -129,25 +141,26 @@ Creating "Target Postings"
     [Tags]              CRUD-operations-as-admin    CRUD-success-as-admin
     When "Target Postings" Are Created
     Then "Registered Postings" Are Read
-    Then "Registered Postings" Comply With "Posting Spec"
+    Then "Registered Postings" Must Comply With "Posting Spec"
+    Then "Target Postings" Are Read
     Then "Target Postings" Are Registered In The System
 
 Updating "Target Postings"
     [Tags]                  CRUD-operations-as-admin    CRUD-success-as-admin
+    Given "Target Postings" Are Read
     Given "Target Postings" Are Registered In The System
     When Target Postings Are Updated
     Then "Registered Postings" Are Read
-    Then "Registered Postings" Comply With "Posting Spec"
-    Then "Target Postings" Are Updated In The System
-
-    # to be used by the next test case
-    Set Suite Variable      @{POSTINGS_TO_DELETE}       @{EXPECTED_MODIFIED_POSTINGS}  # to be semantically correct in the next test
+    Then "Registered Postings" Must Comply With "Posting Spec"
+    Then "Target Postings" Must Have Been Updated In The System
 
 Deleting "Target Postings"
     [Tags]                  CRUD-operations-as-admin     CRUD-success-as-admin
+    Given "Target Postings" Are Read
+    Given "Target Postings" Are Registered In The System
     When "Target Postings" Are Deleted    # test
     Then "Registered Postings" Are Read
-    Then "Registered Postings" Comply With "Posting Spec"
+    Then "Registered Postings" Must Comply With "Posting Spec"
     Then Only "Pre-Set Postings" Are Left In The System
 
 Attempting To Delete Non-Existing "Target Postings" Fails
@@ -159,11 +172,9 @@ Attempting To Delete Non-Existing "Target Postings" Fails
 Attempting To Re-Create Already Registered "Target Postings" Fails
     [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
     Given "Target Postings" Are Created
-    Given "Registered Postings" Are Read    # ${REGISTERED_POSTINGS} gets set
-    Given Target Postings Are Updated       # ${EXPECTED_MODIFIED_POSTINGS} gets set
-    Given "Registered Postings" Are Read    # ${REGISTERED_POSTINGS} gets set
-    Given "Target Postings" Are Updated In The System
-    Given Set Suite Variable      @{POSTINGS_TO_DELETE}       @{EXPECTED_MODIFIED_POSTINGS}
+    Given "Registered Postings" Are Read
+    Given "Target Postings" Are Read
+    Given "Target Postings" Are Registered In The System
 
     When "Target Postings" Are Attempted To Be Re-Created
     Then All Create Responses Have Status Code "400-Bad Request"    # test verification

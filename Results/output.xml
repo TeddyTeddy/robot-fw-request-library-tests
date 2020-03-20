@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.2 (Python 3.7.4 on linux)" generated="20200320 08:47:36.424" rpa="false">
+<robot generator="Robot 3.1.2 (Python 3.7.4 on linux)" generated="20200320 11:07:12.519" rpa="false">
 <suite id="s1" name="BlogPostApiTestsAsAdmin" source="/home/hakan/Python/Robot/robot-fw-requests-library-tests/Tests/BlogPostApiTestsAsAdmin.robot">
 <test id="s1-t1" name="Check BlogPostAPI specification">
 <kw name="When BlogPostAPI Specification Is Queried">
@@ -7,31 +7,31 @@
 <assign>
 <var>${OPTIONS_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:36.923" level="INFO">OPTIONS Request using : uri=/api/postings/, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:12.842" level="INFO">OPTIONS Request using : uri=/api/postings/, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'X-Requested-With': 'XMLHttpRequest', 'Sec-Fetch-Dest': 'empty', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8'} 
 data=None 
 json=None</msg>
-<msg timestamp="20200320 08:47:39.488" level="INFO">${OPTIONS_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:36.921" endtime="20200320 08:47:39.488"></status>
+<msg timestamp="20200320 11:07:13.774" level="INFO">${OPTIONS_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:12.841" endtime="20200320 11:07:13.774"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${OPTIONS_RESPONSE}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:39.489" level="INFO">${OPTIONS_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:39.489" endtime="20200320 08:47:39.489"></status>
+<msg timestamp="20200320 11:07:13.774" level="INFO">${OPTIONS_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:13.774" endtime="20200320 11:07:13.774"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:36.921" endtime="20200320 08:47:39.489"></status>
+<status status="PASS" starttime="20200320 11:07:12.840" endtime="20200320 11:07:13.775"></status>
 </kw>
 <kw name="Then BlogPostAPI Specification Is Correct">
 <kw name="Verify Options Response" library="AdminUser">
 <arguments>
 <arg>options_response=${OPTIONS_RESPONSE}</arg>
 </arguments>
-<status status="PASS" starttime="20200320 08:47:39.490" endtime="20200320 08:47:39.490"></status>
+<status status="PASS" starttime="20200320 11:07:13.775" endtime="20200320 11:07:13.775"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:39.489" endtime="20200320 08:47:39.490"></status>
+<status status="PASS" starttime="20200320 11:07:13.775" endtime="20200320 11:07:13.776"></status>
 </kw>
 <kw name="Set &quot;Posting Spec&quot;">
 <kw name="Set Suite Variable" library="BuiltIn">
@@ -40,15 +40,15 @@ json=None</msg>
 <arg>${POSTING_SPEC}</arg>
 <arg>${OPTIONS_RESPONSE.json()}[actions][POST]</arg>
 </arguments>
-<msg timestamp="20200320 08:47:39.498" level="INFO">${POSTING_SPEC} = {'url': {'type': 'field', 'required': False, 'read_only': True, 'label': 'Url'}, 'id': {'type': 'integer', 'required': False, 'read_only': True, 'label': 'ID'}, 'user': {'type': 'field', 'required': F...</msg>
-<status status="PASS" starttime="20200320 08:47:39.497" endtime="20200320 08:47:39.498"></status>
+<msg timestamp="20200320 11:07:13.778" level="INFO">${POSTING_SPEC} = {'url': {'type': 'field', 'required': False, 'read_only': True, 'label': 'Url'}, 'id': {'type': 'integer', 'required': False, 'read_only': True, 'label': 'ID'}, 'user': {'type': 'field', 'required': F...</msg>
+<status status="PASS" starttime="20200320 11:07:13.778" endtime="20200320 11:07:13.778"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:39.497" endtime="20200320 08:47:39.498"></status>
+<status status="PASS" starttime="20200320 11:07:13.776" endtime="20200320 11:07:13.778"></status>
 </kw>
 <tags>
 <tag>smoke-as-admin</tag>
 </tags>
-<status status="PASS" starttime="20200320 08:47:36.916" endtime="20200320 08:47:39.498" critical="yes"></status>
+<status status="PASS" starttime="20200320 11:07:12.833" endtime="20200320 11:07:13.779" critical="yes"></status>
 </test>
 <test id="s1-t2" name="Query &amp; Verify Pre-Set Postings">
 <kw name="When &quot;Registered Postings&quot; Are Read">
@@ -56,12 +56,12 @@ json=None</msg>
 <assign>
 <var>${GET_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:39.500" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:13.788" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x', 'Host': 'glacial-earth-31542.herokuapp.com', 'Cache-Control': 'max-age=0', 'Upgrade-Insecure-Requests': '1', 'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8'} 
 data=None 
 json=None</msg>
-<msg timestamp="20200320 08:47:39.693" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:39.499" endtime="20200320 08:47:39.693"></status>
+<msg timestamp="20200320 11:07:13.980" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:13.787" endtime="20200320 11:07:13.980"></status>
 </kw>
 <kw name="Should Be Equal As Integers" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to integers.</doc>
@@ -69,10 +69,10 @@ json=None</msg>
 <arg>${GET_RESPONSE.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20200320 08:47:39.694" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:13.981" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:39.693" endtime="20200320 08:47:39.694"></status>
+<status status="PASS" starttime="20200320 11:07:13.980" endtime="20200320 11:07:13.981"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -82,8 +82,8 @@ json=None</msg>
 <assign>
 <var>@{registered_postings}</var>
 </assign>
-<msg timestamp="20200320 08:47:39.694" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:39.694" endtime="20200320 08:47:39.694"></status>
+<msg timestamp="20200320 11:07:13.982" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:13.981" endtime="20200320 11:07:13.982"></status>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
@@ -91,12 +91,12 @@ json=None</msg>
 <arg>@{REGISTERED_POSTINGS}</arg>
 <arg>@{registered_postings}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:39.695" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:39.695" endtime="20200320 08:47:39.695"></status>
+<msg timestamp="20200320 11:07:13.983" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:13.982" endtime="20200320 11:07:13.983"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:39.499" endtime="20200320 08:47:39.695"></status>
+<status status="PASS" starttime="20200320 11:07:13.787" endtime="20200320 11:07:13.983"></status>
 </kw>
-<kw name="Then &quot;Registered Postings&quot; Comply With &quot;Posting Spec&quot;">
+<kw name="Then &quot;Registered Postings&quot; Must Comply With &quot;Posting Spec&quot;">
 <kw name="Verify All Postings" library="Utilities">
 <doc>:param postings_to_verify: a list of postings, where each posting needs to be verified against posting_spec
 :param posting_spec: a dict containing keys, which map to posting fields
@@ -105,9 +105,9 @@ json=None</msg>
 <arg>postings_to_verify=${REGISTERED_POSTINGS}</arg>
 <arg>posting_spec=${POSTING_SPEC}</arg>
 </arguments>
-<status status="PASS" starttime="20200320 08:47:39.697" endtime="20200320 08:47:39.697"></status>
+<status status="PASS" starttime="20200320 11:07:13.985" endtime="20200320 11:07:13.986"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:39.696" endtime="20200320 08:47:39.697"></status>
+<status status="PASS" starttime="20200320 11:07:13.985" endtime="20200320 11:07:13.986"></status>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
@@ -115,17 +115,17 @@ json=None</msg>
 <arg>@{PRE_SET_POSTINGS}</arg>
 <arg>@{REGISTERED_POSTINGS}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:39.702" level="INFO">@{PRE_SET_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:39.701" endtime="20200320 08:47:39.702"></status>
+<msg timestamp="20200320 11:07:13.989" level="INFO">@{PRE_SET_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:13.989" endtime="20200320 11:07:13.989"></status>
 </kw>
 <tags>
 <tag>smoke-as-admin</tag>
 </tags>
-<status status="PASS" starttime="20200320 08:47:39.498" endtime="20200320 08:47:39.702" critical="yes"></status>
+<status status="PASS" starttime="20200320 11:07:13.785" endtime="20200320 11:07:13.989" critical="yes"></status>
 </test>
 <test id="s1-t3" name="Creating &quot;Target Postings&quot;">
 <kw name="When &quot;Target Postings&quot; Are Created">
-<kw name="${p} IN [ @{TARGET_POSTINGS} ]" type="for">
+<kw name="${p} IN [ @{INCOMPLETE_TARGET_POSTINGS} ]" type="for">
 <kw name="${p} = {'title': 'Posting 1', 'content': 'Posting 1 content'}" type="foritem">
 <kw name="Create Posting">
 <arguments>
@@ -138,22 +138,22 @@ json=None</msg>
 <assign>
 <var>${POST_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:39.704" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:13.998" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
 data={"title": "Posting 1", "content": "Posting 1 content"} 
 json=None</msg>
-<msg timestamp="20200320 08:47:40.234" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:39.704" endtime="20200320 08:47:40.234"></status>
+<msg timestamp="20200320 11:07:14.187" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:13.996" endtime="20200320 11:07:14.187"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${POST_RESPONSE}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:40.234" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:40.234" endtime="20200320 08:47:40.234"></status>
+<msg timestamp="20200320 11:07:14.188" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:14.187" endtime="20200320 11:07:14.188"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:39.704" endtime="20200320 08:47:40.235"></status>
+<status status="PASS" starttime="20200320 11:07:13.995" endtime="20200320 11:07:14.188"></status>
 </kw>
 <kw name="Verify Post Response Success Code">
 <kw name="Should Be Equal As Integers" library="BuiltIn">
@@ -162,14 +162,14 @@ json=None</msg>
 <arg>${POST_RESPONSE.status_code}</arg>
 <arg>201</arg>
 </arguments>
-<msg timestamp="20200320 08:47:40.235" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:14.189" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:40.235" endtime="20200320 08:47:40.235"></status>
+<status status="PASS" starttime="20200320 11:07:14.188" endtime="20200320 11:07:14.189"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:40.235" endtime="20200320 08:47:40.236"></status>
+<status status="PASS" starttime="20200320 11:07:14.188" endtime="20200320 11:07:14.189"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:39.703" endtime="20200320 08:47:40.236"></status>
+<status status="PASS" starttime="20200320 11:07:13.995" endtime="20200320 11:07:14.189"></status>
 </kw>
 <kw name="${p} = {'title': 'Posting 2', 'content': 'Posting 2 content'}" type="foritem">
 <kw name="Create Posting">
@@ -183,22 +183,22 @@ json=None</msg>
 <assign>
 <var>${POST_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:40.241" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:14.190" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
 data={"title": "Posting 2", "content": "Posting 2 content"} 
 json=None</msg>
-<msg timestamp="20200320 08:47:40.422" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:40.240" endtime="20200320 08:47:40.422"></status>
+<msg timestamp="20200320 11:07:14.398" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:14.189" endtime="20200320 11:07:14.398"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${POST_RESPONSE}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:40.422" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:40.422" endtime="20200320 08:47:40.422"></status>
+<msg timestamp="20200320 11:07:14.399" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:14.398" endtime="20200320 11:07:14.399"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:40.236" endtime="20200320 08:47:40.423"></status>
+<status status="PASS" starttime="20200320 11:07:14.189" endtime="20200320 11:07:14.399"></status>
 </kw>
 <kw name="Verify Post Response Success Code">
 <kw name="Should Be Equal As Integers" library="BuiltIn">
@@ -207,14 +207,14 @@ json=None</msg>
 <arg>${POST_RESPONSE.status_code}</arg>
 <arg>201</arg>
 </arguments>
-<msg timestamp="20200320 08:47:40.423" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:14.404" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:40.423" endtime="20200320 08:47:40.423"></status>
+<status status="PASS" starttime="20200320 11:07:14.400" endtime="20200320 11:07:14.405"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:40.423" endtime="20200320 08:47:40.423"></status>
+<status status="PASS" starttime="20200320 11:07:14.399" endtime="20200320 11:07:14.405"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:40.236" endtime="20200320 08:47:40.424"></status>
+<status status="PASS" starttime="20200320 11:07:14.189" endtime="20200320 11:07:14.405"></status>
 </kw>
 <kw name="${p} = {'title': 'Posting 3', 'content': 'Posting 3 content'}" type="foritem">
 <kw name="Create Posting">
@@ -228,22 +228,22 @@ json=None</msg>
 <assign>
 <var>${POST_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:40.429" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:14.407" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
 data={"title": "Posting 3", "content": "Posting 3 content"} 
 json=None</msg>
-<msg timestamp="20200320 08:47:40.656" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:40.428" endtime="20200320 08:47:40.656"></status>
+<msg timestamp="20200320 11:07:14.603" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:14.406" endtime="20200320 11:07:14.603"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${POST_RESPONSE}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:40.657" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:40.656" endtime="20200320 08:47:40.657"></status>
+<msg timestamp="20200320 11:07:14.604" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:14.604" endtime="20200320 11:07:14.604"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:40.424" endtime="20200320 08:47:40.657"></status>
+<status status="PASS" starttime="20200320 11:07:14.405" endtime="20200320 11:07:14.604"></status>
 </kw>
 <kw name="Verify Post Response Success Code">
 <kw name="Should Be Equal As Integers" library="BuiltIn">
@@ -252,30 +252,30 @@ json=None</msg>
 <arg>${POST_RESPONSE.status_code}</arg>
 <arg>201</arg>
 </arguments>
-<msg timestamp="20200320 08:47:40.659" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:14.605" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:40.658" endtime="20200320 08:47:40.659"></status>
+<status status="PASS" starttime="20200320 11:07:14.605" endtime="20200320 11:07:14.605"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:40.658" endtime="20200320 08:47:40.667"></status>
+<status status="PASS" starttime="20200320 11:07:14.604" endtime="20200320 11:07:14.605"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:40.424" endtime="20200320 08:47:40.667"></status>
+<status status="PASS" starttime="20200320 11:07:14.405" endtime="20200320 11:07:14.605"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:39.703" endtime="20200320 08:47:40.667"></status>
+<status status="PASS" starttime="20200320 11:07:13.992" endtime="20200320 11:07:14.605"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:39.703" endtime="20200320 08:47:40.668"></status>
+<status status="PASS" starttime="20200320 11:07:13.992" endtime="20200320 11:07:14.605"></status>
 </kw>
 <kw name="Then &quot;Registered Postings&quot; Are Read">
 <kw name="Make Get Request" library="AdminUser">
 <assign>
 <var>${GET_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:40.674" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:14.613" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x', 'Host': 'glacial-earth-31542.herokuapp.com', 'Cache-Control': 'max-age=0', 'Upgrade-Insecure-Requests': '1', 'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8'} 
 data=None 
 json=None</msg>
-<msg timestamp="20200320 08:47:41.024" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:40.673" endtime="20200320 08:47:41.024"></status>
+<msg timestamp="20200320 11:07:14.800" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:14.613" endtime="20200320 11:07:14.800"></status>
 </kw>
 <kw name="Should Be Equal As Integers" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to integers.</doc>
@@ -283,10 +283,10 @@ json=None</msg>
 <arg>${GET_RESPONSE.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20200320 08:47:41.025" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:14.801" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:41.024" endtime="20200320 08:47:41.025"></status>
+<status status="PASS" starttime="20200320 11:07:14.800" endtime="20200320 11:07:14.801"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -296,8 +296,8 @@ json=None</msg>
 <assign>
 <var>@{registered_postings}</var>
 </assign>
-<msg timestamp="20200320 08:47:41.025" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:41.025" endtime="20200320 08:47:41.026"></status>
+<msg timestamp="20200320 11:07:14.802" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:14.801" endtime="20200320 11:07:14.802"></status>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
@@ -305,12 +305,12 @@ json=None</msg>
 <arg>@{REGISTERED_POSTINGS}</arg>
 <arg>@{registered_postings}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:41.026" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:41.026" endtime="20200320 08:47:41.026"></status>
+<msg timestamp="20200320 11:07:14.803" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:14.802" endtime="20200320 11:07:14.803"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:40.672" endtime="20200320 08:47:41.026"></status>
+<status status="PASS" starttime="20200320 11:07:14.613" endtime="20200320 11:07:14.803"></status>
 </kw>
-<kw name="Then &quot;Registered Postings&quot; Comply With &quot;Posting Spec&quot;">
+<kw name="Then &quot;Registered Postings&quot; Must Comply With &quot;Posting Spec&quot;">
 <kw name="Verify All Postings" library="Utilities">
 <doc>:param postings_to_verify: a list of postings, where each posting needs to be verified against posting_spec
 :param posting_spec: a dict containing keys, which map to posting fields
@@ -319,36 +319,236 @@ json=None</msg>
 <arg>postings_to_verify=${REGISTERED_POSTINGS}</arg>
 <arg>posting_spec=${POSTING_SPEC}</arg>
 </arguments>
-<status status="PASS" starttime="20200320 08:47:41.030" endtime="20200320 08:47:41.030"></status>
+<status status="PASS" starttime="20200320 11:07:14.810" endtime="20200320 11:07:14.810"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:41.030" endtime="20200320 08:47:41.030"></status>
+<status status="PASS" starttime="20200320 11:07:14.809" endtime="20200320 11:07:14.811"></status>
+</kw>
+<kw name="Then &quot;Target Postings&quot; Are Read">
+<kw name="&quot;Registered Postings&quot; Are Read">
+<kw name="Make Get Request" library="AdminUser">
+<assign>
+<var>${GET_RESPONSE}</var>
+</assign>
+<msg timestamp="20200320 11:07:14.812" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x', 'Host': 'glacial-earth-31542.herokuapp.com', 'Cache-Control': 'max-age=0', 'Upgrade-Insecure-Requests': '1', 'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200320 11:07:15.003" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:14.812" endtime="20200320 11:07:15.003"></status>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${GET_RESPONSE.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200320 11:07:15.004" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:15.003" endtime="20200320 11:07:15.004"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${GET_RESPONSE.json()}</arg>
+</arguments>
+<assign>
+<var>@{registered_postings}</var>
+</assign>
+<msg timestamp="20200320 11:07:15.005" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:15.004" endtime="20200320 11:07:15.005"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>@{REGISTERED_POSTINGS}</arg>
+<arg>@{registered_postings}</arg>
+</arguments>
+<msg timestamp="20200320 11:07:15.006" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:15.005" endtime="20200320 11:07:15.006"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:14.811" endtime="20200320 11:07:15.006"></status>
+</kw>
+<kw name="Get Subset" library="Utilities">
+<arguments>
+<arg>subset=${INCOMPLETE_TARGET_POSTINGS}</arg>
+<arg>superset=${REGISTERED_POSTINGS}</arg>
+</arguments>
+<assign>
+<var>@{target_postings}</var>
+</assign>
+<msg timestamp="20200320 11:07:15.006" level="INFO">@{target_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/417/', 'id': 417, 'user': 1, 'title': 'Posting 1', 'content': 'Posting 1 content', 'timestamp': '2020-03-20T11:07:14.078951+02:00'} | ...</msg>
+<status status="PASS" starttime="20200320 11:07:15.006" endtime="20200320 11:07:15.006"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>@{TARGET_POSTINGS}</arg>
+<arg>@{target_postings}</arg>
+</arguments>
+<msg timestamp="20200320 11:07:15.007" level="INFO">@{TARGET_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/417/', 'id': 417, 'user': 1, 'title': 'Posting 1', 'content': 'Posting 1 content', 'timestamp': '2020-03-20T11:07:14.078951+02:00'} | ...</msg>
+<status status="PASS" starttime="20200320 11:07:15.007" endtime="20200320 11:07:15.012"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:14.811" endtime="20200320 11:07:15.012"></status>
 </kw>
 <kw name="Then &quot;Target Postings&quot; Are Registered In The System">
+<kw name="&quot;Target Postings&quot; List Is Not Empty">
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>len($TARGET_POSTINGS) == 0</arg>
+</arguments>
+<assign>
+<var>${is_empty}</var>
+</assign>
+<msg timestamp="20200320 11:07:15.020" level="INFO">${is_empty} = False</msg>
+<status status="PASS" starttime="20200320 11:07:15.013" endtime="20200320 11:07:15.020"></status>
+</kw>
+<kw name="Should Not Be True" library="BuiltIn">
+<doc>Fails if the given condition is true.</doc>
+<arguments>
+<arg>${is_empty}</arg>
+</arguments>
+<status status="PASS" starttime="20200320 11:07:15.021" endtime="20200320 11:07:15.021"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:15.013" endtime="20200320 11:07:15.021"></status>
+</kw>
 <kw name="Is Subset" library="Utilities">
 <arguments>
 <arg>subset=${TARGET_POSTINGS}</arg>
-<arg>superset=${REGISTERED_POSTINGS}</arg>
+<arg>superset=${INCOMPLETE_TARGET_POSTINGS}</arg>
 </arguments>
-<status status="PASS" starttime="20200320 08:47:41.031" endtime="20200320 08:47:41.031"></status>
+<assign>
+<var>${is_subset}</var>
+</assign>
+<msg timestamp="20200320 11:07:15.021" level="INFO">${is_subset} = True</msg>
+<status status="PASS" starttime="20200320 11:07:15.021" endtime="20200320 11:07:15.021"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:41.031" endtime="20200320 08:47:41.031"></status>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${is_subset}</arg>
+</arguments>
+<status status="PASS" starttime="20200320 11:07:15.022" endtime="20200320 11:07:15.022"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:15.013" endtime="20200320 11:07:15.022"></status>
 </kw>
 <tags>
 <tag>CRUD-operations-as-admin</tag>
 <tag>CRUD-success-as-admin</tag>
 </tags>
-<status status="PASS" starttime="20200320 08:47:39.702" endtime="20200320 08:47:41.031" critical="yes"></status>
+<status status="PASS" starttime="20200320 11:07:13.991" endtime="20200320 11:07:15.026" critical="yes"></status>
 </test>
 <test id="s1-t4" name="Updating &quot;Target Postings&quot;">
+<kw name="Given &quot;Target Postings&quot; Are Read">
+<kw name="&quot;Registered Postings&quot; Are Read">
+<kw name="Make Get Request" library="AdminUser">
+<assign>
+<var>${GET_RESPONSE}</var>
+</assign>
+<msg timestamp="20200320 11:07:15.028" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x', 'Host': 'glacial-earth-31542.herokuapp.com', 'Cache-Control': 'max-age=0', 'Upgrade-Insecure-Requests': '1', 'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200320 11:07:15.219" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:15.028" endtime="20200320 11:07:15.220"></status>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${GET_RESPONSE.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200320 11:07:15.221" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:15.220" endtime="20200320 11:07:15.221"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${GET_RESPONSE.json()}</arg>
+</arguments>
+<assign>
+<var>@{registered_postings}</var>
+</assign>
+<msg timestamp="20200320 11:07:15.222" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:15.221" endtime="20200320 11:07:15.222"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>@{REGISTERED_POSTINGS}</arg>
+<arg>@{registered_postings}</arg>
+</arguments>
+<msg timestamp="20200320 11:07:15.222" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:15.222" endtime="20200320 11:07:15.222"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:15.028" endtime="20200320 11:07:15.223"></status>
+</kw>
+<kw name="Get Subset" library="Utilities">
+<arguments>
+<arg>subset=${INCOMPLETE_TARGET_POSTINGS}</arg>
+<arg>superset=${REGISTERED_POSTINGS}</arg>
+</arguments>
+<assign>
+<var>@{target_postings}</var>
+</assign>
+<msg timestamp="20200320 11:07:15.223" level="INFO">@{target_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/417/', 'id': 417, 'user': 1, 'title': 'Posting 1', 'content': 'Posting 1 content', 'timestamp': '2020-03-20T11:07:14.078951+02:00'} | ...</msg>
+<status status="PASS" starttime="20200320 11:07:15.223" endtime="20200320 11:07:15.223"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>@{TARGET_POSTINGS}</arg>
+<arg>@{target_postings}</arg>
+</arguments>
+<msg timestamp="20200320 11:07:15.224" level="INFO">@{TARGET_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/417/', 'id': 417, 'user': 1, 'title': 'Posting 1', 'content': 'Posting 1 content', 'timestamp': '2020-03-20T11:07:14.078951+02:00'} | ...</msg>
+<status status="PASS" starttime="20200320 11:07:15.224" endtime="20200320 11:07:15.224"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:15.027" endtime="20200320 11:07:15.232"></status>
+</kw>
 <kw name="Given &quot;Target Postings&quot; Are Registered In The System">
+<kw name="&quot;Target Postings&quot; List Is Not Empty">
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>len($TARGET_POSTINGS) == 0</arg>
+</arguments>
+<assign>
+<var>${is_empty}</var>
+</assign>
+<msg timestamp="20200320 11:07:15.236" level="INFO">${is_empty} = False</msg>
+<status status="PASS" starttime="20200320 11:07:15.234" endtime="20200320 11:07:15.236"></status>
+</kw>
+<kw name="Should Not Be True" library="BuiltIn">
+<doc>Fails if the given condition is true.</doc>
+<arguments>
+<arg>${is_empty}</arg>
+</arguments>
+<status status="PASS" starttime="20200320 11:07:15.240" endtime="20200320 11:07:15.241"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:15.234" endtime="20200320 11:07:15.241"></status>
+</kw>
 <kw name="Is Subset" library="Utilities">
 <arguments>
 <arg>subset=${TARGET_POSTINGS}</arg>
-<arg>superset=${REGISTERED_POSTINGS}</arg>
+<arg>superset=${INCOMPLETE_TARGET_POSTINGS}</arg>
 </arguments>
-<status status="PASS" starttime="20200320 08:47:41.033" endtime="20200320 08:47:41.033"></status>
+<assign>
+<var>${is_subset}</var>
+</assign>
+<msg timestamp="20200320 11:07:15.242" level="INFO">${is_subset} = True</msg>
+<status status="PASS" starttime="20200320 11:07:15.241" endtime="20200320 11:07:15.242"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:41.032" endtime="20200320 08:47:41.033"></status>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${is_subset}</arg>
+</arguments>
+<status status="PASS" starttime="20200320 11:07:15.242" endtime="20200320 11:07:15.242"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:15.233" endtime="20200320 11:07:15.243"></status>
 </kw>
 <kw name="When Target Postings Are Updated" library="Utilities">
 <doc>EXPECTED PRECONDITION: When this method is called, REGISTERED_POSTINGS = pre-set postings + target postings.
@@ -357,48 +557,48 @@ Creating "Target Postings". Note that all the postings in REGISTERED_POSTINGS ha
 (i.e. title , content, url, id, timestamp fields)</doc>
 <kw name="Make Put Request" library="AdminUser">
 <arguments>
-<arg>{'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/372/', 'id': 372, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:39.786977+02:00'}</arg>
+<arg>{'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/417/', 'id': 417, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T11:07:14.078951+02:00'}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:41.040" level="INFO">PUT Request using : uri=/api/postings/372/, params=None, files=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/372/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data={"url": "https://glacial-earth-31542.herokuapp.com/api/postings/372/", "id": 372, "user": 1, "title": "Posting 1", "content": "modified content", "timestamp": "2020-03-20T08:47:39.786977+02:00"} 
+<msg timestamp="20200320 11:07:15.247" level="INFO">PUT Request using : uri=/api/postings/417/, params=None, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/417/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
+data={"url": "https://glacial-earth-31542.herokuapp.com/api/postings/417/", "id": 417, "user": 1, "title": "Posting 1", "content": "modified content", "timestamp": "2020-03-20T11:07:14.078951+02:00"} 
 json=None</msg>
-<status status="PASS" starttime="20200320 08:47:41.039" endtime="20200320 08:47:41.269"></status>
+<status status="PASS" starttime="20200320 11:07:15.246" endtime="20200320 11:07:15.461"></status>
 </kw>
 <kw name="Make Put Request" library="AdminUser">
 <arguments>
-<arg>{'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/373/', 'id': 373, 'user': 1, 'title': 'Posting 2', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:40.313182+02:00'}</arg>
+<arg>{'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/418/', 'id': 418, 'user': 1, 'title': 'Posting 2', 'content': 'modified content', 'timestamp': '2020-03-20T11:07:14.268666+02:00'}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:41.270" level="INFO">PUT Request using : uri=/api/postings/373/, params=None, files=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/373/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data={"url": "https://glacial-earth-31542.herokuapp.com/api/postings/373/", "id": 373, "user": 1, "title": "Posting 2", "content": "modified content", "timestamp": "2020-03-20T08:47:40.313182+02:00"} 
+<msg timestamp="20200320 11:07:15.461" level="INFO">PUT Request using : uri=/api/postings/418/, params=None, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/418/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
+data={"url": "https://glacial-earth-31542.herokuapp.com/api/postings/418/", "id": 418, "user": 1, "title": "Posting 2", "content": "modified content", "timestamp": "2020-03-20T11:07:14.268666+02:00"} 
 json=None</msg>
-<status status="PASS" starttime="20200320 08:47:41.270" endtime="20200320 08:47:41.490"></status>
+<status status="PASS" starttime="20200320 11:07:15.461" endtime="20200320 11:07:15.671"></status>
 </kw>
 <kw name="Make Put Request" library="AdminUser">
 <arguments>
-<arg>{'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/374/', 'id': 374, 'user': 1, 'title': 'Posting 3', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:40.511557+02:00'}</arg>
+<arg>{'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/419/', 'id': 419, 'user': 1, 'title': 'Posting 3', 'content': 'modified content', 'timestamp': '2020-03-20T11:07:14.492929+02:00'}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:41.491" level="INFO">PUT Request using : uri=/api/postings/374/, params=None, files=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/374/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data={"url": "https://glacial-earth-31542.herokuapp.com/api/postings/374/", "id": 374, "user": 1, "title": "Posting 3", "content": "modified content", "timestamp": "2020-03-20T08:47:40.511557+02:00"} 
+<msg timestamp="20200320 11:07:15.671" level="INFO">PUT Request using : uri=/api/postings/419/, params=None, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/419/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
+data={"url": "https://glacial-earth-31542.herokuapp.com/api/postings/419/", "id": 419, "user": 1, "title": "Posting 3", "content": "modified content", "timestamp": "2020-03-20T11:07:14.492929+02:00"} 
 json=None</msg>
-<status status="PASS" starttime="20200320 08:47:41.490" endtime="20200320 08:47:41.744"></status>
+<status status="PASS" starttime="20200320 11:07:15.671" endtime="20200320 11:07:15.875"></status>
 </kw>
-<msg timestamp="20200320 08:47:41.745" level="INFO">${EXPECTED_MODIFIED_POSTINGS} = [{'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/372/', 'id': 372, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:39.786977+02:00'}, {'u...</msg>
-<status status="PASS" starttime="20200320 08:47:41.039" endtime="20200320 08:47:41.745"></status>
+<msg timestamp="20200320 11:07:15.875" level="INFO">${INCOMPLETE_TARGET_POSTINGS} = [{'title': 'Posting 1', 'content': 'modified content'}, {'title': 'Posting 2', 'content': 'modified content'}, {'title': 'Posting 3', 'content': 'modified content'}]</msg>
+<status status="PASS" starttime="20200320 11:07:15.245" endtime="20200320 11:07:15.875"></status>
 </kw>
 <kw name="Then &quot;Registered Postings&quot; Are Read">
 <kw name="Make Get Request" library="AdminUser">
 <assign>
 <var>${GET_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:41.746" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:15.876" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x', 'Host': 'glacial-earth-31542.herokuapp.com', 'Cache-Control': 'max-age=0', 'Upgrade-Insecure-Requests': '1', 'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8'} 
 data=None 
 json=None</msg>
-<msg timestamp="20200320 08:47:42.046" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:41.746" endtime="20200320 08:47:42.046"></status>
+<msg timestamp="20200320 11:07:16.027" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:15.876" endtime="20200320 11:07:16.027"></status>
 </kw>
 <kw name="Should Be Equal As Integers" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to integers.</doc>
@@ -406,10 +606,10 @@ json=None</msg>
 <arg>${GET_RESPONSE.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20200320 08:47:42.047" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:16.028" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:42.046" endtime="20200320 08:47:42.047"></status>
+<status status="PASS" starttime="20200320 11:07:16.027" endtime="20200320 11:07:16.028"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -419,8 +619,8 @@ json=None</msg>
 <assign>
 <var>@{registered_postings}</var>
 </assign>
-<msg timestamp="20200320 08:47:42.047" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:42.047" endtime="20200320 08:47:42.047"></status>
+<msg timestamp="20200320 11:07:16.028" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:16.028" endtime="20200320 11:07:16.028"></status>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
@@ -428,12 +628,12 @@ json=None</msg>
 <arg>@{REGISTERED_POSTINGS}</arg>
 <arg>@{registered_postings}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:42.048" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:42.047" endtime="20200320 08:47:42.048"></status>
+<msg timestamp="20200320 11:07:16.029" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:16.028" endtime="20200320 11:07:16.029"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:41.745" endtime="20200320 08:47:42.048"></status>
+<status status="PASS" starttime="20200320 11:07:15.875" endtime="20200320 11:07:16.029"></status>
 </kw>
-<kw name="Then &quot;Registered Postings&quot; Comply With &quot;Posting Spec&quot;">
+<kw name="Then &quot;Registered Postings&quot; Must Comply With &quot;Posting Spec&quot;">
 <kw name="Verify All Postings" library="Utilities">
 <doc>:param postings_to_verify: a list of postings, where each posting needs to be verified against posting_spec
 :param posting_spec: a dict containing keys, which map to posting fields
@@ -442,188 +642,50 @@ json=None</msg>
 <arg>postings_to_verify=${REGISTERED_POSTINGS}</arg>
 <arg>posting_spec=${POSTING_SPEC}</arg>
 </arguments>
-<status status="PASS" starttime="20200320 08:47:42.053" endtime="20200320 08:47:42.053"></status>
+<status status="PASS" starttime="20200320 11:07:16.037" endtime="20200320 11:07:16.037"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:42.053" endtime="20200320 08:47:42.054"></status>
+<status status="PASS" starttime="20200320 11:07:16.036" endtime="20200320 11:07:16.037"></status>
 </kw>
-<kw name="Then &quot;Target Postings&quot; Are Updated In The System">
+<kw name="Then &quot;Target Postings&quot; Must Have Been Updated In The System">
 <kw name="Is Subset" library="Utilities">
 <arguments>
-<arg>subset=${EXPECTED_MODIFIED_POSTINGS}</arg>
+<arg>subset=${INCOMPLETE_TARGET_POSTINGS}</arg>
 <arg>superset=${REGISTERED_POSTINGS}</arg>
 </arguments>
-<status status="PASS" starttime="20200320 08:47:42.054" endtime="20200320 08:47:42.054"></status>
+<assign>
+<var>${is_subset}</var>
+</assign>
+<msg timestamp="20200320 11:07:16.038" level="INFO">${is_subset} = True</msg>
+<status status="PASS" starttime="20200320 11:07:16.038" endtime="20200320 11:07:16.038"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:42.054" endtime="20200320 08:47:42.055"></status>
-</kw>
-<kw name="Set Suite Variable" library="BuiltIn">
-<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
 <arguments>
-<arg>@{POSTINGS_TO_DELETE}</arg>
-<arg>@{EXPECTED_MODIFIED_POSTINGS}</arg>
+<arg>${is_subset}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:42.056" level="INFO">@{POSTINGS_TO_DELETE} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/372/', 'id': 372, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:39.786977+02:00'} | {...</msg>
-<status status="PASS" starttime="20200320 08:47:42.055" endtime="20200320 08:47:42.056"></status>
+<status status="PASS" starttime="20200320 11:07:16.038" endtime="20200320 11:07:16.039"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:16.038" endtime="20200320 11:07:16.039"></status>
 </kw>
 <tags>
 <tag>CRUD-operations-as-admin</tag>
 <tag>CRUD-success-as-admin</tag>
 </tags>
-<status status="PASS" starttime="20200320 08:47:41.032" endtime="20200320 08:47:42.056" critical="yes"></status>
+<status status="PASS" starttime="20200320 11:07:15.027" endtime="20200320 11:07:16.039" critical="yes"></status>
 </test>
 <test id="s1-t5" name="Deleting &quot;Target Postings&quot;">
-<kw name="When &quot;Target Postings&quot; Are Deleted">
-<kw name="${ptd} IN [ @{POSTINGS_TO_DELETE} ]" type="for">
-<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/372/', 'id': 372, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:39.786977+02:00'}" type="foritem">
-<kw name="Delete Posting">
-<arguments>
-<arg>posting=${ptd}</arg>
-</arguments>
-<kw name="Make Delete Request" library="AdminUser">
-<arguments>
-<arg>posting=${posting}</arg>
-</arguments>
-<assign>
-<var>${DELETE_RESPONSE}</var>
-</assign>
-<msg timestamp="20200320 08:47:42.060" level="INFO">DELETE Request using : uri=/api/postings/372/, params=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/372/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F372%2F&amp;id=372&amp;user=1&amp;title=Posting+1&amp;content=modified+content&amp;timestamp=2020-03-20T08%3A47%3A39.786977%2B02%3A00 
-json=None</msg>
-<msg timestamp="20200320 08:47:42.254" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:42.060" endtime="20200320 08:47:42.254"></status>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<arguments>
-<arg>${DELETE_RESPONSE}</arg>
-</arguments>
-<msg timestamp="20200320 08:47:42.255" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:42.254" endtime="20200320 08:47:42.255"></status>
-</kw>
-<status status="PASS" starttime="20200320 08:47:42.059" endtime="20200320 08:47:42.255"></status>
-</kw>
-<kw name="Verify Delete Response Success Code">
-<kw name="Should Be Equal As Integers" library="BuiltIn">
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<arguments>
-<arg>${DELETE_RESPONSE.status_code}</arg>
-<arg>200</arg>
-</arguments>
-<msg timestamp="20200320 08:47:42.261" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:42.256" endtime="20200320 08:47:42.261"></status>
-</kw>
-<status status="PASS" starttime="20200320 08:47:42.255" endtime="20200320 08:47:42.261"></status>
-</kw>
-<status status="PASS" starttime="20200320 08:47:42.059" endtime="20200320 08:47:42.261"></status>
-</kw>
-<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/373/', 'id': 373, 'user': 1, 'title': 'Posting 2', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:40.313182+02:00'}" type="foritem">
-<kw name="Delete Posting">
-<arguments>
-<arg>posting=${ptd}</arg>
-</arguments>
-<kw name="Make Delete Request" library="AdminUser">
-<arguments>
-<arg>posting=${posting}</arg>
-</arguments>
-<assign>
-<var>${DELETE_RESPONSE}</var>
-</assign>
-<msg timestamp="20200320 08:47:42.264" level="INFO">DELETE Request using : uri=/api/postings/373/, params=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/373/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F373%2F&amp;id=373&amp;user=1&amp;title=Posting+2&amp;content=modified+content&amp;timestamp=2020-03-20T08%3A47%3A40.313182%2B02%3A00 
-json=None</msg>
-<msg timestamp="20200320 08:47:42.464" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:42.263" endtime="20200320 08:47:42.464"></status>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<arguments>
-<arg>${DELETE_RESPONSE}</arg>
-</arguments>
-<msg timestamp="20200320 08:47:42.464" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:42.464" endtime="20200320 08:47:42.464"></status>
-</kw>
-<status status="PASS" starttime="20200320 08:47:42.262" endtime="20200320 08:47:42.465"></status>
-</kw>
-<kw name="Verify Delete Response Success Code">
-<kw name="Should Be Equal As Integers" library="BuiltIn">
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<arguments>
-<arg>${DELETE_RESPONSE.status_code}</arg>
-<arg>200</arg>
-</arguments>
-<msg timestamp="20200320 08:47:42.465" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:42.465" endtime="20200320 08:47:42.465"></status>
-</kw>
-<status status="PASS" starttime="20200320 08:47:42.465" endtime="20200320 08:47:42.466"></status>
-</kw>
-<status status="PASS" starttime="20200320 08:47:42.262" endtime="20200320 08:47:42.466"></status>
-</kw>
-<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/374/', 'id': 374, 'user': 1, 'title': 'Posting 3', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:40.511557+02:00'}" type="foritem">
-<kw name="Delete Posting">
-<arguments>
-<arg>posting=${ptd}</arg>
-</arguments>
-<kw name="Make Delete Request" library="AdminUser">
-<arguments>
-<arg>posting=${posting}</arg>
-</arguments>
-<assign>
-<var>${DELETE_RESPONSE}</var>
-</assign>
-<msg timestamp="20200320 08:47:42.467" level="INFO">DELETE Request using : uri=/api/postings/374/, params=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/374/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F374%2F&amp;id=374&amp;user=1&amp;title=Posting+3&amp;content=modified+content&amp;timestamp=2020-03-20T08%3A47%3A40.511557%2B02%3A00 
-json=None</msg>
-<msg timestamp="20200320 08:47:42.766" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:42.466" endtime="20200320 08:47:42.766"></status>
-</kw>
-<kw name="Set Test Variable" library="BuiltIn">
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<arguments>
-<arg>${DELETE_RESPONSE}</arg>
-</arguments>
-<msg timestamp="20200320 08:47:42.766" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:42.766" endtime="20200320 08:47:42.767"></status>
-</kw>
-<status status="PASS" starttime="20200320 08:47:42.466" endtime="20200320 08:47:42.767"></status>
-</kw>
-<kw name="Verify Delete Response Success Code">
-<kw name="Should Be Equal As Integers" library="BuiltIn">
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<arguments>
-<arg>${DELETE_RESPONSE.status_code}</arg>
-<arg>200</arg>
-</arguments>
-<msg timestamp="20200320 08:47:42.768" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:42.767" endtime="20200320 08:47:42.768"></status>
-</kw>
-<status status="PASS" starttime="20200320 08:47:42.767" endtime="20200320 08:47:42.768"></status>
-</kw>
-<status status="PASS" starttime="20200320 08:47:42.466" endtime="20200320 08:47:42.768"></status>
-</kw>
-<status status="PASS" starttime="20200320 08:47:42.059" endtime="20200320 08:47:42.768"></status>
-</kw>
-<status status="PASS" starttime="20200320 08:47:42.058" endtime="20200320 08:47:42.768"></status>
-</kw>
-<kw name="Then &quot;Registered Postings&quot; Are Read">
+<kw name="Given &quot;Target Postings&quot; Are Read">
+<kw name="&quot;Registered Postings&quot; Are Read">
 <kw name="Make Get Request" library="AdminUser">
 <assign>
 <var>${GET_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:42.773" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:16.041" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x', 'Host': 'glacial-earth-31542.herokuapp.com', 'Cache-Control': 'max-age=0', 'Upgrade-Insecure-Requests': '1', 'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8'} 
 data=None 
 json=None</msg>
-<msg timestamp="20200320 08:47:42.968" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:42.773" endtime="20200320 08:47:42.968"></status>
+<msg timestamp="20200320 11:07:16.236" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:16.041" endtime="20200320 11:07:16.236"></status>
 </kw>
 <kw name="Should Be Equal As Integers" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to integers.</doc>
@@ -631,10 +693,10 @@ json=None</msg>
 <arg>${GET_RESPONSE.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20200320 08:47:42.969" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:16.236" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:42.968" endtime="20200320 08:47:42.969"></status>
+<status status="PASS" starttime="20200320 11:07:16.236" endtime="20200320 11:07:16.237"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -644,8 +706,8 @@ json=None</msg>
 <assign>
 <var>@{registered_postings}</var>
 </assign>
-<msg timestamp="20200320 08:47:42.969" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:42.969" endtime="20200320 08:47:42.969"></status>
+<msg timestamp="20200320 11:07:16.237" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:16.237" endtime="20200320 11:07:16.237"></status>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
@@ -653,12 +715,262 @@ json=None</msg>
 <arg>@{REGISTERED_POSTINGS}</arg>
 <arg>@{registered_postings}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:42.970" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:42.970" endtime="20200320 08:47:42.970"></status>
+<msg timestamp="20200320 11:07:16.238" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:16.237" endtime="20200320 11:07:16.238"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:42.773" endtime="20200320 08:47:42.970"></status>
+<status status="PASS" starttime="20200320 11:07:16.041" endtime="20200320 11:07:16.238"></status>
 </kw>
-<kw name="Then &quot;Registered Postings&quot; Comply With &quot;Posting Spec&quot;">
+<kw name="Get Subset" library="Utilities">
+<arguments>
+<arg>subset=${INCOMPLETE_TARGET_POSTINGS}</arg>
+<arg>superset=${REGISTERED_POSTINGS}</arg>
+</arguments>
+<assign>
+<var>@{target_postings}</var>
+</assign>
+<msg timestamp="20200320 11:07:16.239" level="INFO">@{target_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/417/', 'id': 417, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T11:07:14.078951+02:00'} | {...</msg>
+<status status="PASS" starttime="20200320 11:07:16.238" endtime="20200320 11:07:16.239"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>@{TARGET_POSTINGS}</arg>
+<arg>@{target_postings}</arg>
+</arguments>
+<msg timestamp="20200320 11:07:16.239" level="INFO">@{TARGET_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/417/', 'id': 417, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T11:07:14.078951+02:00'} | {...</msg>
+<status status="PASS" starttime="20200320 11:07:16.239" endtime="20200320 11:07:16.239"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:16.040" endtime="20200320 11:07:16.239"></status>
+</kw>
+<kw name="Given &quot;Target Postings&quot; Are Registered In The System">
+<kw name="&quot;Target Postings&quot; List Is Not Empty">
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>len($TARGET_POSTINGS) == 0</arg>
+</arguments>
+<assign>
+<var>${is_empty}</var>
+</assign>
+<msg timestamp="20200320 11:07:16.246" level="INFO">${is_empty} = False</msg>
+<status status="PASS" starttime="20200320 11:07:16.245" endtime="20200320 11:07:16.246"></status>
+</kw>
+<kw name="Should Not Be True" library="BuiltIn">
+<doc>Fails if the given condition is true.</doc>
+<arguments>
+<arg>${is_empty}</arg>
+</arguments>
+<status status="PASS" starttime="20200320 11:07:16.246" endtime="20200320 11:07:16.247"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:16.245" endtime="20200320 11:07:16.247"></status>
+</kw>
+<kw name="Is Subset" library="Utilities">
+<arguments>
+<arg>subset=${TARGET_POSTINGS}</arg>
+<arg>superset=${INCOMPLETE_TARGET_POSTINGS}</arg>
+</arguments>
+<assign>
+<var>${is_subset}</var>
+</assign>
+<msg timestamp="20200320 11:07:16.247" level="INFO">${is_subset} = True</msg>
+<status status="PASS" starttime="20200320 11:07:16.247" endtime="20200320 11:07:16.247"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${is_subset}</arg>
+</arguments>
+<status status="PASS" starttime="20200320 11:07:16.247" endtime="20200320 11:07:16.248"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:16.245" endtime="20200320 11:07:16.248"></status>
+</kw>
+<kw name="When &quot;Target Postings&quot; Are Deleted">
+<kw name="${ptd} IN [ @{TARGET_POSTINGS} ]" type="for">
+<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/417/', 'id': 417, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T11:07:14.078951+02:00'}" type="foritem">
+<kw name="Delete Posting">
+<arguments>
+<arg>posting=${ptd}</arg>
+</arguments>
+<kw name="Make Delete Request" library="AdminUser">
+<arguments>
+<arg>posting=${posting}</arg>
+</arguments>
+<assign>
+<var>${DELETE_RESPONSE}</var>
+</assign>
+<msg timestamp="20200320 11:07:16.253" level="INFO">DELETE Request using : uri=/api/postings/417/, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/417/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
+data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F417%2F&amp;id=417&amp;user=1&amp;title=Posting+1&amp;content=modified+content&amp;timestamp=2020-03-20T11%3A07%3A14.078951%2B02%3A00 
+json=None</msg>
+<msg timestamp="20200320 11:07:16.451" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:16.252" endtime="20200320 11:07:16.451"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${DELETE_RESPONSE}</arg>
+</arguments>
+<msg timestamp="20200320 11:07:16.452" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:16.452" endtime="20200320 11:07:16.456"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:16.252" endtime="20200320 11:07:16.456"></status>
+</kw>
+<kw name="Verify Delete Response Success Code">
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${DELETE_RESPONSE.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200320 11:07:16.458" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:16.457" endtime="20200320 11:07:16.458"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:16.456" endtime="20200320 11:07:16.458"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:16.252" endtime="20200320 11:07:16.458"></status>
+</kw>
+<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/418/', 'id': 418, 'user': 1, 'title': 'Posting 2', 'content': 'modified content', 'timestamp': '2020-03-20T11:07:14.268666+02:00'}" type="foritem">
+<kw name="Delete Posting">
+<arguments>
+<arg>posting=${ptd}</arg>
+</arguments>
+<kw name="Make Delete Request" library="AdminUser">
+<arguments>
+<arg>posting=${posting}</arg>
+</arguments>
+<assign>
+<var>${DELETE_RESPONSE}</var>
+</assign>
+<msg timestamp="20200320 11:07:16.460" level="INFO">DELETE Request using : uri=/api/postings/418/, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/418/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
+data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F418%2F&amp;id=418&amp;user=1&amp;title=Posting+2&amp;content=modified+content&amp;timestamp=2020-03-20T11%3A07%3A14.268666%2B02%3A00 
+json=None</msg>
+<msg timestamp="20200320 11:07:16.657" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:16.459" endtime="20200320 11:07:16.657"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${DELETE_RESPONSE}</arg>
+</arguments>
+<msg timestamp="20200320 11:07:16.658" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:16.658" endtime="20200320 11:07:16.658"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:16.458" endtime="20200320 11:07:16.658"></status>
+</kw>
+<kw name="Verify Delete Response Success Code">
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${DELETE_RESPONSE.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200320 11:07:16.659" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:16.659" endtime="20200320 11:07:16.659"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:16.658" endtime="20200320 11:07:16.659"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:16.458" endtime="20200320 11:07:16.659"></status>
+</kw>
+<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/419/', 'id': 419, 'user': 1, 'title': 'Posting 3', 'content': 'modified content', 'timestamp': '2020-03-20T11:07:14.492929+02:00'}" type="foritem">
+<kw name="Delete Posting">
+<arguments>
+<arg>posting=${ptd}</arg>
+</arguments>
+<kw name="Make Delete Request" library="AdminUser">
+<arguments>
+<arg>posting=${posting}</arg>
+</arguments>
+<assign>
+<var>${DELETE_RESPONSE}</var>
+</assign>
+<msg timestamp="20200320 11:07:16.664" level="INFO">DELETE Request using : uri=/api/postings/419/, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/419/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
+data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F419%2F&amp;id=419&amp;user=1&amp;title=Posting+3&amp;content=modified+content&amp;timestamp=2020-03-20T11%3A07%3A14.492929%2B02%3A00 
+json=None</msg>
+<msg timestamp="20200320 11:07:16.857" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:16.660" endtime="20200320 11:07:16.857"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${DELETE_RESPONSE}</arg>
+</arguments>
+<msg timestamp="20200320 11:07:16.858" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:16.858" endtime="20200320 11:07:16.858"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:16.659" endtime="20200320 11:07:16.858"></status>
+</kw>
+<kw name="Verify Delete Response Success Code">
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${DELETE_RESPONSE.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200320 11:07:16.859" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:16.859" endtime="20200320 11:07:16.859"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:16.858" endtime="20200320 11:07:16.859"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:16.659" endtime="20200320 11:07:16.859"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:16.251" endtime="20200320 11:07:16.859"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:16.250" endtime="20200320 11:07:16.859"></status>
+</kw>
+<kw name="Then &quot;Registered Postings&quot; Are Read">
+<kw name="Make Get Request" library="AdminUser">
+<assign>
+<var>${GET_RESPONSE}</var>
+</assign>
+<msg timestamp="20200320 11:07:16.865" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x', 'Host': 'glacial-earth-31542.herokuapp.com', 'Cache-Control': 'max-age=0', 'Upgrade-Insecure-Requests': '1', 'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200320 11:07:17.053" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:16.865" endtime="20200320 11:07:17.053"></status>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${GET_RESPONSE.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20200320 11:07:17.054" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:17.053" endtime="20200320 11:07:17.054"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${GET_RESPONSE.json()}</arg>
+</arguments>
+<assign>
+<var>@{registered_postings}</var>
+</assign>
+<msg timestamp="20200320 11:07:17.054" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:17.054" endtime="20200320 11:07:17.054"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>@{REGISTERED_POSTINGS}</arg>
+<arg>@{registered_postings}</arg>
+</arguments>
+<msg timestamp="20200320 11:07:17.055" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:17.055" endtime="20200320 11:07:17.055"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:16.864" endtime="20200320 11:07:17.055"></status>
+</kw>
+<kw name="Then &quot;Registered Postings&quot; Must Comply With &quot;Posting Spec&quot;">
 <kw name="Verify All Postings" library="Utilities">
 <doc>:param postings_to_verify: a list of postings, where each posting needs to be verified against posting_spec
 :param posting_spec: a dict containing keys, which map to posting fields
@@ -667,9 +979,9 @@ json=None</msg>
 <arg>postings_to_verify=${REGISTERED_POSTINGS}</arg>
 <arg>posting_spec=${POSTING_SPEC}</arg>
 </arguments>
-<status status="PASS" starttime="20200320 08:47:42.977" endtime="20200320 08:47:42.977"></status>
+<status status="PASS" starttime="20200320 11:07:17.058" endtime="20200320 11:07:17.059"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:42.976" endtime="20200320 08:47:42.977"></status>
+<status status="PASS" starttime="20200320 11:07:17.058" endtime="20200320 11:07:17.059"></status>
 </kw>
 <kw name="Then Only &quot;Pre-Set Postings&quot; Are Left In The System">
 <kw name="Should Be True" library="BuiltIn">
@@ -677,15 +989,15 @@ json=None</msg>
 <arguments>
 <arg>$REGISTERED_POSTINGS == $PRE_SET_POSTINGS</arg>
 </arguments>
-<status status="PASS" starttime="20200320 08:47:42.978" endtime="20200320 08:47:42.990"></status>
+<status status="PASS" starttime="20200320 11:07:17.065" endtime="20200320 11:07:17.066"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:42.978" endtime="20200320 08:47:42.990"></status>
+<status status="PASS" starttime="20200320 11:07:17.064" endtime="20200320 11:07:17.066"></status>
 </kw>
 <tags>
 <tag>CRUD-operations-as-admin</tag>
 <tag>CRUD-success-as-admin</tag>
 </tags>
-<status status="PASS" starttime="20200320 08:47:42.056" endtime="20200320 08:47:42.997" critical="yes"></status>
+<status status="PASS" starttime="20200320 11:07:16.039" endtime="20200320 11:07:17.066" critical="yes"></status>
 </test>
 <test id="s1-t6" name="Attempting To Delete Non-Existing &quot;Target Postings&quot; Fails">
 <kw name="Given &quot;Target Postings&quot; Are Not Registered">
@@ -694,12 +1006,12 @@ json=None</msg>
 <assign>
 <var>${GET_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:42.999" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:17.069" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x', 'Host': 'glacial-earth-31542.herokuapp.com', 'Cache-Control': 'max-age=0', 'Upgrade-Insecure-Requests': '1', 'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8'} 
 data=None 
 json=None</msg>
-<msg timestamp="20200320 08:47:43.174" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:42.999" endtime="20200320 08:47:43.174"></status>
+<msg timestamp="20200320 11:07:17.257" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:17.068" endtime="20200320 11:07:17.257"></status>
 </kw>
 <kw name="Should Be Equal As Integers" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to integers.</doc>
@@ -707,10 +1019,10 @@ json=None</msg>
 <arg>${GET_RESPONSE.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20200320 08:47:43.175" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:17.258" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:43.174" endtime="20200320 08:47:43.175"></status>
+<status status="PASS" starttime="20200320 11:07:17.257" endtime="20200320 11:07:17.258"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -720,8 +1032,8 @@ json=None</msg>
 <assign>
 <var>@{registered_postings}</var>
 </assign>
-<msg timestamp="20200320 08:47:43.175" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:43.175" endtime="20200320 08:47:43.175"></status>
+<msg timestamp="20200320 11:07:17.259" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:17.258" endtime="20200320 11:07:17.259"></status>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
@@ -729,10 +1041,10 @@ json=None</msg>
 <arg>@{REGISTERED_POSTINGS}</arg>
 <arg>@{registered_postings}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:43.176" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:43.175" endtime="20200320 08:47:43.176"></status>
+<msg timestamp="20200320 11:07:17.264" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:17.259" endtime="20200320 11:07:17.264"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:42.998" endtime="20200320 08:47:43.176"></status>
+<status status="PASS" starttime="20200320 11:07:17.068" endtime="20200320 11:07:17.264"></status>
 </kw>
 <kw name="Only &quot;Pre-Set Postings&quot; Are Left In The System">
 <kw name="Should Be True" library="BuiltIn">
@@ -740,11 +1052,11 @@ json=None</msg>
 <arguments>
 <arg>$REGISTERED_POSTINGS == $PRE_SET_POSTINGS</arg>
 </arguments>
-<status status="PASS" starttime="20200320 08:47:43.181" endtime="20200320 08:47:43.181"></status>
+<status status="PASS" starttime="20200320 11:07:17.265" endtime="20200320 11:07:17.266"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:43.180" endtime="20200320 08:47:43.182"></status>
+<status status="PASS" starttime="20200320 11:07:17.264" endtime="20200320 11:07:17.267"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:42.998" endtime="20200320 08:47:43.182"></status>
+<status status="PASS" starttime="20200320 11:07:17.067" endtime="20200320 11:07:17.267"></status>
 </kw>
 <kw name="When &quot;Target Postings&quot; Are Attempted To Be Deleted">
 <kw name="Set Variable" library="BuiltIn">
@@ -755,11 +1067,11 @@ json=None</msg>
 <assign>
 <var>${ALL_DELETE_ATTEMPTS_FAILED_WITH_404}</var>
 </assign>
-<msg timestamp="20200320 08:47:43.183" level="INFO">${ALL_DELETE_ATTEMPTS_FAILED_WITH_404} = True</msg>
-<status status="PASS" starttime="20200320 08:47:43.182" endtime="20200320 08:47:43.183"></status>
+<msg timestamp="20200320 11:07:17.274" level="INFO">${ALL_DELETE_ATTEMPTS_FAILED_WITH_404} = True</msg>
+<status status="PASS" starttime="20200320 11:07:17.273" endtime="20200320 11:07:17.274"></status>
 </kw>
-<kw name="${ptd} IN [ @{POSTINGS_TO_DELETE} ]" type="for">
-<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/372/', 'id': 372, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:39.786977+02:00'}" type="foritem">
+<kw name="${ptd} IN [ @{TARGET_POSTINGS} ]" type="for">
+<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/417/', 'id': 417, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T11:07:14.078951+02:00'}" type="foritem">
 <kw name="Delete Posting">
 <arguments>
 <arg>posting=${ptd}</arg>
@@ -771,22 +1083,22 @@ json=None</msg>
 <assign>
 <var>${DELETE_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:43.184" level="INFO">DELETE Request using : uri=/api/postings/372/, params=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/372/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F372%2F&amp;id=372&amp;user=1&amp;title=Posting+1&amp;content=modified+content&amp;timestamp=2020-03-20T08%3A47%3A39.786977%2B02%3A00 
+<msg timestamp="20200320 11:07:17.276" level="INFO">DELETE Request using : uri=/api/postings/417/, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/417/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
+data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F417%2F&amp;id=417&amp;user=1&amp;title=Posting+1&amp;content=modified+content&amp;timestamp=2020-03-20T11%3A07%3A14.078951%2B02%3A00 
 json=None</msg>
-<msg timestamp="20200320 08:47:43.382" level="INFO">${DELETE_RESPONSE} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:43.183" endtime="20200320 08:47:43.382"></status>
+<msg timestamp="20200320 11:07:17.465" level="INFO">${DELETE_RESPONSE} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:17.275" endtime="20200320 11:07:17.465"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${DELETE_RESPONSE}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:43.383" level="INFO">${DELETE_RESPONSE} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:43.382" endtime="20200320 08:47:43.383"></status>
+<msg timestamp="20200320 11:07:17.466" level="INFO">${DELETE_RESPONSE} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:17.465" endtime="20200320 11:07:17.466"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:43.183" endtime="20200320 08:47:43.383"></status>
+<status status="PASS" starttime="20200320 11:07:17.274" endtime="20200320 11:07:17.466"></status>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
 <doc>Evaluates the given expression in Python and returns the results.</doc>
@@ -796,12 +1108,12 @@ json=None</msg>
 <assign>
 <var>${ALL_DELETE_ATTEMPTS_FAILED_WITH_404}</var>
 </assign>
-<msg timestamp="20200320 08:47:43.389" level="INFO">${ALL_DELETE_ATTEMPTS_FAILED_WITH_404} = True</msg>
-<status status="PASS" starttime="20200320 08:47:43.384" endtime="20200320 08:47:43.389"></status>
+<msg timestamp="20200320 11:07:17.467" level="INFO">${ALL_DELETE_ATTEMPTS_FAILED_WITH_404} = True</msg>
+<status status="PASS" starttime="20200320 11:07:17.466" endtime="20200320 11:07:17.467"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:43.183" endtime="20200320 08:47:43.390"></status>
+<status status="PASS" starttime="20200320 11:07:17.274" endtime="20200320 11:07:17.467"></status>
 </kw>
-<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/373/', 'id': 373, 'user': 1, 'title': 'Posting 2', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:40.313182+02:00'}" type="foritem">
+<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/418/', 'id': 418, 'user': 1, 'title': 'Posting 2', 'content': 'modified content', 'timestamp': '2020-03-20T11:07:14.268666+02:00'}" type="foritem">
 <kw name="Delete Posting">
 <arguments>
 <arg>posting=${ptd}</arg>
@@ -813,22 +1125,22 @@ json=None</msg>
 <assign>
 <var>${DELETE_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:43.391" level="INFO">DELETE Request using : uri=/api/postings/373/, params=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/373/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F373%2F&amp;id=373&amp;user=1&amp;title=Posting+2&amp;content=modified+content&amp;timestamp=2020-03-20T08%3A47%3A40.313182%2B02%3A00 
+<msg timestamp="20200320 11:07:17.468" level="INFO">DELETE Request using : uri=/api/postings/418/, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/418/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
+data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F418%2F&amp;id=418&amp;user=1&amp;title=Posting+2&amp;content=modified+content&amp;timestamp=2020-03-20T11%3A07%3A14.268666%2B02%3A00 
 json=None</msg>
-<msg timestamp="20200320 08:47:43.585" level="INFO">${DELETE_RESPONSE} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:43.391" endtime="20200320 08:47:43.585"></status>
+<msg timestamp="20200320 11:07:17.771" level="INFO">${DELETE_RESPONSE} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:17.468" endtime="20200320 11:07:17.771"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${DELETE_RESPONSE}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:43.586" level="INFO">${DELETE_RESPONSE} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:43.586" endtime="20200320 08:47:43.586"></status>
+<msg timestamp="20200320 11:07:17.772" level="INFO">${DELETE_RESPONSE} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:17.772" endtime="20200320 11:07:17.772"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:43.390" endtime="20200320 08:47:43.586"></status>
+<status status="PASS" starttime="20200320 11:07:17.467" endtime="20200320 11:07:17.772"></status>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
 <doc>Evaluates the given expression in Python and returns the results.</doc>
@@ -838,12 +1150,12 @@ json=None</msg>
 <assign>
 <var>${ALL_DELETE_ATTEMPTS_FAILED_WITH_404}</var>
 </assign>
-<msg timestamp="20200320 08:47:43.587" level="INFO">${ALL_DELETE_ATTEMPTS_FAILED_WITH_404} = True</msg>
-<status status="PASS" starttime="20200320 08:47:43.586" endtime="20200320 08:47:43.587"></status>
+<msg timestamp="20200320 11:07:17.774" level="INFO">${ALL_DELETE_ATTEMPTS_FAILED_WITH_404} = True</msg>
+<status status="PASS" starttime="20200320 11:07:17.772" endtime="20200320 11:07:17.774"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:43.390" endtime="20200320 08:47:43.587"></status>
+<status status="PASS" starttime="20200320 11:07:17.467" endtime="20200320 11:07:17.774"></status>
 </kw>
-<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/374/', 'id': 374, 'user': 1, 'title': 'Posting 3', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:40.511557+02:00'}" type="foritem">
+<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/419/', 'id': 419, 'user': 1, 'title': 'Posting 3', 'content': 'modified content', 'timestamp': '2020-03-20T11:07:14.492929+02:00'}" type="foritem">
 <kw name="Delete Posting">
 <arguments>
 <arg>posting=${ptd}</arg>
@@ -855,22 +1167,22 @@ json=None</msg>
 <assign>
 <var>${DELETE_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:43.592" level="INFO">DELETE Request using : uri=/api/postings/374/, params=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/374/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F374%2F&amp;id=374&amp;user=1&amp;title=Posting+3&amp;content=modified+content&amp;timestamp=2020-03-20T08%3A47%3A40.511557%2B02%3A00 
+<msg timestamp="20200320 11:07:17.779" level="INFO">DELETE Request using : uri=/api/postings/419/, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/419/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
+data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F419%2F&amp;id=419&amp;user=1&amp;title=Posting+3&amp;content=modified+content&amp;timestamp=2020-03-20T11%3A07%3A14.492929%2B02%3A00 
 json=None</msg>
-<msg timestamp="20200320 08:47:43.812" level="INFO">${DELETE_RESPONSE} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:43.588" endtime="20200320 08:47:43.812"></status>
+<msg timestamp="20200320 11:07:17.968" level="INFO">${DELETE_RESPONSE} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:17.778" endtime="20200320 11:07:17.968"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${DELETE_RESPONSE}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:43.813" level="INFO">${DELETE_RESPONSE} = &lt;Response [404]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:43.813" endtime="20200320 08:47:43.813"></status>
+<msg timestamp="20200320 11:07:17.969" level="INFO">${DELETE_RESPONSE} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:17.969" endtime="20200320 11:07:17.969"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:43.588" endtime="20200320 08:47:43.813"></status>
+<status status="PASS" starttime="20200320 11:07:17.778" endtime="20200320 11:07:17.969"></status>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
 <doc>Evaluates the given expression in Python and returns the results.</doc>
@@ -880,22 +1192,22 @@ json=None</msg>
 <assign>
 <var>${ALL_DELETE_ATTEMPTS_FAILED_WITH_404}</var>
 </assign>
-<msg timestamp="20200320 08:47:43.815" level="INFO">${ALL_DELETE_ATTEMPTS_FAILED_WITH_404} = True</msg>
-<status status="PASS" starttime="20200320 08:47:43.814" endtime="20200320 08:47:43.815"></status>
+<msg timestamp="20200320 11:07:17.970" level="INFO">${ALL_DELETE_ATTEMPTS_FAILED_WITH_404} = True</msg>
+<status status="PASS" starttime="20200320 11:07:17.969" endtime="20200320 11:07:17.970"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:43.587" endtime="20200320 08:47:43.815"></status>
+<status status="PASS" starttime="20200320 11:07:17.774" endtime="20200320 11:07:17.970"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:43.183" endtime="20200320 08:47:43.815"></status>
+<status status="PASS" starttime="20200320 11:07:17.274" endtime="20200320 11:07:17.970"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${ALL_DELETE_ATTEMPTS_FAILED_WITH_404}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:43.816" level="INFO">${ALL_DELETE_ATTEMPTS_FAILED_WITH_404} = True</msg>
-<status status="PASS" starttime="20200320 08:47:43.815" endtime="20200320 08:47:43.816"></status>
+<msg timestamp="20200320 11:07:17.971" level="INFO">${ALL_DELETE_ATTEMPTS_FAILED_WITH_404} = True</msg>
+<status status="PASS" starttime="20200320 11:07:17.971" endtime="20200320 11:07:17.971"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:43.182" endtime="20200320 08:47:43.816"></status>
+<status status="PASS" starttime="20200320 11:07:17.273" endtime="20200320 11:07:17.971"></status>
 </kw>
 <kw name="Then All Delete Responses Have Status Code &quot;404-Not Found&quot;">
 <kw name="Should Be True" library="BuiltIn">
@@ -903,20 +1215,20 @@ json=None</msg>
 <arguments>
 <arg>${ALL_DELETE_ATTEMPTS_FAILED_WITH_404}</arg>
 </arguments>
-<status status="PASS" starttime="20200320 08:47:43.820" endtime="20200320 08:47:43.821"></status>
+<status status="PASS" starttime="20200320 11:07:17.975" endtime="20200320 11:07:17.976"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:43.820" endtime="20200320 08:47:43.821"></status>
+<status status="PASS" starttime="20200320 11:07:17.975" endtime="20200320 11:07:17.976"></status>
 </kw>
 <tags>
 <tag>CRUD-failure-as-admin</tag>
 <tag>CRUD-operations-as-admin</tag>
 </tags>
-<status status="PASS" starttime="20200320 08:47:42.997" endtime="20200320 08:47:43.821" critical="yes"></status>
+<status status="PASS" starttime="20200320 11:07:17.067" endtime="20200320 11:07:17.976" critical="yes"></status>
 </test>
 <test id="s1-t7" name="Attempting To Re-Create Already Registered &quot;Target Postings&quot; Fails">
 <kw name="Given &quot;Target Postings&quot; Are Created">
-<kw name="${p} IN [ @{TARGET_POSTINGS} ]" type="for">
-<kw name="${p} = {'title': 'Posting 1', 'content': 'Posting 1 content'}" type="foritem">
+<kw name="${p} IN [ @{INCOMPLETE_TARGET_POSTINGS} ]" type="for">
+<kw name="${p} = {'title': 'Posting 1', 'content': 'modified content'}" type="foritem">
 <kw name="Create Posting">
 <arguments>
 <arg>posting=${p}</arg>
@@ -928,22 +1240,22 @@ json=None</msg>
 <assign>
 <var>${POST_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:43.827" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:17.979" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data={"title": "Posting 1", "content": "Posting 1 content"} 
+data={"title": "Posting 1", "content": "modified content"} 
 json=None</msg>
-<msg timestamp="20200320 08:47:44.015" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:43.826" endtime="20200320 08:47:44.015"></status>
+<msg timestamp="20200320 11:07:18.214" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:17.978" endtime="20200320 11:07:18.214"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${POST_RESPONSE}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:44.016" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:44.015" endtime="20200320 08:47:44.016"></status>
+<msg timestamp="20200320 11:07:18.215" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:18.214" endtime="20200320 11:07:18.215"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:43.826" endtime="20200320 08:47:44.016"></status>
+<status status="PASS" starttime="20200320 11:07:17.978" endtime="20200320 11:07:18.215"></status>
 </kw>
 <kw name="Verify Post Response Success Code">
 <kw name="Should Be Equal As Integers" library="BuiltIn">
@@ -952,16 +1264,16 @@ json=None</msg>
 <arg>${POST_RESPONSE.status_code}</arg>
 <arg>201</arg>
 </arguments>
-<msg timestamp="20200320 08:47:44.017" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:18.221" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:44.017" endtime="20200320 08:47:44.017"></status>
+<status status="PASS" starttime="20200320 11:07:18.216" endtime="20200320 11:07:18.221"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:44.016" endtime="20200320 08:47:44.017"></status>
+<status status="PASS" starttime="20200320 11:07:18.215" endtime="20200320 11:07:18.221"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:43.826" endtime="20200320 08:47:44.017"></status>
+<status status="PASS" starttime="20200320 11:07:17.977" endtime="20200320 11:07:18.221"></status>
 </kw>
-<kw name="${p} = {'title': 'Posting 2', 'content': 'Posting 2 content'}" type="foritem">
+<kw name="${p} = {'title': 'Posting 2', 'content': 'modified content'}" type="foritem">
 <kw name="Create Posting">
 <arguments>
 <arg>posting=${p}</arg>
@@ -973,22 +1285,22 @@ json=None</msg>
 <assign>
 <var>${POST_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:44.019" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:18.223" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data={"title": "Posting 2", "content": "Posting 2 content"} 
+data={"title": "Posting 2", "content": "modified content"} 
 json=None</msg>
-<msg timestamp="20200320 08:47:44.209" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:44.019" endtime="20200320 08:47:44.209"></status>
+<msg timestamp="20200320 11:07:18.453" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:18.222" endtime="20200320 11:07:18.453"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${POST_RESPONSE}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:44.209" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:44.209" endtime="20200320 08:47:44.209"></status>
+<msg timestamp="20200320 11:07:18.453" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:18.453" endtime="20200320 11:07:18.453"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:44.018" endtime="20200320 08:47:44.209"></status>
+<status status="PASS" starttime="20200320 11:07:18.222" endtime="20200320 11:07:18.453"></status>
 </kw>
 <kw name="Verify Post Response Success Code">
 <kw name="Should Be Equal As Integers" library="BuiltIn">
@@ -997,16 +1309,16 @@ json=None</msg>
 <arg>${POST_RESPONSE.status_code}</arg>
 <arg>201</arg>
 </arguments>
-<msg timestamp="20200320 08:47:44.210" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:18.454" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:44.210" endtime="20200320 08:47:44.210"></status>
+<status status="PASS" starttime="20200320 11:07:18.454" endtime="20200320 11:07:18.454"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:44.209" endtime="20200320 08:47:44.210"></status>
+<status status="PASS" starttime="20200320 11:07:18.454" endtime="20200320 11:07:18.455"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:44.017" endtime="20200320 08:47:44.210"></status>
+<status status="PASS" starttime="20200320 11:07:18.221" endtime="20200320 11:07:18.455"></status>
 </kw>
-<kw name="${p} = {'title': 'Posting 3', 'content': 'Posting 3 content'}" type="foritem">
+<kw name="${p} = {'title': 'Posting 3', 'content': 'modified content'}" type="foritem">
 <kw name="Create Posting">
 <arguments>
 <arg>posting=${p}</arg>
@@ -1018,22 +1330,22 @@ json=None</msg>
 <assign>
 <var>${POST_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:44.212" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:18.456" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data={"title": "Posting 3", "content": "Posting 3 content"} 
+data={"title": "Posting 3", "content": "modified content"} 
 json=None</msg>
-<msg timestamp="20200320 08:47:44.409" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:44.211" endtime="20200320 08:47:44.409"></status>
+<msg timestamp="20200320 11:07:18.695" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:18.455" endtime="20200320 11:07:18.695"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${POST_RESPONSE}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:44.409" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:44.409" endtime="20200320 08:47:44.409"></status>
+<msg timestamp="20200320 11:07:18.696" level="INFO">${POST_RESPONSE} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:18.695" endtime="20200320 11:07:18.696"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:44.211" endtime="20200320 08:47:44.409"></status>
+<status status="PASS" starttime="20200320 11:07:18.455" endtime="20200320 11:07:18.696"></status>
 </kw>
 <kw name="Verify Post Response Success Code">
 <kw name="Should Be Equal As Integers" library="BuiltIn">
@@ -1042,30 +1354,30 @@ json=None</msg>
 <arg>${POST_RESPONSE.status_code}</arg>
 <arg>201</arg>
 </arguments>
-<msg timestamp="20200320 08:47:44.410" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:18.697" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:44.410" endtime="20200320 08:47:44.410"></status>
+<status status="PASS" starttime="20200320 11:07:18.697" endtime="20200320 11:07:18.697"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:44.410" endtime="20200320 08:47:44.410"></status>
+<status status="PASS" starttime="20200320 11:07:18.696" endtime="20200320 11:07:18.697"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:44.211" endtime="20200320 08:47:44.410"></status>
+<status status="PASS" starttime="20200320 11:07:18.455" endtime="20200320 11:07:18.697"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:43.826" endtime="20200320 08:47:44.411"></status>
+<status status="PASS" starttime="20200320 11:07:17.977" endtime="20200320 11:07:18.697"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:43.826" endtime="20200320 08:47:44.411"></status>
+<status status="PASS" starttime="20200320 11:07:17.977" endtime="20200320 11:07:18.698"></status>
 </kw>
 <kw name="Given &quot;Registered Postings&quot; Are Read">
 <kw name="Make Get Request" library="AdminUser">
 <assign>
 <var>${GET_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:44.417" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:18.706" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x', 'Host': 'glacial-earth-31542.herokuapp.com', 'Cache-Control': 'max-age=0', 'Upgrade-Insecure-Requests': '1', 'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8'} 
 data=None 
 json=None</msg>
-<msg timestamp="20200320 08:47:44.608" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:44.417" endtime="20200320 08:47:44.608"></status>
+<msg timestamp="20200320 11:07:18.894" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:18.706" endtime="20200320 11:07:18.894"></status>
 </kw>
 <kw name="Should Be Equal As Integers" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to integers.</doc>
@@ -1073,10 +1385,10 @@ json=None</msg>
 <arg>${GET_RESPONSE.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20200320 08:47:44.609" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:18.895" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:44.608" endtime="20200320 08:47:44.609"></status>
+<status status="PASS" starttime="20200320 11:07:18.894" endtime="20200320 11:07:18.895"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -1086,8 +1398,8 @@ json=None</msg>
 <assign>
 <var>@{registered_postings}</var>
 </assign>
-<msg timestamp="20200320 08:47:44.610" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:44.609" endtime="20200320 08:47:44.610"></status>
+<msg timestamp="20200320 11:07:18.895" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:18.895" endtime="20200320 11:07:18.895"></status>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
@@ -1095,60 +1407,23 @@ json=None</msg>
 <arg>@{REGISTERED_POSTINGS}</arg>
 <arg>@{registered_postings}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:44.613" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:44.611" endtime="20200320 08:47:44.613"></status>
+<msg timestamp="20200320 11:07:18.896" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:18.896" endtime="20200320 11:07:18.901"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:44.416" endtime="20200320 08:47:44.614"></status>
+<status status="PASS" starttime="20200320 11:07:18.705" endtime="20200320 11:07:18.901"></status>
 </kw>
-<kw name="Given Target Postings Are Updated" library="Utilities">
-<doc>EXPECTED PRECONDITION: When this method is called, REGISTERED_POSTINGS = pre-set postings + target postings.
-Note that REGISTERED_POSTINGS are the the postings that have been read from the API in the previous test case:
-Creating "Target Postings". Note that all the postings in REGISTERED_POSTINGS have all the fields necessary
-(i.e. title , content, url, id, timestamp fields)</doc>
-<kw name="Make Put Request" library="AdminUser">
-<arguments>
-<arg>{'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/375/', 'id': 375, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:43.902016+02:00'}</arg>
-</arguments>
-<msg timestamp="20200320 08:47:44.619" level="INFO">PUT Request using : uri=/api/postings/375/, params=None, files=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/375/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data={"url": "https://glacial-earth-31542.herokuapp.com/api/postings/375/", "id": 375, "user": 1, "title": "Posting 1", "content": "modified content", "timestamp": "2020-03-20T08:47:43.902016+02:00"} 
-json=None</msg>
-<status status="PASS" starttime="20200320 08:47:44.618" endtime="20200320 08:47:44.855"></status>
-</kw>
-<kw name="Make Put Request" library="AdminUser">
-<arguments>
-<arg>{'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/376/', 'id': 376, 'user': 1, 'title': 'Posting 2', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:44.097102+02:00'}</arg>
-</arguments>
-<msg timestamp="20200320 08:47:44.856" level="INFO">PUT Request using : uri=/api/postings/376/, params=None, files=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/376/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data={"url": "https://glacial-earth-31542.herokuapp.com/api/postings/376/", "id": 376, "user": 1, "title": "Posting 2", "content": "modified content", "timestamp": "2020-03-20T08:47:44.097102+02:00"} 
-json=None</msg>
-<status status="PASS" starttime="20200320 08:47:44.855" endtime="20200320 08:47:45.123"></status>
-</kw>
-<kw name="Make Put Request" library="AdminUser">
-<arguments>
-<arg>{'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/377/', 'id': 377, 'user': 1, 'title': 'Posting 3', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:44.296540+02:00'}</arg>
-</arguments>
-<msg timestamp="20200320 08:47:45.124" level="INFO">PUT Request using : uri=/api/postings/377/, params=None, files=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/377/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data={"url": "https://glacial-earth-31542.herokuapp.com/api/postings/377/", "id": 377, "user": 1, "title": "Posting 3", "content": "modified content", "timestamp": "2020-03-20T08:47:44.296540+02:00"} 
-json=None</msg>
-<status status="PASS" starttime="20200320 08:47:45.123" endtime="20200320 08:47:45.326"></status>
-</kw>
-<msg timestamp="20200320 08:47:45.327" level="INFO">${EXPECTED_MODIFIED_POSTINGS} = [{'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/375/', 'id': 375, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:43.902016+02:00'}, {'u...</msg>
-<status status="PASS" starttime="20200320 08:47:44.617" endtime="20200320 08:47:45.327"></status>
-</kw>
-<kw name="Given &quot;Registered Postings&quot; Are Read">
+<kw name="Given &quot;Target Postings&quot; Are Read">
+<kw name="&quot;Registered Postings&quot; Are Read">
 <kw name="Make Get Request" library="AdminUser">
 <assign>
 <var>${GET_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:45.328" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:18.902" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x', 'Host': 'glacial-earth-31542.herokuapp.com', 'Cache-Control': 'max-age=0', 'Upgrade-Insecure-Requests': '1', 'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8'} 
 data=None 
 json=None</msg>
-<msg timestamp="20200320 08:47:45.529" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:45.328" endtime="20200320 08:47:45.529"></status>
+<msg timestamp="20200320 11:07:19.102" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:18.902" endtime="20200320 11:07:19.102"></status>
 </kw>
 <kw name="Should Be Equal As Integers" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to integers.</doc>
@@ -1156,10 +1431,10 @@ json=None</msg>
 <arg>${GET_RESPONSE.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20200320 08:47:45.530" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:19.103" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:45.530" endtime="20200320 08:47:45.531"></status>
+<status status="PASS" starttime="20200320 11:07:19.102" endtime="20200320 11:07:19.103"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -1169,8 +1444,8 @@ json=None</msg>
 <assign>
 <var>@{registered_postings}</var>
 </assign>
-<msg timestamp="20200320 08:47:45.532" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:45.531" endtime="20200320 08:47:45.532"></status>
+<msg timestamp="20200320 11:07:19.108" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:19.104" endtime="20200320 11:07:19.108"></status>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
@@ -1178,29 +1453,74 @@ json=None</msg>
 <arg>@{REGISTERED_POSTINGS}</arg>
 <arg>@{registered_postings}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:45.537" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:45.532" endtime="20200320 08:47:45.537"></status>
+<msg timestamp="20200320 11:07:19.117" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:19.109" endtime="20200320 11:07:19.117"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:45.328" endtime="20200320 08:47:45.538"></status>
+<status status="PASS" starttime="20200320 11:07:18.902" endtime="20200320 11:07:19.118"></status>
 </kw>
-<kw name="Given &quot;Target Postings&quot; Are Updated In The System">
-<kw name="Is Subset" library="Utilities">
+<kw name="Get Subset" library="Utilities">
 <arguments>
-<arg>subset=${EXPECTED_MODIFIED_POSTINGS}</arg>
+<arg>subset=${INCOMPLETE_TARGET_POSTINGS}</arg>
 <arg>superset=${REGISTERED_POSTINGS}</arg>
 </arguments>
-<status status="PASS" starttime="20200320 08:47:45.539" endtime="20200320 08:47:45.539"></status>
+<assign>
+<var>@{target_postings}</var>
+</assign>
+<msg timestamp="20200320 11:07:19.119" level="INFO">@{target_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/420/', 'id': 420, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T11:07:18.066807+02:00'} | {...</msg>
+<status status="PASS" starttime="20200320 11:07:19.118" endtime="20200320 11:07:19.119"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:45.538" endtime="20200320 08:47:45.540"></status>
-</kw>
-<kw name="Given Set Suite Variable" library="BuiltIn">
+<kw name="Set Suite Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
 <arguments>
-<arg>@{POSTINGS_TO_DELETE}</arg>
-<arg>@{EXPECTED_MODIFIED_POSTINGS}</arg>
+<arg>@{TARGET_POSTINGS}</arg>
+<arg>@{target_postings}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:45.545" level="INFO">@{POSTINGS_TO_DELETE} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/375/', 'id': 375, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:43.902016+02:00'} | {...</msg>
-<status status="PASS" starttime="20200320 08:47:45.545" endtime="20200320 08:47:45.546"></status>
+<msg timestamp="20200320 11:07:19.120" level="INFO">@{TARGET_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/420/', 'id': 420, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T11:07:18.066807+02:00'} | {...</msg>
+<status status="PASS" starttime="20200320 11:07:19.119" endtime="20200320 11:07:19.120"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:18.901" endtime="20200320 11:07:19.120"></status>
+</kw>
+<kw name="Given &quot;Target Postings&quot; Are Registered In The System">
+<kw name="&quot;Target Postings&quot; List Is Not Empty">
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>len($TARGET_POSTINGS) == 0</arg>
+</arguments>
+<assign>
+<var>${is_empty}</var>
+</assign>
+<msg timestamp="20200320 11:07:19.127" level="INFO">${is_empty} = False</msg>
+<status status="PASS" starttime="20200320 11:07:19.126" endtime="20200320 11:07:19.127"></status>
+</kw>
+<kw name="Should Not Be True" library="BuiltIn">
+<doc>Fails if the given condition is true.</doc>
+<arguments>
+<arg>${is_empty}</arg>
+</arguments>
+<status status="PASS" starttime="20200320 11:07:19.128" endtime="20200320 11:07:19.128"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:19.125" endtime="20200320 11:07:19.134"></status>
+</kw>
+<kw name="Is Subset" library="Utilities">
+<arguments>
+<arg>subset=${TARGET_POSTINGS}</arg>
+<arg>superset=${INCOMPLETE_TARGET_POSTINGS}</arg>
+</arguments>
+<assign>
+<var>${is_subset}</var>
+</assign>
+<msg timestamp="20200320 11:07:19.135" level="INFO">${is_subset} = True</msg>
+<status status="PASS" starttime="20200320 11:07:19.134" endtime="20200320 11:07:19.135"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${is_subset}</arg>
+</arguments>
+<status status="PASS" starttime="20200320 11:07:19.136" endtime="20200320 11:07:19.136"></status>
+</kw>
+<status status="PASS" starttime="20200320 11:07:19.125" endtime="20200320 11:07:19.136"></status>
 </kw>
 <kw name="When &quot;Target Postings&quot; Are Attempted To Be Re-Created">
 <kw name="Set Variable" library="BuiltIn">
@@ -1211,11 +1531,11 @@ json=None</msg>
 <assign>
 <var>${ALL_CREATE_ATTEMPTS_FAILED_WITH_400}</var>
 </assign>
-<msg timestamp="20200320 08:47:45.547" level="INFO">${ALL_CREATE_ATTEMPTS_FAILED_WITH_400} = True</msg>
-<status status="PASS" starttime="20200320 08:47:45.547" endtime="20200320 08:47:45.547"></status>
+<msg timestamp="20200320 11:07:19.141" level="INFO">${ALL_CREATE_ATTEMPTS_FAILED_WITH_400} = True</msg>
+<status status="PASS" starttime="20200320 11:07:19.140" endtime="20200320 11:07:19.141"></status>
 </kw>
-<kw name="${p} IN [ @{TARGET_POSTINGS} ]" type="for">
-<kw name="${p} = {'title': 'Posting 1', 'content': 'Posting 1 content'}" type="foritem">
+<kw name="${p} IN [ @{INCOMPLETE_TARGET_POSTINGS} ]" type="for">
+<kw name="${p} = {'title': 'Posting 1', 'content': 'modified content'}" type="foritem">
 <kw name="Create Posting">
 <arguments>
 <arg>posting=${p}</arg>
@@ -1227,22 +1547,22 @@ json=None</msg>
 <assign>
 <var>${POST_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:45.550" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:19.143" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data={"title": "Posting 1", "content": "Posting 1 content"} 
+data={"title": "Posting 1", "content": "modified content"} 
 json=None</msg>
-<msg timestamp="20200320 08:47:45.773" level="INFO">${POST_RESPONSE} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:45.549" endtime="20200320 08:47:45.773"></status>
+<msg timestamp="20200320 11:07:19.335" level="INFO">${POST_RESPONSE} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:19.142" endtime="20200320 11:07:19.335"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${POST_RESPONSE}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:45.774" level="INFO">${POST_RESPONSE} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:45.773" endtime="20200320 08:47:45.774"></status>
+<msg timestamp="20200320 11:07:19.336" level="INFO">${POST_RESPONSE} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:19.335" endtime="20200320 11:07:19.336"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:45.548" endtime="20200320 08:47:45.774"></status>
+<status status="PASS" starttime="20200320 11:07:19.142" endtime="20200320 11:07:19.336"></status>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
 <doc>Evaluates the given expression in Python and returns the results.</doc>
@@ -1252,12 +1572,12 @@ json=None</msg>
 <assign>
 <var>${ALL_CREATE_ATTEMPTS_FAILED_WITH_400}</var>
 </assign>
-<msg timestamp="20200320 08:47:45.775" level="INFO">${ALL_CREATE_ATTEMPTS_FAILED_WITH_400} = True</msg>
-<status status="PASS" starttime="20200320 08:47:45.774" endtime="20200320 08:47:45.776"></status>
+<msg timestamp="20200320 11:07:19.337" level="INFO">${ALL_CREATE_ATTEMPTS_FAILED_WITH_400} = True</msg>
+<status status="PASS" starttime="20200320 11:07:19.336" endtime="20200320 11:07:19.337"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:45.547" endtime="20200320 08:47:45.776"></status>
+<status status="PASS" starttime="20200320 11:07:19.141" endtime="20200320 11:07:19.337"></status>
 </kw>
-<kw name="${p} = {'title': 'Posting 2', 'content': 'Posting 2 content'}" type="foritem">
+<kw name="${p} = {'title': 'Posting 2', 'content': 'modified content'}" type="foritem">
 <kw name="Create Posting">
 <arguments>
 <arg>posting=${p}</arg>
@@ -1269,22 +1589,22 @@ json=None</msg>
 <assign>
 <var>${POST_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:45.782" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:19.338" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data={"title": "Posting 2", "content": "Posting 2 content"} 
+data={"title": "Posting 2", "content": "modified content"} 
 json=None</msg>
-<msg timestamp="20200320 08:47:45.977" level="INFO">${POST_RESPONSE} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:45.781" endtime="20200320 08:47:45.977"></status>
+<msg timestamp="20200320 11:07:19.546" level="INFO">${POST_RESPONSE} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:19.338" endtime="20200320 11:07:19.546"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${POST_RESPONSE}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:45.977" level="INFO">${POST_RESPONSE} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:45.977" endtime="20200320 08:47:45.978"></status>
+<msg timestamp="20200320 11:07:19.546" level="INFO">${POST_RESPONSE} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:19.546" endtime="20200320 11:07:19.547"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:45.776" endtime="20200320 08:47:45.978"></status>
+<status status="PASS" starttime="20200320 11:07:19.337" endtime="20200320 11:07:19.547"></status>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
 <doc>Evaluates the given expression in Python and returns the results.</doc>
@@ -1294,12 +1614,12 @@ json=None</msg>
 <assign>
 <var>${ALL_CREATE_ATTEMPTS_FAILED_WITH_400}</var>
 </assign>
-<msg timestamp="20200320 08:47:45.979" level="INFO">${ALL_CREATE_ATTEMPTS_FAILED_WITH_400} = True</msg>
-<status status="PASS" starttime="20200320 08:47:45.978" endtime="20200320 08:47:45.979"></status>
+<msg timestamp="20200320 11:07:19.548" level="INFO">${ALL_CREATE_ATTEMPTS_FAILED_WITH_400} = True</msg>
+<status status="PASS" starttime="20200320 11:07:19.547" endtime="20200320 11:07:19.548"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:45.776" endtime="20200320 08:47:45.979"></status>
+<status status="PASS" starttime="20200320 11:07:19.337" endtime="20200320 11:07:19.548"></status>
 </kw>
-<kw name="${p} = {'title': 'Posting 3', 'content': 'Posting 3 content'}" type="foritem">
+<kw name="${p} = {'title': 'Posting 3', 'content': 'modified content'}" type="foritem">
 <kw name="Create Posting">
 <arguments>
 <arg>posting=${p}</arg>
@@ -1311,22 +1631,22 @@ json=None</msg>
 <assign>
 <var>${POST_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:45.984" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:19.552" level="INFO">POST Request using : uri=/api/postings/, params=None, files=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/json', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data={"title": "Posting 3", "content": "Posting 3 content"} 
+data={"title": "Posting 3", "content": "modified content"} 
 json=None</msg>
-<msg timestamp="20200320 08:47:46.170" level="INFO">${POST_RESPONSE} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:45.980" endtime="20200320 08:47:46.170"></status>
+<msg timestamp="20200320 11:07:19.736" level="INFO">${POST_RESPONSE} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:19.551" endtime="20200320 11:07:19.736"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${POST_RESPONSE}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:46.171" level="INFO">${POST_RESPONSE} = &lt;Response [400]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:46.170" endtime="20200320 08:47:46.171"></status>
+<msg timestamp="20200320 11:07:19.741" level="INFO">${POST_RESPONSE} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:19.741" endtime="20200320 11:07:19.742"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:45.979" endtime="20200320 08:47:46.171"></status>
+<status status="PASS" starttime="20200320 11:07:19.548" endtime="20200320 11:07:19.742"></status>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
 <doc>Evaluates the given expression in Python and returns the results.</doc>
@@ -1336,22 +1656,22 @@ json=None</msg>
 <assign>
 <var>${ALL_CREATE_ATTEMPTS_FAILED_WITH_400}</var>
 </assign>
-<msg timestamp="20200320 08:47:46.176" level="INFO">${ALL_CREATE_ATTEMPTS_FAILED_WITH_400} = True</msg>
-<status status="PASS" starttime="20200320 08:47:46.171" endtime="20200320 08:47:46.176"></status>
+<msg timestamp="20200320 11:07:19.744" level="INFO">${ALL_CREATE_ATTEMPTS_FAILED_WITH_400} = True</msg>
+<status status="PASS" starttime="20200320 11:07:19.742" endtime="20200320 11:07:19.744"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:45.979" endtime="20200320 08:47:46.176"></status>
+<status status="PASS" starttime="20200320 11:07:19.548" endtime="20200320 11:07:19.744"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:45.547" endtime="20200320 08:47:46.176"></status>
+<status status="PASS" starttime="20200320 11:07:19.141" endtime="20200320 11:07:19.744"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${ALL_CREATE_ATTEMPTS_FAILED_WITH_400}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:46.177" level="INFO">${ALL_CREATE_ATTEMPTS_FAILED_WITH_400} = True</msg>
-<status status="PASS" starttime="20200320 08:47:46.177" endtime="20200320 08:47:46.177"></status>
+<msg timestamp="20200320 11:07:19.748" level="INFO">${ALL_CREATE_ATTEMPTS_FAILED_WITH_400} = True</msg>
+<status status="PASS" starttime="20200320 11:07:19.744" endtime="20200320 11:07:19.749"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:45.546" endtime="20200320 08:47:46.177"></status>
+<status status="PASS" starttime="20200320 11:07:19.140" endtime="20200320 11:07:19.749"></status>
 </kw>
 <kw name="Then All Create Responses Have Status Code &quot;400-Bad Request&quot;">
 <kw name="Should Be True" library="BuiltIn">
@@ -1359,13 +1679,13 @@ json=None</msg>
 <arguments>
 <arg>${ALL_CREATE_ATTEMPTS_FAILED_WITH_400}</arg>
 </arguments>
-<status status="PASS" starttime="20200320 08:47:46.178" endtime="20200320 08:47:46.178"></status>
+<status status="PASS" starttime="20200320 11:07:19.750" endtime="20200320 11:07:19.750"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:46.177" endtime="20200320 08:47:46.178"></status>
+<status status="PASS" starttime="20200320 11:07:19.749" endtime="20200320 11:07:19.750"></status>
 </kw>
 <kw name="Then &quot;Target Postings&quot; Are Deleted">
-<kw name="${ptd} IN [ @{POSTINGS_TO_DELETE} ]" type="for">
-<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/375/', 'id': 375, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:43.902016+02:00'}" type="foritem">
+<kw name="${ptd} IN [ @{TARGET_POSTINGS} ]" type="for">
+<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/420/', 'id': 420, 'user': 1, 'title': 'Posting 1', 'content': 'modified content', 'timestamp': '2020-03-20T11:07:18.066807+02:00'}" type="foritem">
 <kw name="Delete Posting">
 <arguments>
 <arg>posting=${ptd}</arg>
@@ -1377,22 +1697,22 @@ json=None</msg>
 <assign>
 <var>${DELETE_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:46.180" level="INFO">DELETE Request using : uri=/api/postings/375/, params=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/375/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F375%2F&amp;id=375&amp;user=1&amp;title=Posting+1&amp;content=modified+content&amp;timestamp=2020-03-20T08%3A47%3A43.902016%2B02%3A00 
+<msg timestamp="20200320 11:07:19.753" level="INFO">DELETE Request using : uri=/api/postings/420/, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/420/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
+data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F420%2F&amp;id=420&amp;user=1&amp;title=Posting+1&amp;content=modified+content&amp;timestamp=2020-03-20T11%3A07%3A18.066807%2B02%3A00 
 json=None</msg>
-<msg timestamp="20200320 08:47:46.497" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:46.179" endtime="20200320 08:47:46.497"></status>
+<msg timestamp="20200320 11:07:19.946" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:19.752" endtime="20200320 11:07:19.946"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${DELETE_RESPONSE}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:46.498" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:46.498" endtime="20200320 08:47:46.498"></status>
+<msg timestamp="20200320 11:07:19.947" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:19.946" endtime="20200320 11:07:19.947"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:46.179" endtime="20200320 08:47:46.498"></status>
+<status status="PASS" starttime="20200320 11:07:19.752" endtime="20200320 11:07:19.947"></status>
 </kw>
 <kw name="Verify Delete Response Success Code">
 <kw name="Should Be Equal As Integers" library="BuiltIn">
@@ -1401,16 +1721,16 @@ json=None</msg>
 <arg>${DELETE_RESPONSE.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20200320 08:47:46.499" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:19.953" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:46.499" endtime="20200320 08:47:46.499"></status>
+<status status="PASS" starttime="20200320 11:07:19.948" endtime="20200320 11:07:19.953"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:46.498" endtime="20200320 08:47:46.500"></status>
+<status status="PASS" starttime="20200320 11:07:19.947" endtime="20200320 11:07:19.953"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:46.179" endtime="20200320 08:47:46.500"></status>
+<status status="PASS" starttime="20200320 11:07:19.751" endtime="20200320 11:07:19.953"></status>
 </kw>
-<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/376/', 'id': 376, 'user': 1, 'title': 'Posting 2', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:44.097102+02:00'}" type="foritem">
+<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/421/', 'id': 421, 'user': 1, 'title': 'Posting 2', 'content': 'modified content', 'timestamp': '2020-03-20T11:07:18.309064+02:00'}" type="foritem">
 <kw name="Delete Posting">
 <arguments>
 <arg>posting=${ptd}</arg>
@@ -1422,22 +1742,22 @@ json=None</msg>
 <assign>
 <var>${DELETE_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:46.505" level="INFO">DELETE Request using : uri=/api/postings/376/, params=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/376/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F376%2F&amp;id=376&amp;user=1&amp;title=Posting+2&amp;content=modified+content&amp;timestamp=2020-03-20T08%3A47%3A44.097102%2B02%3A00 
+<msg timestamp="20200320 11:07:19.955" level="INFO">DELETE Request using : uri=/api/postings/421/, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/421/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
+data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F421%2F&amp;id=421&amp;user=1&amp;title=Posting+2&amp;content=modified+content&amp;timestamp=2020-03-20T11%3A07%3A18.309064%2B02%3A00 
 json=None</msg>
-<msg timestamp="20200320 08:47:46.699" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:46.505" endtime="20200320 08:47:46.699"></status>
+<msg timestamp="20200320 11:07:20.146" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:19.954" endtime="20200320 11:07:20.146"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${DELETE_RESPONSE}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:46.700" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:46.700" endtime="20200320 08:47:46.700"></status>
+<msg timestamp="20200320 11:07:20.146" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:20.146" endtime="20200320 11:07:20.146"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:46.500" endtime="20200320 08:47:46.701"></status>
+<status status="PASS" starttime="20200320 11:07:19.954" endtime="20200320 11:07:20.147"></status>
 </kw>
 <kw name="Verify Delete Response Success Code">
 <kw name="Should Be Equal As Integers" library="BuiltIn">
@@ -1446,16 +1766,16 @@ json=None</msg>
 <arg>${DELETE_RESPONSE.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20200320 08:47:46.705" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:20.147" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:46.702" endtime="20200320 08:47:46.705"></status>
+<status status="PASS" starttime="20200320 11:07:20.147" endtime="20200320 11:07:20.147"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:46.701" endtime="20200320 08:47:46.705"></status>
+<status status="PASS" starttime="20200320 11:07:20.147" endtime="20200320 11:07:20.148"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:46.500" endtime="20200320 08:47:46.706"></status>
+<status status="PASS" starttime="20200320 11:07:19.954" endtime="20200320 11:07:20.148"></status>
 </kw>
-<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/377/', 'id': 377, 'user': 1, 'title': 'Posting 3', 'content': 'modified content', 'timestamp': '2020-03-20T08:47:44.296540+02:00'}" type="foritem">
+<kw name="${ptd} = {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/422/', 'id': 422, 'user': 1, 'title': 'Posting 3', 'content': 'modified content', 'timestamp': '2020-03-20T11:07:18.538446+02:00'}" type="foritem">
 <kw name="Delete Posting">
 <arguments>
 <arg>posting=${ptd}</arg>
@@ -1467,22 +1787,22 @@ json=None</msg>
 <assign>
 <var>${DELETE_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:46.707" level="INFO">DELETE Request using : uri=/api/postings/377/, params=None, allow_redirects=True, timeout=None
-headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/377/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
-data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F377%2F&amp;id=377&amp;user=1&amp;title=Posting+3&amp;content=modified+content&amp;timestamp=2020-03-20T08%3A47%3A44.296540%2B02%3A00 
+<msg timestamp="20200320 11:07:20.153" level="INFO">DELETE Request using : uri=/api/postings/422/, params=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'text/html; q=1.0, */*', 'Connection': 'keep-alive', 'Host': 'glacial-earth-31542.herokuapp.com', 'Origin': 'https://glacial-earth-31542.herokuapp.com', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Sec-Fetch-Dest': 'empty', 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'cors', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/422/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x'} 
+data=url=https%3A%2F%2Fglacial-earth-31542.herokuapp.com%2Fapi%2Fpostings%2F422%2F&amp;id=422&amp;user=1&amp;title=Posting+3&amp;content=modified+content&amp;timestamp=2020-03-20T11%3A07%3A18.538446%2B02%3A00 
 json=None</msg>
-<msg timestamp="20200320 08:47:46.899" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:46.706" endtime="20200320 08:47:46.899"></status>
+<msg timestamp="20200320 11:07:20.349" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:20.153" endtime="20200320 11:07:20.349"></status>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${DELETE_RESPONSE}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:46.901" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:46.899" endtime="20200320 08:47:46.901"></status>
+<msg timestamp="20200320 11:07:20.350" level="INFO">${DELETE_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:20.350" endtime="20200320 11:07:20.350"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:46.706" endtime="20200320 08:47:46.901"></status>
+<status status="PASS" starttime="20200320 11:07:20.148" endtime="20200320 11:07:20.350"></status>
 </kw>
 <kw name="Verify Delete Response Success Code">
 <kw name="Should Be Equal As Integers" library="BuiltIn">
@@ -1491,30 +1811,30 @@ json=None</msg>
 <arg>${DELETE_RESPONSE.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20200320 08:47:46.909" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:20.351" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:46.902" endtime="20200320 08:47:46.909"></status>
+<status status="PASS" starttime="20200320 11:07:20.351" endtime="20200320 11:07:20.351"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:46.901" endtime="20200320 08:47:46.909"></status>
+<status status="PASS" starttime="20200320 11:07:20.350" endtime="20200320 11:07:20.352"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:46.706" endtime="20200320 08:47:46.909"></status>
+<status status="PASS" starttime="20200320 11:07:20.148" endtime="20200320 11:07:20.352"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:46.179" endtime="20200320 08:47:46.909"></status>
+<status status="PASS" starttime="20200320 11:07:19.751" endtime="20200320 11:07:20.352"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:46.178" endtime="20200320 08:47:46.909"></status>
+<status status="PASS" starttime="20200320 11:07:19.751" endtime="20200320 11:07:20.352"></status>
 </kw>
 <kw name="Then &quot;Registered Postings&quot; Are Read">
 <kw name="Make Get Request" library="AdminUser">
 <assign>
 <var>${GET_RESPONSE}</var>
 </assign>
-<msg timestamp="20200320 08:47:46.911" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
+<msg timestamp="20200320 11:07:20.357" level="INFO">GET Request using : uri=/api/postings/, params=None, allow_redirects=True, timeout=None
 headers={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) snap Chromium/80.0.3987.132 Chrome/80.0.3987.132 Safari/537.36', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x', 'Host': 'glacial-earth-31542.herokuapp.com', 'Cache-Control': 'max-age=0', 'Upgrade-Insecure-Requests': '1', 'Sec-Fetch-Dest': 'document', 'Sec-Fetch-Site': 'same-origin', 'Sec-Fetch-Mode': 'navigate', 'Sec-Fetch-User': '?1', 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/', 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8'} 
 data=None 
 json=None</msg>
-<msg timestamp="20200320 08:47:47.064" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:46.910" endtime="20200320 08:47:47.064"></status>
+<msg timestamp="20200320 11:07:20.533" level="INFO">${GET_RESPONSE} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200320 11:07:20.357" endtime="20200320 11:07:20.533"></status>
 </kw>
 <kw name="Should Be Equal As Integers" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to integers.</doc>
@@ -1522,10 +1842,10 @@ json=None</msg>
 <arg>${GET_RESPONSE.status_code}</arg>
 <arg>200</arg>
 </arguments>
-<msg timestamp="20200320 08:47:47.065" level="INFO">Argument types are:
+<msg timestamp="20200320 11:07:20.533" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;type 'unicode'&gt;</msg>
-<status status="PASS" starttime="20200320 08:47:47.064" endtime="20200320 08:47:47.065"></status>
+<status status="PASS" starttime="20200320 11:07:20.533" endtime="20200320 11:07:20.534"></status>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <doc>Returns the given values which can then be assigned to a variables.</doc>
@@ -1535,8 +1855,8 @@ json=None</msg>
 <assign>
 <var>@{registered_postings}</var>
 </assign>
-<msg timestamp="20200320 08:47:47.065" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:47.065" endtime="20200320 08:47:47.065"></status>
+<msg timestamp="20200320 11:07:20.535" level="INFO">@{registered_postings} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:20.534" endtime="20200320 11:07:20.535"></status>
 </kw>
 <kw name="Set Suite Variable" library="BuiltIn">
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
@@ -1544,10 +1864,10 @@ json=None</msg>
 <arg>@{REGISTERED_POSTINGS}</arg>
 <arg>@{registered_postings}</arg>
 </arguments>
-<msg timestamp="20200320 08:47:47.066" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
-<status status="PASS" starttime="20200320 08:47:47.066" endtime="20200320 08:47:47.066"></status>
+<msg timestamp="20200320 11:07:20.535" level="INFO">@{REGISTERED_POSTINGS} = [ {'url': 'https://glacial-earth-31542.herokuapp.com/api/postings/1/', 'id': 1, 'user': 1, 'title': 'My First Posting', 'content': "My First Blog's content", 'timestamp': '2019-12-18T17:06:54.373451+0...</msg>
+<status status="PASS" starttime="20200320 11:07:20.535" endtime="20200320 11:07:20.535"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:46.910" endtime="20200320 08:47:47.066"></status>
+<status status="PASS" starttime="20200320 11:07:20.356" endtime="20200320 11:07:20.536"></status>
 </kw>
 <kw name="Then Only &quot;Pre-Set Postings&quot; Are Left In The System">
 <kw name="Should Be True" library="BuiltIn">
@@ -1555,23 +1875,23 @@ json=None</msg>
 <arguments>
 <arg>$REGISTERED_POSTINGS == $PRE_SET_POSTINGS</arg>
 </arguments>
-<status status="PASS" starttime="20200320 08:47:47.069" endtime="20200320 08:47:47.070"></status>
+<status status="PASS" starttime="20200320 11:07:20.541" endtime="20200320 11:07:20.542"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:47.069" endtime="20200320 08:47:47.070"></status>
+<status status="PASS" starttime="20200320 11:07:20.541" endtime="20200320 11:07:20.542"></status>
 </kw>
 <tags>
 <tag>CRUD-failure-as-admin</tag>
 <tag>CRUD-operations-as-admin</tag>
 </tags>
-<status status="PASS" starttime="20200320 08:47:43.825" endtime="20200320 08:47:47.071" critical="yes"></status>
+<status status="PASS" starttime="20200320 11:07:17.976" endtime="20200320 11:07:20.542" critical="yes"></status>
 </test>
 <kw name="Suite Teardown" type="teardown">
 <kw name="Delete All Sessions" library="RequestsLibrary">
 <doc>Removes all the session objects</doc>
-<msg timestamp="20200320 08:47:47.075" level="INFO">Delete All Sessions</msg>
-<status status="PASS" starttime="20200320 08:47:47.075" endtime="20200320 08:47:47.075"></status>
+<msg timestamp="20200320 11:07:20.544" level="INFO">Delete All Sessions</msg>
+<status status="PASS" starttime="20200320 11:07:20.544" endtime="20200320 11:07:20.544"></status>
 </kw>
-<status status="PASS" starttime="20200320 08:47:47.075" endtime="20200320 08:47:47.076"></status>
+<status status="PASS" starttime="20200320 11:07:20.544" endtime="20200320 11:07:20.544"></status>
 </kw>
 <doc>This test suite uses Admin request headers to test BlogPostAPI.
 For an admin, BlogPostAPI provides GET, POST, PUT, DELETE methods
@@ -1581,7 +1901,7 @@ https://glacial-earth-31542.herokuapp.com/api/postings/</doc>
 <item name="OS">Linux</item>
 <item name="Version">1.0</item>
 </metadata>
-<status status="PASS" starttime="20200320 08:47:36.425" endtime="20200320 08:47:47.076"></status>
+<status status="PASS" starttime="20200320 11:07:12.521" endtime="20200320 11:07:20.544"></status>
 </suite>
 <statistics>
 <total>

@@ -145,7 +145,7 @@ def get_variables():
                 }
             },
         },
-        'TARGET_POSTINGS': [
+        'INCOMPLETE_TARGET_POSTINGS': [
             {'title': 'Posting 1', 'content': 'Posting 1 content'},
             {'title': 'Posting 2', 'content': 'Posting 2 content'},
             {'title': 'Posting 3', 'content': 'Posting 3 content'},

@@ -159,8 +159,9 @@ Attempting To Delete Non-Existing "Target Postings" Fails
 Attempting To Re-Create Already Registered "Target Postings" Fails
     [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
     Given "Target Postings" Are Created
-    Given "Registered Postings" Are Read
-    Given Target Postings Are Updated  # @{EXPECTED_MODIFIED_POSTINGS} gets set
+    Given "Registered Postings" Are Read    # ${REGISTERED_POSTINGS} gets set
+    Given Target Postings Are Updated       # ${EXPECTED_MODIFIED_POSTINGS} gets set
+    Given "Registered Postings" Are Read    # ${REGISTERED_POSTINGS} gets set
     Given "Target Postings" Are Updated In The System
     Given Set Suite Variable      @{POSTINGS_TO_DELETE}       @{EXPECTED_MODIFIED_POSTINGS}
 
@@ -168,7 +169,7 @@ Attempting To Re-Create Already Registered "Target Postings" Fails
     Then All Create Responses Have Status Code "400-Bad Request"    # test verification
     # test teardown & its verification
     Then "Target Postings" Are Deleted  # test-teardown
-    Then "Registered Postings" Are Read
+    Then "Registered Postings" Are Read   # ${REGISTERED_POSTINGS} gets set
     Then Only "Pre-Set Postings" Are Left In The System  # test-teardown verification
 
 

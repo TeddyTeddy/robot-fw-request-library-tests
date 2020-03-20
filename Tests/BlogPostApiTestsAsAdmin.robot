@@ -132,6 +132,29 @@ Only "Pre-Set Postings" Are Left In The System
     "Registered Postings" Are Read
     Set Suite Variable      @{PRE_SET_POSTINGS}     @{REGISTERED_POSTINGS}
 
+"Target Postings" Must Not Be An Empty List
+    ${is_empty} =   Evaluate    len($TARGET_POSTINGS) == 0
+    Should Not Be True  ${is_empty}
+
+"Randomly Picked Posting" Is Cached
+    "Target Postings" Must Not Be An Empty List
+    ${random_index} =   Evaluate   random.randint(0, len($TARGET_POSTINGS)-1)   modules=random
+    ${random_posting} =     Set Variable        ${TARGET_POSTINGS}[${random_index}]
+    Set Suite Variable      ${RANDOMLY_PICKED_POSTING}       ${random_posting}
+
+"Title" Field Is Removed From "Randomly Picked Posting"
+    Remove From Dictionary      ${RANDOMLY_PICKED_POSTING}       title
+
+"Randomly Picked Posting" Is Updated To The System
+    Update Posting      posting=${RANDOMLY_PICKED_POSTING}
+
+Update Response Has Status Code 200
+    ${update_response_has_200} =    Evaluate    $PUT_RESPONSE.status_code == 200
+    Should Be True      ${update_response_has_200}
+
+"Randomly Picked Posting" Gets Modified "Content"
+    Set To Dictionary   ${RANDOMLY_PICKED_POSTING}      content=Overwritten in a test
+
 *** Test Cases ***
 #########################  POSITIVE TESTS ################################################
 Checking BlogPostAPI specification
@@ -185,6 +208,24 @@ Deleting "Target Postings"
     Then "Registered Postings" Are Read
     Then "Registered Postings" Must Comply With "Posting Spec"
     Then Only "Pre-Set Postings" Are Left In The System
+
+Attempting To Update A Randomly Picked Posting With Missing "Title" Field Fails
+    [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
+    Given "Pre-Set Postings" Are Cached
+    Given "Target Postings" Must Not Be Registered In The System
+    Given "Target Postings" Are Created
+    Given "Target Postings" Are Read
+    Given "Target Postings" Must Be Registered In The System
+    Given "Randomly Picked Posting" Is Cached
+        Given "Title" Field Is Removed From "Randomly Picked Posting"
+        Given "Randomly Picked Posting" Gets Modified "Content"
+    When "Randomly Picked Posting" Is Updated To The System
+    Then Update Response Has Status Code 200
+    # teardown
+    "Target Postings" Are Deleted
+    "Registered Postings" Are Read
+    Only "Pre-Set Postings" Are Left In The System
+
 
 #########################  NEGATIVE TESTS ################################################
 

@@ -6,6 +6,7 @@ Documentation    This test suite uses Admin request headers to test BlogPostAPI.
 Metadata         Version    1.0
 Metadata         OS         Linux
 Resource         ../Libraries/Src/CommonLibraryImport.robot
+Suite Setup      Suite Setup
 Suite Teardown   Suite Teardown
 
 *** Variables ***
@@ -20,10 +21,16 @@ ${PRE_SET_POSTINGS}         A list of pre-existing postings in the system before
 # python -m robot  --pythonpath Libraries/Src --noncritical failure-expected -d Results/ Tests/BlogPostApiTestsAsAdmin.robot
 
 *** Keywords ***
+Suite Setup
+    ${posting_spec} =   Set Variable    ${ADMIN}[EXPECTED_API_SPEC][actions][POST]
+    Set Suite Variable      ${POSTING_SPEC}     ${posting_spec}
+
 Suite Teardown
     Delete All Sessions
 
 "Registered Postings" Must Comply With "Posting Spec"
+    Log     ${REGISTERED_POSTINGS}
+    Log     ${POSTING_SPEC}
     Verify All Postings     postings_to_verify=${REGISTERED_POSTINGS}   posting_spec=${POSTING_SPEC}
 
 Create Posting
@@ -55,7 +62,7 @@ All Create Responses Have Status Code "400-Bad Request"
     ${is_empty} =  Evaluate     len($TARGET_POSTINGS) == 0
     Should Not Be True  ${is_empty}
 
-"Target Postings" Are Registered In The System
+"Target Postings" Must Be Registered In The System
     "Target Postings" List Is Not Empty
     ${is_subset} =  Is Subset   subset=${TARGET_POSTINGS}   superset=${INCOMPLETE_TARGET_POSTINGS}
     Should Be True  ${is_subset}
@@ -84,9 +91,6 @@ Delete Posting
 
 BlogPostAPI Specification Is Correct
     Verify Options Response     options_response=${OPTIONS_RESPONSE}
-
-Set "Posting Spec"
-    Set Suite Variable  ${POSTING_SPEC}      ${OPTIONS_RESPONSE.json()}[actions][POST]
 
 BlogPostAPI Specification Is Queried
     ${OPTIONS_RESPONSE} =       Make Options Request
@@ -119,75 +123,92 @@ All Delete Responses Have Status Code "404-Not Found"
 Only "Pre-Set Postings" Are Left In The System
     Should Be True  $REGISTERED_POSTINGS == $PRE_SET_POSTINGS
 
-"Target Postings" Are Not Registered
+"Target Postings" Must Not Be Registered In The System
     "Registered Postings" Are Read
-    Only "Pre-Set Postings" Are Left In The System
+    ${none_of_target_postings_found} =  Is None Found  subset=${INCOMPLETE_TARGET_POSTINGS}  superset=${REGISTERED_POSTINGS}
+    Should Be True      ${none_of_target_postings_found}
+
+"Pre-Set Postings" Are Cached
+    "Registered Postings" Are Read
+    Set Suite Variable      @{PRE_SET_POSTINGS}     @{REGISTERED_POSTINGS}
 
 *** Test Cases ***
-Check BlogPostAPI specification
+#########################  POSITIVE TESTS ################################################
+Checking BlogPostAPI specification
     [Tags]              smoke-as-admin
     When BlogPostAPI Specification Is Queried
     Then BlogPostAPI Specification Is Correct
-    Set "Posting Spec"  # for later use in upcoming test cases
 
-Query & Verify Pre-Set Postings
+Querying & Verifying Pre-Set Postings
     [Tags]              smoke-as-admin
     When "Registered Postings" Are Read
     Then "Registered Postings" Must Comply With "Posting Spec"
-    # to be used later
-    Set Suite Variable      @{PRE_SET_POSTINGS}     @{REGISTERED_POSTINGS}
 
 Creating "Target Postings"
     [Tags]              CRUD-operations-as-admin    CRUD-success-as-admin
+    Given "Pre-Set Postings" Are Cached
+    Given "Target Postings" Must Not Be Registered In The System
     When "Target Postings" Are Created
     Then "Registered Postings" Are Read
     Then "Registered Postings" Must Comply With "Posting Spec"
     Then "Target Postings" Are Read
-    Then "Target Postings" Are Registered In The System
+    Then "Target Postings" Must Be Registered In The System
+    # teardown
+    "Target Postings" Are Deleted
+    "Registered Postings" Are Read
+    Only "Pre-Set Postings" Are Left In The System
 
 Updating "Target Postings"
     [Tags]                  CRUD-operations-as-admin    CRUD-success-as-admin
+    Given "Pre-Set Postings" Are Cached
+    Given "Target Postings" Must Not Be Registered In The System
+    Given "Target Postings" Are Created
     Given "Target Postings" Are Read
-    Given "Target Postings" Are Registered In The System
+    Given "Target Postings" Must Be Registered In The System
     When Target Postings Are Updated
     Then "Registered Postings" Are Read
     Then "Registered Postings" Must Comply With "Posting Spec"
     Then "Target Postings" Must Have Been Updated In The System
+    # teardown
+    "Target Postings" Are Deleted
+    "Registered Postings" Are Read
+    Only "Pre-Set Postings" Are Left In The System
 
 Deleting "Target Postings"
     [Tags]                  CRUD-operations-as-admin     CRUD-success-as-admin
+    Given "Pre-Set Postings" Are Cached
+    Given "Target Postings" Must Not Be Registered In The System
+    Given "Target Postings" Are Created
     Given "Target Postings" Are Read
-    Given "Target Postings" Are Registered In The System
-    When "Target Postings" Are Deleted    # test
+    Given "Target Postings" Must Be Registered In The System
+    When "Target Postings" Are Deleted
     Then "Registered Postings" Are Read
     Then "Registered Postings" Must Comply With "Posting Spec"
     Then Only "Pre-Set Postings" Are Left In The System
 
+#########################  NEGATIVE TESTS ################################################
+
 Attempting To Delete Non-Existing "Target Postings" Fails
     [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
-    Given "Target Postings" List Is Not Empty  # populated in the previous test case
-    Given "Target Postings" Are Not Registered
+    Given "Target Postings" Are Created
+    Given "Target Postings" Are Read
+    Given "Target Postings" Are Deleted
+    Given "Target Postings" List Is Not Empty
+    Given "Target Postings" Must Not Be Registered In The System
     When "Target Postings" Are Attempted To Be Deleted
     Then All Delete Responses Have Status Code "404-Not Found"
 
 Attempting To Create Already Created "Target Postings" Fails
     [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
     Given "Target Postings" Are Created
-    Given "Registered Postings" Are Read
     Given "Target Postings" Are Read
-    Given "Target Postings" Are Registered In The System
-
+    Given "Target Postings" Must Be Registered In The System
     When "Target Postings" Are Attempted To Be Re-Created
-    Then All Create Responses Have Status Code "400-Bad Request"    # test verification
-    # test teardown & its verification
-    Then "Target Postings" Are Deleted  # test-teardown
-    Then "Registered Postings" Are Read   # ${REGISTERED_POSTINGS} gets set
-    Then Only "Pre-Set Postings" Are Left In The System  # test-teardown verification
-
-
-
-
-
+    Then All Create Responses Have Status Code "400-Bad Request"
+    # test teardown
+    "Target Postings" Are Deleted
+    "Registered Postings" Are Read
+    Only "Pre-Set Postings" Are Left In The System
 
 
 

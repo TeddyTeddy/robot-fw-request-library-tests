@@ -97,3 +97,13 @@ def get_subset(subset, superset):
     return result
 
 
+@keyword
+def is_none_found(subset,  superset):
+    result = True
+    for partial_posting in subset:
+        is_match_found, matched_posting = is_match(expected_posting=partial_posting, super_set=superset)
+        result = result and not is_match_found
+        if not result:
+            break
+    return result
+

@@ -209,7 +209,7 @@ Deleting "Target Postings"
     Then "Registered Postings" Must Comply With "Posting Spec"
     Then Only "Pre-Set Postings" Are Left In The System
 
-Attempting To Update A Randomly Picked Posting With Missing "Title" Field Fails
+Updating A Randomly Picked Posting With Missing "title" Field And Modified "content" Field
     [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
     Given "Pre-Set Postings" Are Cached
     Given "Target Postings" Must Not Be Registered In The System
@@ -225,7 +225,6 @@ Attempting To Update A Randomly Picked Posting With Missing "Title" Field Fails
     "Target Postings" Are Deleted
     "Registered Postings" Are Read
     Only "Pre-Set Postings" Are Left In The System
-
 
 #########################  NEGATIVE TESTS ################################################
 
@@ -250,8 +249,6 @@ Attempting To Create Already Created "Target Postings" Fails
     "Target Postings" Are Deleted
     "Registered Postings" Are Read
     Only "Pre-Set Postings" Are Left In The System
-
-
 
 
 

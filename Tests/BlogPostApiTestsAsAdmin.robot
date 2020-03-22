@@ -230,7 +230,7 @@ Deleting "Target Postings"
     Then Only "Pre-Set Postings" Are Left In The System
 
 Updating "Random Target Posting" With Missing "title" Field And Modified "content" Field
-    [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
+    [Tags]                  CRUD-operations-as-admin     CRUD-success-as-admin
     Given "Target Postings" Must Not Be Registered In The System
     Given "Target Postings" Are Created
     Given "Target Postings" Are Read
@@ -243,7 +243,7 @@ Updating "Random Target Posting" With Missing "title" Field And Modified "conten
     Then "Random Target Posting" Must Be Registered In The System
 
 Updating "Random Target Posting" With Missing "content" Field And Modified "title" Field
-    [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
+    [Tags]                  CRUD-operations-as-admin     CRUD-success-as-admin
     Given "Target Postings" Must Not Be Registered In The System
     Given "Target Postings" Are Created
     Given "Target Postings" Are Read

@@ -18,7 +18,7 @@ ${OPTIONS_RESPONSE}         A response object to OPTIONS request, set dynamicall
 ${POSTING_SPEC}             A dictionary object, where items are posting fields. Set dynamically
 ${DELETE_RESPONSE}          A response object to DELETE request, set dynamically
 ${PRE_SET_POSTINGS}         A list of pre-existing postings in the system before tests with the tag 'CRUD-operations-as-admin' run
-${RANDOMLY_PICKED_POSTING}  A dynamically picked target posting during test run. Set to None at the beginning & end of every test
+${RANDOM_TARGET_POSTING}    A dynamically picked target posting during test run. Set to None at the beginning & end of every test
 
 # To Run
 # python -m robot  --pythonpath Libraries/Src --noncritical failure-expected -d Results/ Tests/BlogPostApiTestsAsAdmin.robot
@@ -33,19 +33,19 @@ Suite Teardown
 
 Test Setup
     "Pre-Set Postings" Are Cached
-    Set Suite Variable  ${RANDOMLY_PICKED_POSTING}      ${None}
+    Set Suite Variable  ${RANDOM_TARGET_POSTING}      ${None}
 
 Test Teardown
     "Registered Postings" Are Read
     "Target Postings" Are Read
     "Target Postings" Are Deleted
-    Run Keyword And Ignore Error    "Randomly Picked Posting" Is Deleted
+    Run Keyword And Ignore Error    "Random Target Posting" Is Deleted
     "Registered Postings" Are Read
     Only "Pre-Set Postings" Are Left In The System
-    Set Suite Variable  ${RANDOMLY_PICKED_POSTING}      ${None}
+    Set Suite Variable  ${RANDOM_TARGET_POSTING}      ${None}
 
-"Randomly Picked Posting" Is Deleted
-    Run Keyword If  $RANDOMLY_PICKED_POSTING is not None    Delete Posting  ${RANDOMLY_PICKED_POSTING}
+"Random Target Posting" Is Deleted
+    Run Keyword If  $RANDOM_TARGET_POSTING is not None    Delete Posting  ${RANDOM_TARGET_POSTING}
 
 "Registered Postings" Must Comply With "Posting Spec"
     Log     ${REGISTERED_POSTINGS}
@@ -86,10 +86,10 @@ All Create Responses Have Status Code "400-Bad Request"
     ${is_subset} =  Is Subset   subset=${TARGET_POSTINGS}   superset=${INCOMPLETE_TARGET_POSTINGS}
     Should Be True  ${is_subset}
 
-"Randomly Picked Posting" Must Be Registered In The System
+"Random Target Posting" Must Be Registered In The System
     "Registered Postings" Are Read
-    @{randomly_picked_postings}=    Create List    ${RANDOMLY_PICKED_POSTING}
-    ${is_subset} =  Is Subset   subset=${randomly_picked_postings}    superset=${REGISTERED_POSTINGS}
+    @{random_target_postings}=    Create List    ${RANDOM_TARGET_POSTING}
+    ${is_subset} =  Is Subset   subset=${random_target_postings}    superset=${REGISTERED_POSTINGS}
     Should Be True   ${is_subset}
 
 Update Posting
@@ -161,30 +161,30 @@ Only "Pre-Set Postings" Are Left In The System
     ${is_empty} =   Evaluate    len($TARGET_POSTINGS) == 0
     Should Not Be True  ${is_empty}
 
-"Randomly Picked Posting" Is Cached
+"Random Target Posting" Is Cached
     "Target Postings" Must Not Be An Empty List
     ${random_index} =   Evaluate   random.randint(0, len($TARGET_POSTINGS)-1)   modules=random
     ${random_posting} =     Set Variable        ${TARGET_POSTINGS}[${random_index}]
-    Set Suite Variable      ${RANDOMLY_PICKED_POSTING}       ${random_posting}
+    Set Suite Variable      ${RANDOM_TARGET_POSTING}       ${random_posting}
 
-"title" Field Is Removed From "Randomly Picked Posting"
-    Remove From Dictionary      ${RANDOMLY_PICKED_POSTING}       title
+"title" Field Is Removed From "Random Target Posting"
+    Remove From Dictionary      ${RANDOM_TARGET_POSTING}       title
 
-"Randomly Picked Posting" Is Updated To The System
-    Update Posting      posting=${RANDOMLY_PICKED_POSTING}
+"Random Target Posting" Is Updated To The System
+    Update Posting      posting=${RANDOM_TARGET_POSTING}
 
 Update Response Has Status Code 200
     ${update_response_has_200} =    Evaluate    $PUT_RESPONSE.status_code == 200
     Should Be True      ${update_response_has_200}
 
-"content" Field Is Modified in "Randomly Picked Posting"
-    Set To Dictionary   ${RANDOMLY_PICKED_POSTING}      content=Overwritten in a test
+"content" Field Is Modified in "Random Target Posting"
+    Set To Dictionary   ${RANDOM_TARGET_POSTING}      content=Overwritten in a test
 
-"content" Field Is Removed From "Randomly Picked Posting"
-   Remove From Dictionary      ${RANDOMLY_PICKED_POSTING}       content
+"content" Field Is Removed From "Random Target Posting"
+   Remove From Dictionary      ${RANDOM_TARGET_POSTING}       content
 
-"title" Field Is Modified in "Randomly Picked Posting"
-    Set To Dictionary   ${RANDOMLY_PICKED_POSTING}      title=Overwritten in a test
+"title" Field Is Modified in "Random Target Posting"
+    Set To Dictionary   ${RANDOM_TARGET_POSTING}      title=Overwritten in a test
 
 *** Test Cases ***
 #########################  POSITIVE TESTS ################################################
@@ -229,31 +229,31 @@ Deleting "Target Postings"
     Then "Registered Postings" Must Comply With "Posting Spec"
     Then Only "Pre-Set Postings" Are Left In The System
 
-Updating A Randomly Picked Posting With Missing "title" Field And Modified "content" Field
+Updating "Random Target Posting" With Missing "title" Field And Modified "content" Field
     [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
     Given "Target Postings" Must Not Be Registered In The System
     Given "Target Postings" Are Created
     Given "Target Postings" Are Read
     Given "Target Postings" Must Be Registered In The System
-    Given "Randomly Picked Posting" Is Cached
-        Given "title" Field Is Removed From "Randomly Picked Posting"
-        Given "content" Field Is Modified in "Randomly Picked Posting"
-    When "Randomly Picked Posting" Is Updated To The System
+    Given "Random Target Posting" Is Cached
+        Given "title" Field Is Removed From "Random Target Posting"
+        Given "content" Field Is Modified in "Random Target Posting"
+    When "Random Target Posting" Is Updated To The System
     Then Update Response Has Status Code 200
-    Then "Randomly Picked Posting" Must Be Registered In The System
+    Then "Random Target Posting" Must Be Registered In The System
 
-Updating A Randomly Picked Posting With Missing "content" Field And Modified "title" Field
+Updating "Random Target Posting" With Missing "content" Field And Modified "title" Field
     [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
     Given "Target Postings" Must Not Be Registered In The System
     Given "Target Postings" Are Created
     Given "Target Postings" Are Read
     Given "Target Postings" Must Be Registered In The System
-    Given "Randomly Picked Posting" Is Cached
-        Given "content" Field Is Removed From "Randomly Picked Posting"
-        Given "title" Field Is Modified in "Randomly Picked Posting"
-    When "Randomly Picked Posting" Is Updated To The System
+    Given "Random Target Posting" Is Cached
+        Given "content" Field Is Removed From "Random Target Posting"
+        Given "title" Field Is Modified in "Random Target Posting"
+    When "Random Target Posting" Is Updated To The System
     Then Update Response Has Status Code 200
-    Then "Randomly Picked Posting" Must Be Registered In The System
+    Then "Random Target Posting" Must Be Registered In The System
 
 #########################  NEGATIVE TESTS ################################################
 

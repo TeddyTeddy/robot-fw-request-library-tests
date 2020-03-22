@@ -39,7 +39,7 @@ Test Teardown
     "Registered Postings" Are Read
     "Target Postings" Are Read
     "Target Postings" Are Deleted
-    Run Keyword And Ignore Error    "Random Target Posting" Is Deleted
+    "Random Target Posting" Is Deleted
     "Registered Postings" Are Read
     Only "Pre-Set Postings" Are Left In The System
     Set Suite Variable  ${RANDOM_TARGET_POSTING}      ${None}

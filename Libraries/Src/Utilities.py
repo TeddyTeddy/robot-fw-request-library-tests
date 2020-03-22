@@ -69,6 +69,16 @@ def is_match(expected_posting, super_set):
 
 
 @keyword
+def delete_null_title_posting():
+    loader = LibraryLoader.get_instance()  # singleton
+    incomplete_null_title_posting = loader.builtin.get_variable_value("${NULL_TITLE_POSTING}")
+    registered_postings = loader.builtin.get_variable_value("${REGISTERED_POSTINGS}")
+    is_match_found, matched_posting = is_match(expected_posting=incomplete_null_title_posting, super_set=registered_postings)
+    if is_match_found:
+        loader.builtin.run_keyword('Make Delete Request',  matched_posting)  # TODO: Cannot receive DELETE response
+
+
+@keyword
 def is_subset(subset, superset):
     result = True
     for posting in subset:

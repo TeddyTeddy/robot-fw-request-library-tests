@@ -150,6 +150,9 @@ def get_variables():
             {'title': 'Posting 2', 'content': 'Posting 2 content'},
             {'title': 'Posting 3', 'content': 'Posting 3 content'},
         ],
+        'NULL_TITLE_POSTING': {
+            'content': 'only has content, but no title'
+        },
         'POSTINGS_URI': '/api/postings/',
         'OPTIONS_RESPONSE_HEADERS': {
             'Allow': 'GET, POST, HEAD, OPTIONS',

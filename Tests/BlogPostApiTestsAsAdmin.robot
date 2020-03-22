@@ -36,10 +36,11 @@ Test Setup
     Set Suite Variable  ${RANDOM_TARGET_POSTING}      ${None}
 
 Test Teardown
-    "Registered Postings" Are Read
+    "Registered Postings" Are Read  # TODO: Remove this
     "Target Postings" Are Read
     "Target Postings" Are Deleted
     "Random Target Posting" Is Deleted
+    Delete Null Title Posting
     "Registered Postings" Are Read
     Only "Pre-Set Postings" Are Left In The System
     Set Suite Variable  ${RANDOM_TARGET_POSTING}      ${None}
@@ -85,6 +86,12 @@ All Create Responses Have Status Code "400-Bad Request"
     "Target Postings" List Is Not Empty
     ${is_subset} =  Is Subset   subset=${TARGET_POSTINGS}   superset=${INCOMPLETE_TARGET_POSTINGS}
     Should Be True  ${is_subset}
+
+"Null Title Posting" Must Be Registered In The System
+    "Registered Postings" Are Read
+    @{random_target_postings}=    Create List    ${NULL_TITLE_POSTING}
+    ${is_subset} =  Is Subset   subset=${random_target_postings}    superset=${REGISTERED_POSTINGS}
+    Should Be True   ${is_subset}
 
 "Random Target Posting" Must Be Registered In The System
     "Registered Postings" Are Read
@@ -254,6 +261,12 @@ Updating "Random Target Posting" With Missing "content" Field And Modified "titl
     When "Random Target Posting" Is Updated To The System
     Then Update Response Has Status Code 200
     Then "Random Target Posting" Must Be Registered In The System
+
+Creating "Null Title Posting"
+    [Tags]                  CRUD-operations-as-admin     CRUD-success-as-admin
+    When Create Posting  posting=${NULL_TITLE_POSTING}
+    Then Verify Post Response Success Code
+    Then "Null Title Posting" Must Be Registered In The System
 
 #########################  NEGATIVE TESTS ################################################
 

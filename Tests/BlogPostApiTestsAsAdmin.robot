@@ -12,7 +12,7 @@ Test Teardown    Test Teardown
 Test Setup       Test Setup
 
 *** Variables ***
-${REGISTERED_POSTINGS}      A list, set dynamically
+${REGISTERED_POSTINGS}      A list of postings read from the API, set dynamically
 ${POST_RESPONSE}            A response object to POST request, set dynamically
 ${OPTIONS_RESPONSE}         A response object to OPTIONS request, set dynamically
 ${POSTING_SPEC}             A dictionary object, where items are posting fields. Set dynamically
@@ -122,7 +122,7 @@ BlogPostAPI Specification Is Queried
     Set Test Variable   ${OPTIONS_RESPONSE}
 
 "Target Postings" Must Have Been Updated In The System
-    ${is_subset} =  Is Subset   subset=${INCOMPLETE_TARGET_POSTINGS}    superset=${REGISTERED_POSTINGS}
+    ${is_subset} =  Is Subset   subset=${TARGET_POSTINGS}    superset=${REGISTERED_POSTINGS}
     Should Be True   ${is_subset}
 
 Verify Delete Response Success Code

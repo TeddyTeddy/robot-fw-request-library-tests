@@ -83,26 +83,17 @@ def target_postings_are_updated():
     """
     EXPECTED PRECONDITION: Before this method is called, TARGET_POSTINGS must be created (i.e.
     REGISTERED_POSTINGS = PRE_SET_POSTINGS + TARGET_POSTINGS)
-    Note that all the postings in REGISTERED_POSTINGS have all the fields necessary
-    (i.e. title , content, url, id, timestamp fields)
-
-    incomplete_target_postings contain only title & content fields; they do not contain url, id, timestamp fields.
-    Therefore target_postings are incomplete postings that can not be used in a PUT request.
-    However, for each target_posting (aka. tp), there must be a matched_posting in REGISTERED_POSTINGS.
-    With matched_posting, we can make PUT request (i.e. the test call)
+    Note that all the postings in TARGET_POSTINGS have all the fields necessary
+    (i.e. title , content, url, id, timestamp fields) to make a PUT request
     :return: None
     """
     loader = LibraryLoader.get_instance()  # singleton
     target_postings = loader.builtin.get_variable_value("${TARGET_POSTINGS}")
-    registered_postings = loader.builtin.get_variable_value("${REGISTERED_POSTINGS}")
     for tp in target_postings:  # tp: target_posting
-        is_match_found, matched_posting = is_match(expected_posting=tp, super_set=registered_postings)
-        assert is_match_found
-        matched_posting['content'] = 'modified content'
-        # test call:
-        loader.builtin.run_keyword('Make Put Request',  matched_posting)  # TODO: Cannot receive put response
         tp['content'] = 'modified content'
-
+        # test call:
+        loader.builtin.run_keyword('Make Put Request',  tp)  # TODO: Cannot receive put response
+        
     loader.builtin.set_test_variable('${TARGET_POSTINGS}', target_postings)
 
 

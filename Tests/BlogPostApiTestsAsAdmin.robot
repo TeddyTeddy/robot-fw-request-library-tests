@@ -259,10 +259,6 @@ Updating "Random Target Posting" With Missing "content" Field And Modified "titl
 
 Attempting To Delete Non-Existing "Target Postings" Fails
     [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
-    Given "Target Postings" Are Created
-    Given "Target Postings" Are Read
-    Given "Target Postings" Are Deleted
-    Given "Target Postings" List Is Not Empty
     Given "Target Postings" Must Not Be Registered In The System
     When "Target Postings" Are Attempted To Be Deleted
     Then All Delete Responses Have Status Code "404-Not Found"

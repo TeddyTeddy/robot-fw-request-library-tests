@@ -36,7 +36,6 @@ Test Setup
     Set Suite Variable  ${RANDOM_TARGET_POSTING}      ${None}
 
 Test Teardown
-    "Registered Postings" Are Read  # TODO: Remove this
     "Target Postings" Are Read
     "Target Postings" Are Deleted
     "Random Target Posting" Is Deleted

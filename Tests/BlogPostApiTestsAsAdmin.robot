@@ -89,8 +89,8 @@ All Create Responses Have Status Code "400-Bad Request"
 
 "Null Title Posting" Must Be Registered In The System
     "Registered Postings" Are Read
-    @{random_target_postings}=    Create List    ${NULL_TITLE_POSTING}
-    ${is_subset} =  Is Subset   subset=${random_target_postings}    superset=${REGISTERED_POSTINGS}
+    @{null_title_postings}=    Create List    ${NULL_TITLE_POSTING}
+    ${is_subset} =  Is Subset   subset=${null_title_postings}    superset=${REGISTERED_POSTINGS}
     Should Be True   ${is_subset}
 
 "Random Target Posting" Must Be Registered In The System

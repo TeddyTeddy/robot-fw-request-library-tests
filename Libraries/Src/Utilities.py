@@ -3,6 +3,7 @@ from robot.api.deco import keyword
 import re
 import CommonVariables
 from LibraryLoader import LibraryLoader
+from robot.api import logger
 
 
 def validate_url(url):
@@ -42,10 +43,28 @@ def is_match(expected_posting, super_set):
     is_match_found = False
     matched_posting = None
     for p in super_set:
-        is_match_found = p['title'] == expected_posting['title'] and p['content'] == expected_posting['content']
+        titles_match = False
+        contents_match = False
+        title_exists = False
+        content_exists = False
+        if 'title' in p and 'title' in expected_posting:
+            titles_match = p['title'] == expected_posting['title']
+            title_exists = True
+        if 'content' in p and 'content' in expected_posting:
+            contents_match = p['content'] == expected_posting['content']
+            content_exists = True
+        if content_exists and title_exists:
+            is_match_found = contents_match and titles_match
+        elif content_exists:
+            is_match_found = contents_match
+        elif title_exists:
+            is_match_found = titles_match
+        else:
+            is_match_found = False
         if is_match_found:
             matched_posting = p
             break
+
     return is_match_found, matched_posting
 
 

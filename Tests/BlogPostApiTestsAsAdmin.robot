@@ -67,6 +67,12 @@ All Create Responses Have Status Code "400-Bad Request"
     ${is_subset} =  Is Subset   subset=${TARGET_POSTINGS}   superset=${INCOMPLETE_TARGET_POSTINGS}
     Should Be True  ${is_subset}
 
+"Randomly Picked Posting" Must Be Registered In The System
+    "Registered Postings" Are Read
+    @{randomly_picked_postings}=    Create List    ${RANDOMLY_PICKED_POSTING}
+    ${is_subset} =  Is Subset   subset=${randomly_picked_postings}    superset=${REGISTERED_POSTINGS}
+    Should Be True   ${is_subset}
+
 Update Posting
     [Arguments]        ${posting}
     ${PUT_RESPONSE} =   Make Put Request  posting=${posting}
@@ -227,6 +233,7 @@ Updating A Randomly Picked Posting With Missing "title" Field And Modified "cont
         Given "content" Field Is Modified in "Randomly Picked Posting"
     When "Randomly Picked Posting" Is Updated To The System
     Then Update Response Has Status Code 200
+    Then "Randomly Picked Posting" Must Be Registered In The System
     # teardown
     "Target Postings" Are Deleted
     "Registered Postings" Are Read
@@ -244,6 +251,7 @@ Updating A Randomly Picked Posting With Missing "content" Field And Modified "ti
         Given "title" Field Is Modified in "Randomly Picked Posting"
     When "Randomly Picked Posting" Is Updated To The System
     Then Update Response Has Status Code 200
+    Then "Randomly Picked Posting" Must Be Registered In The System
     # teardown
     "Target Postings" Are Deleted
     "Registered Postings" Are Read

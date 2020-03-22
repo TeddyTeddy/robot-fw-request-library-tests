@@ -155,6 +155,12 @@ Update Response Has Status Code 200
 "content" Field Is Modified in "Randomly Picked Posting"
     Set To Dictionary   ${RANDOMLY_PICKED_POSTING}      content=Overwritten in a test
 
+"content" Field Is Removed From "Randomly Picked Posting"
+   Remove From Dictionary      ${RANDOMLY_PICKED_POSTING}       content
+
+"title" Field Is Modified in "Randomly Picked Posting"
+    Set To Dictionary   ${RANDOMLY_PICKED_POSTING}      title=Overwritten in a test
+
 *** Test Cases ***
 #########################  POSITIVE TESTS ################################################
 Checking BlogPostAPI specification
@@ -226,6 +232,22 @@ Updating A Randomly Picked Posting With Missing "title" Field And Modified "cont
     "Registered Postings" Are Read
     Only "Pre-Set Postings" Are Left In The System
 
+Updating A Randomly Picked Posting With Missing "content" Field And Modified "title" Field
+    [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
+    Given "Pre-Set Postings" Are Cached
+    Given "Target Postings" Must Not Be Registered In The System
+    Given "Target Postings" Are Created
+    Given "Target Postings" Are Read
+    Given "Target Postings" Must Be Registered In The System
+    Given "Randomly Picked Posting" Is Cached
+        Given "content" Field Is Removed From "Randomly Picked Posting"
+        Given "title" Field Is Modified in "Randomly Picked Posting"
+    When "Randomly Picked Posting" Is Updated To The System
+    Then Update Response Has Status Code 200
+    # teardown
+    "Target Postings" Are Deleted
+    "Registered Postings" Are Read
+    Only "Pre-Set Postings" Are Left In The System
 
 #########################  NEGATIVE TESTS ################################################
 

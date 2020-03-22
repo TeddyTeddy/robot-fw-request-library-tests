@@ -1,4 +1,5 @@
 .idea/
 venv/
 Libraries/Src/__pycache__/
+.vscode/
 

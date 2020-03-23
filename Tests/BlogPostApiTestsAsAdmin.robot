@@ -46,8 +46,8 @@ Delete Every Posting Except "Pre-Set Postings"
     Delete Postings  candidate_postings_to_delete=${REGISTERED_POSTINGS}  postings_to_skip=${PRE_SET_POSTINGS}
 
 "Registered Postings" Must Comply With "Posting Spec"
-    Log     ${REGISTERED_POSTINGS}
-    Log     ${POSTING_SPEC}
+    Log     ${REGISTERED_POSTINGS}   # TODO: remove
+    Log     ${POSTING_SPEC}          # TODO: remove
     Verify All Postings     postings_to_verify=${REGISTERED_POSTINGS}   posting_spec=${POSTING_SPEC}
 
 Create Posting
@@ -220,6 +220,12 @@ Update Response Has Status Code 200
 "Null Title And Null Content Posting" Is Created
     Create Posting  posting=${NULL_TITLE_NULL_CONTENT_POSTING}
 
+Bad Read Request Is Made With Invalid URI
+    ${GET_RESPONSE} =   Make Bad Get Request
+    Set Test Variable   ${GET_RESPONSE}
+
+Read Response Should Be "404-Not Found"
+    Should Be True   $GET_RESPONSE.status_code == 404
 
 *** Test Cases ***
 #########################  POSITIVE TESTS ################################################
@@ -336,6 +342,12 @@ Attempting To Update "Non-Existing Postings" Fails
     Then "Registered Postings" Are Read
     Then "Registered Postings" Must Comply With "Posting Spec"
     Then Only "Pre-Set Postings" Are Left In The System
+
+Attempting To Read Postings with Invalid URI
+    [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
+    When Bad Read Request Is Made With Invalid URI
+    Then Read Response Should Be "404-Not Found"
+
 
 
 

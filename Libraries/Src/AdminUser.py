@@ -19,6 +19,7 @@ class AdminUser:
         self._session_alias = self._loader.builtin.get_variable_value("${ADMIN_SESSION}")
         self._api_base_url = self._loader.builtin.get_variable_value("${API_BASE_URL}")
         self._postings_uri = self._loader.builtin.get_variable_value("${POSTINGS_URI}")
+        self._invalid_postings_uri = self._loader.builtin.get_variable_value("${INVALID_POSTINGS_URI}")
         self._expected_options_response_headers = self._loader.builtin.get_variable_value("${OPTIONS_RESPONSE_HEADERS}")
 
         self._loader.rl.create_session(alias=self._session_alias, url=self._api_base_url, cookies={}, verify=True)
@@ -43,6 +44,11 @@ class AdminUser:
     @keyword
     def make_get_request(self):
         return self._loader.rl.get_request(alias=self._session_alias, uri=self._postings_uri,
+                                           headers=self._admin['GET_REQUEST_HEADERS'])
+
+    @keyword
+    def make_bad_get_request(self):
+        return self._loader.rl.get_request(alias=self._session_alias, uri=self._invalid_postings_uri,
                                            headers=self._admin['GET_REQUEST_HEADERS'])
 
     @keyword

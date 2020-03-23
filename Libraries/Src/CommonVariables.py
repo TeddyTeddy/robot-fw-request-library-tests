@@ -162,6 +162,7 @@ def get_variables():
         'OVERWRITTEN_TITLE': 'Overwritten title',
         'OVERWRITTEN_CONTENT': 'Overwritten content',
         'POSTINGS_URI': '/api/postings/',
+        'BAD_POSTINGS_URI': '/api/invalid/uri',
         'OPTIONS_RESPONSE_HEADERS': {
             'Allow': 'GET, POST, HEAD, OPTIONS',
             'Vary': 'Accept, Cookie',

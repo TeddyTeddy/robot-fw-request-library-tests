@@ -53,6 +53,10 @@ def is_match(expected_posting, super_set):
         if 'content' in p and 'content' in expected_posting:
             contents_match = p['content'] == expected_posting['content']
             content_exists = True
+        if 'content' in p and p['content'] is None and 'content' not in expected_posting:
+            contents_match = content_exists = True
+        if 'title' in p and p['title'] is None and 'title' not in expected_posting:
+            titles_match = title_exists = True
         if content_exists and title_exists:
             is_match_found = contents_match and titles_match
         elif content_exists:

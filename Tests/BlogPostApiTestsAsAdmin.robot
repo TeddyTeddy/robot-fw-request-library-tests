@@ -97,6 +97,9 @@ Must Be Registered In The System
 "Null Content Posting" Must Be Registered In The System
     Must Be Registered In The System    posting=${NULL_CONTENT_POSTING}
 
+"Null Title And Null Content Posting" Must Be Registered In The System
+    Must Be Registered In The System    posting=${NULL_TITLE_NULL_CONTENT_POSTING}
+
 "Random Target Posting" Must Be Registered In The System
     "Registered Postings" Are Read
     @{random_target_postings}=    Create List    ${RANDOM_TARGET_POSTING}
@@ -203,6 +206,10 @@ Update Response Has Status Code 200
 "Null Content Posting" Is Created
     Create Posting  posting=${NULL_CONTENT_POSTING}
 
+"Null Title And Null Content Posting" Is Created
+    Create Posting  posting=${NULL_TITLE_NULL_CONTENT_POSTING}
+
+
 *** Test Cases ***
 #########################  POSITIVE TESTS ################################################
 Checking BlogPostAPI specification
@@ -283,6 +290,12 @@ Creating "Null Content Posting"
     When "Null Content Posting" Is Created
     Then Verify Post Response Success Code
     Then "Null Content Posting" Must Be Registered In The System
+
+Creating "Null Title And Null Content Posting"
+    [Tags]                  CRUD-operations-as-admin     CRUD-success-as-admin
+    When "Null Title And Null Content Posting" Is Created
+    Then Verify Post Response Success Code
+    Then "Null Title And Null Content Posting" Must Be Registered In The System
 
 #########################  NEGATIVE TESTS ################################################
 

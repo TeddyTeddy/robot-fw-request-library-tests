@@ -156,6 +156,9 @@ def get_variables():
         'NULL_CONTENT_POSTING': {
 	        "title": "Null Content Posting"
         },
+        'NULL_TITLE_NULL_CONTENT_POSTING': {
+
+        },
         'OVERWRITTEN_TITLE': 'Overwritten title',
         'OVERWRITTEN_CONTENT': 'Overwritten content',
         'POSTINGS_URI': '/api/postings/',

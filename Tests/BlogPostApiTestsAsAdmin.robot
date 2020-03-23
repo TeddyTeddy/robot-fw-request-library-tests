@@ -205,7 +205,7 @@ Update Response Has Status Code 200
 
 "Null Content Posting" Is Created
     Create Posting  posting=${NULL_CONTENT_POSTING}
-    
+
 *** Test Cases ***
 #########################  POSITIVE TESTS ################################################
 Checking BlogPostAPI specification
@@ -286,6 +286,7 @@ Creating "Null Content Posting"
     When "Null Content Posting" Is Created
     Then Verify Post Response Success Code
     Then "Null Content Posting" Must Be Registered In The System
+
 
 #########################  NEGATIVE TESTS ################################################
 

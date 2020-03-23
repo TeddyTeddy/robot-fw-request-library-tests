@@ -287,7 +287,6 @@ Creating "Null Content Posting"
     Then Verify Post Response Success Code
     Then "Null Content Posting" Must Be Registered In The System
 
-
 #########################  NEGATIVE TESTS ################################################
 
 Attempting To Delete Non-Existing "Target Postings" Fails

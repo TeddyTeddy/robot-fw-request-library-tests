@@ -75,6 +75,17 @@ Verify Post Response Success Code
 All Create Responses Have Status Code "400-Bad Request"
     Should Be True      ${ALL_CREATE_ATTEMPTS_FAILED_WITH_400}
 
+Non-Registered "Target Postings" Are Attempted To Be Updated
+    ${ALL_UPDATE_ATTEMPTS_FAILED_WITH_404} =    Set Variable    ${True}
+    FOR     ${p}    IN  @{TARGET_POSTINGS}
+        Update Posting     posting=${p}
+        ${ALL_UPDATE_ATTEMPTS_FAILED_WITH_404} =    Evaluate    $ALL_UPDATE_ATTEMPTS_FAILED_WITH_404 and $PUT_RESPONSE.status_code==404
+    END
+    Set Test Variable    ${ALL_UPDATE_ATTEMPTS_FAILED_WITH_404}
+
+All Update Responses Have Status Code "404-Not-Found"
+    Should Be True      ${ALL_UPDATE_ATTEMPTS_FAILED_WITH_404}
+
 "Target Postings" List Is Not Empty
     ${is_empty} =  Evaluate     len($TARGET_POSTINGS) == 0
     Should Not Be True  ${is_empty}
@@ -313,6 +324,18 @@ Attempting To Create Already Created "Target Postings" Fails
     When "Target Postings" Are Attempted To Be Re-Created
     Then All Create Responses Have Status Code "400-Bad Request"
 
+Attempting To Update "Non-Existing Postings" Fails
+    [Tags]                  CRUD-operations-as-admin     CRUD-failure-as-admin
+    Given "Target Postings" Must Not Be Registered In The System
+    Given "Target Postings" Are Created
+    Given "Target Postings" Are Read
+    Given "Target Postings" Are Deleted
+    When Non-Registered "Target Postings" Are Attempted To Be Updated
+    Then All Update Responses Have Status Code "404-Not-Found"
+    Then "Target Postings" Must Not Be Registered In The System
+    Then "Registered Postings" Are Read
+    Then "Registered Postings" Must Comply With "Posting Spec"
+    Then Only "Pre-Set Postings" Are Left In The System
 
 
 

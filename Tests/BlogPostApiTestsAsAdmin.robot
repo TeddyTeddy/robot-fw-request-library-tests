@@ -200,6 +200,9 @@ Update Response Has Status Code 200
 "title" Field Is Modified in "Random Target Posting"
     Set To Dictionary   ${RANDOM_TARGET_POSTING}      title=Overwritten in a test
 
+"Null Title Posting" Is Created
+    Create Posting  posting=${NULL_TITLE_POSTING}
+    
 *** Test Cases ***
 #########################  POSITIVE TESTS ################################################
 Checking BlogPostAPI specification
@@ -271,7 +274,7 @@ Updating "Random Target Posting" With Missing "content" Field And Modified "titl
 
 Creating "Null Title Posting"
     [Tags]                  CRUD-operations-as-admin     CRUD-success-as-admin
-    When Create Posting  posting=${NULL_TITLE_POSTING}
+    When "Null Title Posting" Is Created
     Then Verify Post Response Success Code
     Then "Null Title Posting" Must Be Registered In The System
 

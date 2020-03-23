@@ -36,17 +36,14 @@ Test Setup
     Set Suite Variable  ${RANDOM_TARGET_POSTING}      ${None}
 
 Test Teardown
-    "Target Postings" Are Read
-    "Target Postings" Are Deleted
-    "Random Target Posting" Is Deleted
-    Delete Matching Posting  ${NULL_CONTENT_POSTING}
-    Delete Matching Posting  ${NULL_TITLE_POSTING}
+    Delete Every Posting Except "Pre-Set Postings"
     "Registered Postings" Are Read
     Only "Pre-Set Postings" Are Left In The System
     Set Suite Variable  ${RANDOM_TARGET_POSTING}      ${None}
 
-"Random Target Posting" Is Deleted
-    Run Keyword If  $RANDOM_TARGET_POSTING is not None    Delete Posting  ${RANDOM_TARGET_POSTING}
+Delete Every Posting Except "Pre-Set Postings"
+    "Registered Postings" Are Read
+    Delete Postings  candidate_postings_to_delete=${REGISTERED_POSTINGS}  postings_to_skip=${PRE_SET_POSTINGS}
 
 "Registered Postings" Must Comply With "Posting Spec"
     Log     ${REGISTERED_POSTINGS}

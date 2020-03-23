@@ -126,3 +126,10 @@ def is_none_found(subset,  superset):
             break
     return result
 
+
+@keyword
+def delete_postings(candidate_postings_to_delete,  postings_to_skip):
+    loader = LibraryLoader.get_instance()  # singleton
+    for p in candidate_postings_to_delete:
+        if p not in postings_to_skip:
+            loader.builtin.run_keyword('Make Delete Request',  p)  # TODO: Cannot receive DELETE response

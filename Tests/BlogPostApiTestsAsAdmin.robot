@@ -46,8 +46,6 @@ Delete Every Posting Except "Pre-Set Postings"
     Delete Postings  candidate_postings_to_delete=${REGISTERED_POSTINGS}  postings_to_skip=${PRE_SET_POSTINGS}
 
 "Registered Postings" Must Comply With "Posting Spec"
-    Log     ${REGISTERED_POSTINGS}   # TODO: remove
-    Log     ${POSTING_SPEC}          # TODO: remove
     Verify All Postings     postings_to_verify=${REGISTERED_POSTINGS}   posting_spec=${POSTING_SPEC}
 
 Create Posting

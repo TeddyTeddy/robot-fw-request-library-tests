@@ -39,7 +39,8 @@ Test Teardown
     "Target Postings" Are Read
     "Target Postings" Are Deleted
     "Random Target Posting" Is Deleted
-    Delete Null Title Posting
+    Delete Matching Posting  ${NULL_CONTENT_POSTING}
+    Delete Matching Posting  ${NULL_TITLE_POSTING}
     "Registered Postings" Are Read
     Only "Pre-Set Postings" Are Left In The System
     Set Suite Variable  ${RANDOM_TARGET_POSTING}      ${None}
@@ -86,11 +87,18 @@ All Create Responses Have Status Code "400-Bad Request"
     ${is_subset} =  Is Subset   subset=${TARGET_POSTINGS}   superset=${INCOMPLETE_TARGET_POSTINGS}
     Should Be True  ${is_subset}
 
-"Null Title Posting" Must Be Registered In The System
+Must Be Registered In The System
+    [Arguments]     ${posting}
     "Registered Postings" Are Read
-    @{null_title_postings}=    Create List    ${NULL_TITLE_POSTING}
-    ${is_subset} =  Is Subset   subset=${null_title_postings}    superset=${REGISTERED_POSTINGS}
+    @{expected_postings}=    Create List    ${posting}
+    ${is_subset} =  Is Subset   subset=${expected_postings}    superset=${REGISTERED_POSTINGS}
     Should Be True   ${is_subset}
+
+"Null Title Posting" Must Be Registered In The System
+    Must Be Registered In The System    posting=${NULL_TITLE_POSTING}
+
+"Null Content Posting" Must Be Registered In The System
+    Must Be Registered In The System    posting=${NULL_CONTENT_POSTING}
 
 "Random Target Posting" Must Be Registered In The System
     "Registered Postings" Are Read
@@ -267,6 +275,12 @@ Creating "Null Title Posting"
     Then Verify Post Response Success Code
     Then "Null Title Posting" Must Be Registered In The System
 
+Creating "Null Content Posting"
+    [Tags]                  CRUD-operations-as-admin     CRUD-success-as-admin
+    When Create Posting  posting=${NULL_CONTENT_POSTING}
+    Then Verify Post Response Success Code
+    Then "Null Content Posting" Must Be Registered In The System
+
 #########################  NEGATIVE TESTS ################################################
 
 Attempting To Delete Non-Existing "Target Postings" Fails
@@ -282,6 +296,7 @@ Attempting To Create Already Created "Target Postings" Fails
     Given "Target Postings" Must Be Registered In The System
     When "Target Postings" Are Attempted To Be Re-Created
     Then All Create Responses Have Status Code "400-Bad Request"
+
 
 
 

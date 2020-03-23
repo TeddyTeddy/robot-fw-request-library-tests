@@ -192,13 +192,13 @@ Update Response Has Status Code 200
     Should Be True      ${update_response_has_200}
 
 "content" Field Is Modified in "Random Target Posting"
-    Set To Dictionary   ${RANDOM_TARGET_POSTING}      content=Overwritten in a test
+    Set To Dictionary   ${RANDOM_TARGET_POSTING}      content=${OVERWRITTEN_CONTENT}
 
 "content" Field Is Removed From "Random Target Posting"
    Remove From Dictionary      ${RANDOM_TARGET_POSTING}       content
 
 "title" Field Is Modified in "Random Target Posting"
-    Set To Dictionary   ${RANDOM_TARGET_POSTING}      title=Overwritten in a test
+    Set To Dictionary   ${RANDOM_TARGET_POSTING}      title=${OVERWRITTEN_TITLE}
 
 "Null Title Posting" Is Created
     Create Posting  posting=${NULL_TITLE_POSTING}

@@ -21,7 +21,7 @@ ${PRE_SET_POSTINGS}         A list of pre-existing postings in the system before
 ${RANDOM_TARGET_POSTING}    A dynamically picked target posting during test run. Set to None at the beginning & end of every test
 
 # To Run
-# python -m robot  --pythonpath Libraries/Src --noncritical failure-expected -d Results/ Tests/BlogPostApiTestsAsAdmin.robot
+# python -m robot  --pythonpath Libraries/Src -d Results/ Tests/BlogPostApiTestsAsAdmin.robot
 
 *** Keywords ***
 Suite Setup

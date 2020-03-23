@@ -202,6 +202,9 @@ Update Response Has Status Code 200
 
 "Null Title Posting" Is Created
     Create Posting  posting=${NULL_TITLE_POSTING}
+
+"Null Content Posting" Is Created
+    Create Posting  posting=${NULL_CONTENT_POSTING}
     
 *** Test Cases ***
 #########################  POSITIVE TESTS ################################################
@@ -280,7 +283,7 @@ Creating "Null Title Posting"
 
 Creating "Null Content Posting"
     [Tags]                  CRUD-operations-as-admin     CRUD-success-as-admin
-    When Create Posting  posting=${NULL_CONTENT_POSTING}
+    When "Null Content Posting" Is Created
     Then Verify Post Response Success Code
     Then "Null Content Posting" Must Be Registered In The System
 

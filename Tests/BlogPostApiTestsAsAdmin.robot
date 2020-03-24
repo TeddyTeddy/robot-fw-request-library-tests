@@ -71,9 +71,6 @@ Non-Registered "Target Postings" Are Attempted To Be Updated
     END
     Set Test Variable    ${ALL_UPDATE_ATTEMPTS_FAILED_WITH_404}
 
-"Registered Postings" Must Comply With "Posting Spec"
-    Verify All Postings     postings_to_verify=${REGISTERED_POSTINGS}   posting_spec=${POSTING_SPEC}
-
 All Update Responses Have Status Code "404-Not-Found"
     Should Be True      ${ALL_UPDATE_ATTEMPTS_FAILED_WITH_404}
 

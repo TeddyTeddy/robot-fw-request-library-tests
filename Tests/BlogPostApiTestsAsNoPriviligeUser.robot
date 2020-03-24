@@ -76,6 +76,10 @@ Checking BlogPostAPI specification
     When BlogPostAPI Specification Is Queried
     Then BlogPostAPI Specification Is Correct
 
+Querying & Verifying Pre-Set Postings
+    [Tags]              smoke-as-NoPriviligeUser
+    When "Registered Postings" Are Read
+    Then "Registered Postings" Must Comply With "Posting Spec"
 
 
 

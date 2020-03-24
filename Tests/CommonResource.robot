@@ -10,3 +10,5 @@ ${PRE_SET_POSTINGS}         A list of pre-existing postings in the system before
 ${RANDOM_TARGET_POSTING}    A dynamically picked target posting during test run. Set to None at the beginning & end of every test
 
 *** Keywords ***
+"Registered Postings" Must Comply With "Posting Spec"
+    Verify All Postings     postings_to_verify=${REGISTERED_POSTINGS}   posting_spec=${POSTING_SPEC}

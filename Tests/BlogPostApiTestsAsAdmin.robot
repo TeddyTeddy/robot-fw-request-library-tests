@@ -6,6 +6,7 @@ Documentation    This test suite uses Admin request headers to test BlogPostAPI.
 Metadata         Version    1.0
 Metadata         OS         Linux
 Resource         ../Libraries/Src/CommonLibraryImport.robot
+Library          AdminUser
 Suite Setup      Suite Setup
 Suite Teardown   Suite Teardown
 Test Teardown    Test Teardown

@@ -20,7 +20,7 @@ class AdminUser:
         self._api_base_url = self._loader.builtin.get_variable_value("${API_BASE_URL}")
         self._postings_uri = self._loader.builtin.get_variable_value("${POSTINGS_URI}")
         self._invalid_postings_uri = self._loader.builtin.get_variable_value("${INVALID_POSTINGS_URI}")
-        self._expected_options_response_headers = self._loader.builtin.get_variable_value("${OPTIONS_RESPONSE_HEADERS}")
+        self._expected_options_response_headers = self._admin["OPTIONS_RESPONSE_HEADERS"]
 
         self._loader.rl.create_session(alias=self._session_alias, url=self._api_base_url, cookies={}, verify=True)
 

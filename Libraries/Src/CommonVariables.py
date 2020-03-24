@@ -144,6 +144,11 @@ def get_variables():
                     }
                 }
             },
+            'OPTIONS_RESPONSE_HEADERS': {
+                'Allow': 'GET, POST, HEAD, OPTIONS',
+                'Vary': 'Accept, Cookie',
+                'Content-Type': 'application/json',
+            },
         },
         'INCOMPLETE_TARGET_POSTINGS': [
             {'title': 'Posting 1', 'content': 'Posting 1 content'},
@@ -163,11 +168,6 @@ def get_variables():
         'OVERWRITTEN_CONTENT': 'Overwritten content',
         'POSTINGS_URI': '/api/postings/',
         'INVALID_POSTINGS_URI': '/api/invalid/uri',
-        'OPTIONS_RESPONSE_HEADERS': {
-            'Allow': 'GET, POST, HEAD, OPTIONS',
-            'Vary': 'Accept, Cookie',
-            'Content-Type': 'application/json',
-        },
     }
     return variables
 

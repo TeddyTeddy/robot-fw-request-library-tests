@@ -47,6 +47,7 @@ def is_match(expected_posting, super_set):
         contents_match = False
         title_exists = False
         content_exists = False
+
         if 'title' in p and 'title' in expected_posting:
             titles_match = p['title'] == expected_posting['title']
             title_exists = True
@@ -57,6 +58,7 @@ def is_match(expected_posting, super_set):
             contents_match = content_exists = True
         if 'title' in p and p['title'] is None and 'title' not in expected_posting:
             titles_match = title_exists = True
+
         if content_exists and title_exists:
             is_match_found = contents_match and titles_match
         elif content_exists:
@@ -65,6 +67,7 @@ def is_match(expected_posting, super_set):
             is_match_found = titles_match
         else:
             is_match_found = False
+
         if is_match_found:
             matched_posting = p
             break
@@ -78,7 +81,7 @@ def delete_matching_posting(iptd):    # iptd: incompleted posting to delete
     registered_postings = loader.builtin.get_variable_value("${REGISTERED_POSTINGS}")
     is_match_found, matched_posting = is_match(expected_posting=iptd, super_set=registered_postings)
     if is_match_found:
-        loader.builtin.run_keyword('Make Delete Request',  matched_posting)  # TODO: Cannot receive DELETE response
+        loader.builtin.run_keyword('AdminUser.Make Delete Request',  matched_posting)  # TODO: Cannot receive DELETE response
 
 
 @keyword

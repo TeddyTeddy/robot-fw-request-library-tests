@@ -150,6 +150,57 @@ def get_variables():
                 'Content-Type': 'application/json',
             },
         },
+        'NO_PRIVILIGE_USER': {
+            'OPTIONS_REQUEST_HEADERS': {
+                'Host': 'glacial-earth-31542.herokuapp.com',
+                'Connection': 'keep-alive',
+                'Accept': 'application/json',
+                'Sec-Fetch-Dest': 'empty',
+                'X-Requested-With': 'XMLHttpRequest',
+                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                'Origin': 'https://glacial-earth-31542.herokuapp.com',
+                'Sec-Fetch-Site': 'same-origin',
+                'Sec-Fetch-Mode': 'cors',
+                'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/',
+                'Accept-Encoding': 'gzip, deflate, br',
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Cookie': 'csrftoken=RHyE3NK61KZ3moRSwU27V39doEwRonc1F96Grq7MjsuqhSOY1LjGvVD9pQItGqgw',
+            },
+            'OPTIONS_RESPONSE_HEADERS': {
+                'Allow': 'GET, POST, HEAD, OPTIONS',
+                'Vary': 'Accept, Cookie',
+                'Content-Type': 'application/json',
+            },
+            'EXPECTED_API_SPEC': {
+                "name": "Blog Post Api",
+                "description": "",
+                "renders": [
+                    "application/json",
+                    "text/html"
+                ],
+                "parses": [
+                    "application/json",
+                    "application/x-www-form-urlencoded",
+                    "multipart/form-data"
+                ]
+            },
+            'GET_REQUEST_HEADERS': {
+                'Host': 'glacial-earth-31542.herokuapp.com',
+                'Connection': 'keep-alive',
+                'Cache-Control': 'max-age=0',
+                'Upgrade-Insecure-Requests': '1',
+                'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36',
+                'Sec-Fetch-Dest': 'document',
+                'Accept': 'application/json',  # Note: this is different from what browser sends to server.
+                'Sec-Fetch-Site': 'none',
+                'Sec-Fetch-Mode': 'navigate',
+                'Sec-Fetch-User': '?1',
+                'Accept-Encoding': 'gzip, deflate, br',
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Cookie': 'csrftoken=RHyE3NK61KZ3moRSwU27V39doEwRonc1F96Grq7MjsuqhSOY1LjGvVD9pQItGqgw',
+            },            
+        },
         'INCOMPLETE_TARGET_POSTINGS': [
             {'title': 'Posting 1', 'content': 'Posting 1 content'},
             {'title': 'Posting 2', 'content': 'Posting 2 content'},

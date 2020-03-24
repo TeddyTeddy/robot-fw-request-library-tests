@@ -7,19 +7,11 @@ Metadata         Version    1.0
 Metadata         OS         Linux
 Resource         ../Libraries/Src/CommonLibraryImport.robot
 Library          AdminUser
+Resource         CommonResource.robot
 Suite Setup      Suite Setup
 Suite Teardown   Suite Teardown
 Test Teardown    Test Teardown
 Test Setup       Test Setup
-
-*** Variables ***
-${REGISTERED_POSTINGS}      A list of postings read from the API, set dynamically
-${POST_RESPONSE}            A response object to POST request, set dynamically
-${OPTIONS_RESPONSE}         A response object to OPTIONS request, set dynamically
-${POSTING_SPEC}             A dictionary object, where items are posting fields. Set dynamically
-${DELETE_RESPONSE}          A response object to DELETE request, set dynamically
-${PRE_SET_POSTINGS}         A list of pre-existing postings in the system before tests with the tag 'CRUD-operations-as-admin' run
-${RANDOM_TARGET_POSTING}    A dynamically picked target posting during test run. Set to None at the beginning & end of every test
 
 # To Run
 # python -m robot  --pythonpath Libraries/Src -d Results/ Tests/BlogPostApiTestsAsAdmin.robot
@@ -45,9 +37,6 @@ Test Teardown
 Delete Every Posting Except "Pre-Set Postings"
     "Registered Postings" Are Read
     Delete Postings  candidate_postings_to_delete=${REGISTERED_POSTINGS}  postings_to_skip=${PRE_SET_POSTINGS}
-
-"Registered Postings" Must Comply With "Posting Spec"
-    Verify All Postings     postings_to_verify=${REGISTERED_POSTINGS}   posting_spec=${POSTING_SPEC}
 
 Create Posting
     [Arguments]       ${posting}
@@ -81,6 +70,9 @@ Non-Registered "Target Postings" Are Attempted To Be Updated
         ${ALL_UPDATE_ATTEMPTS_FAILED_WITH_404} =    Evaluate    $ALL_UPDATE_ATTEMPTS_FAILED_WITH_404 and $PUT_RESPONSE.status_code==404
     END
     Set Test Variable    ${ALL_UPDATE_ATTEMPTS_FAILED_WITH_404}
+
+"Registered Postings" Must Comply With "Posting Spec"
+    Verify All Postings     postings_to_verify=${REGISTERED_POSTINGS}   posting_spec=${POSTING_SPEC}
 
 All Update Responses Have Status Code "404-Not-Found"
     Should Be True      ${ALL_UPDATE_ATTEMPTS_FAILED_WITH_404}

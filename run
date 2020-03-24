@@ -1,0 +1,1 @@
+python -m robot  --pythonpath Libraries/Src -d Results/ Tests/BlogPostApiTestsAsAdmin.robot	Tests/BlogPostApiTestsAsNoPriviligeUser.robot

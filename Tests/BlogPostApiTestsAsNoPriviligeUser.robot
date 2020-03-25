@@ -128,6 +128,12 @@ Delete Posting
 All Delete Responses Must Have Status Code "401-Unauthorized"
     Should Be True  ${ALL_DELETE_ATTEMPTS_FAILED_WITH_401}
 
+Bad Read Request Is Made With Invalid URI
+    ${GET_RESPONSE} =   NoPriviligeUser.Make Bad Get Request
+    Set Test Variable   ${GET_RESPONSE}
+
+Read Response Should Be "404-Not Found"
+    Should Be True   $GET_RESPONSE.status_code == 404
 
 *** Test Cases ***
 #########################  POSITIVE TESTS ################################################
@@ -162,6 +168,9 @@ Attempting To Delete "Pre-Set Postings" Fails
     When "Pre-Set Postings" Are Attempted To Be Deleted
     Then All Delete Responses Must Have Status Code "401-Unauthorized"
 
-
+Attempting To Read Postings with Invalid URI Fails
+    [Tags]                  CRUD-operations-as-NoPriviligeUser     CRUD-failure-as-NoPriviligeUser
+    When Bad Read Request Is Made With Invalid URI
+    Then Read Response Should Be "404-Not Found"
 
 

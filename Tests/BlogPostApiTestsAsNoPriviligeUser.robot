@@ -1,10 +1,10 @@
 *** Settings ***
 Documentation    This test suite uses NoPriviligeUser's request headers to test BlogPostAPI.
-...              For a NoPriviligeUser, BlogPostAPI provides GET, POST methods
-...              as well as OPTIONS method. Note that  PUT and DELETE methods are not supported.
-...              Therefore, we can make Create but we cannot Delete as NoPriviligeUser.
-...              Since we do Create in this test suite, and we want to ensure that sytem remains
-...              intact, we use AdminUser's rights to Delete in Test Teardown.
+...              For a NoPriviligeUser, BlogPostAPI provides GET methods
+...              as well as OPTIONS method. Note that  POST,PUT and DELETE methods are not supported.
+...              Therefore, we can not make Create nor we cannot Delete as NoPriviligeUser.
+...              In any way, to be %100 sure that sytem remains
+...              intact, we use AdminUser's rights to Delete "Target Postings" in Test Teardown.
 ...              The URL of the API is:
 ...              https://glacial-earth-31542.herokuapp.com/api/postings/
 Metadata         Version    1.0
@@ -30,7 +30,7 @@ Suite Teardown
     Delete All Sessions
 
 Test Setup
-    "Target Postings" Are Deleted  # from previous suite run, we might have INCOMPLETE_TARGET_POSTINGS in the system
+    "Target Postings" Are Deleted
     "Pre-Set Postings" Are Cached
     Set Suite Variable  ${RANDOM_TARGET_POSTING}      ${None}
 
@@ -96,6 +96,39 @@ Only "Pre-Set Postings" Are Left In The System
 All Create Responses Must Have Status Code "401-Unauthorized"
     Should Be True  ${ALL_CREATE_ATTEMPTS_FAILED_WITH_401}
 
+Update Posting
+    [Arguments]        ${posting}
+    ${PUT_RESPONSE} =   NoPriviligeUser.Make Put Request  posting=${posting}
+    Set Test Variable   ${PUT_RESPONSE}
+
+"Pre-Set Postings" Are Attempted To Be Updated
+    ${ALL_UPDATE_ATTEMPTS_FAILED_WITH_401} =     Set Variable  ${True}
+    FOR     ${ptu}    IN  @{PRE_SET_POSTINGS}  # ptu: posting_to_update
+        Update Posting    posting=${ptu}
+        ${ALL_CREATE_ATTEMPTS_FAILED_WITH_401} =     Evaluate    $ALL_UPDATE_ATTEMPTS_FAILED_WITH_401 and $PUT_RESPONSE.status_code==401
+    END
+    Set Test Variable   ${ALL_UPDATE_ATTEMPTS_FAILED_WITH_401}
+
+All Update Responses Must Have Status Code "401-Unauthorized"
+    Should Be True  ${ALL_UPDATE_ATTEMPTS_FAILED_WITH_401}
+
+Delete Posting
+    [Arguments]     ${posting}
+    ${DELETE_RESPONSE} =     NoPriviligeUser.Make Delete Request    posting=${posting}
+    Set Test Variable       ${DELETE_RESPONSE}
+
+"Pre-Set Postings" Are Attempted To Be Deleted
+    ${ALL_DELETE_ATTEMPTS_FAILED_WITH_401} =     Set Variable  ${True}
+    FOR     ${ptd}    IN  @{PRE_SET_POSTINGS}  # ptu: posting_to_delete
+        Delete Posting    posting=${ptd}
+        ${ALL_DELETE_ATTEMPTS_FAILED_WITH_401} =     Evaluate    $ALL_DELETE_ATTEMPTS_FAILED_WITH_401 and $DELETE_RESPONSE.status_code==401
+    END
+    Set Test Variable   ${ALL_DELETE_ATTEMPTS_FAILED_WITH_401}
+
+All Delete Responses Must Have Status Code "401-Unauthorized"
+    Should Be True  ${ALL_DELETE_ATTEMPTS_FAILED_WITH_401}
+
+
 *** Test Cases ***
 #########################  POSITIVE TESTS ################################################
 Checking BlogPostAPI specification
@@ -119,8 +152,15 @@ Attempting To Create "Target Postings" Fails
     Then "Registered Postings" Must Comply With "Posting Spec"
     Then Only "Pre-Set Postings" Are Left In The System
 
+Attempting To Update "Pre-Set Postings" Fails
+    [Tags]              CRUD-operations-as-NoPriviligeUser    CRUD-failure-as-NoPriviligeUser
+    When "Pre-Set Postings" Are Attempted To Be Updated
+    Then All Update Responses Must Have Status Code "401-Unauthorized"
 
-
+Attempting To Delete "Pre-Set Postings" Fails
+    [Tags]              CRUD-operations-as-NoPriviligeUser    CRUD-failure-as-NoPriviligeUser
+    When "Pre-Set Postings" Are Attempted To Be Deleted
+    Then All Delete Responses Must Have Status Code "401-Unauthorized"
 
 
 

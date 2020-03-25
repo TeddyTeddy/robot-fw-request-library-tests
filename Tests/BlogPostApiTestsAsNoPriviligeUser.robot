@@ -30,19 +30,15 @@ Suite Teardown
     Delete All Sessions
 
 Test Setup
-    Delete Every Posting Except "Pre-Set Postings"  # from previous suite run, we have INCOMPLETE_TARGET_POSTINGS in the system
+    "Target Postings" Are Deleted  # from previous suite run, we might have INCOMPLETE_TARGET_POSTINGS in the system
     "Pre-Set Postings" Are Cached
     Set Suite Variable  ${RANDOM_TARGET_POSTING}      ${None}
 
 Test Teardown
-    Delete Every Posting Except "Pre-Set Postings"
+    "Target Postings" Are Deleted
     "Registered Postings" Are Read
     Only "Pre-Set Postings" Are Left In The System
     Set Suite Variable  ${RANDOM_TARGET_POSTING}      ${None}
-
-Delete Every Posting Except "Pre-Set Postings"
-    "Registered Postings" Are Read
-    "Target Postings" Are Deleted
 
 "Registered Postings" Are Read
     ${GET_RESPONSE} =  NoPriviligeUser.Make Get Request
@@ -58,6 +54,7 @@ BlogPostAPI Specification Is Queried
     Set Test Variable   ${OPTIONS_RESPONSE}
 
 "Target Postings" Are Deleted
+    "Registered Postings" Are Read
     FOR     ${iptd}    IN  @{INCOMPLETE_TARGET_POSTINGS}  # iptd: incomplete_posting_to_delete
         Delete Matching Posting    ${iptd}
     END

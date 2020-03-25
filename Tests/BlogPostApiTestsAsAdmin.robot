@@ -78,11 +78,6 @@ All Update Responses Have Status Code "404-Not-Found"
     ${is_empty} =  Evaluate     len($TARGET_POSTINGS) == 0
     Should Not Be True  ${is_empty}
 
-"Target Postings" Must Be Registered In The System
-    "Target Postings" List Is Not Empty
-    ${is_subset} =  Is Subset   subset=${TARGET_POSTINGS}   superset=${INCOMPLETE_TARGET_POSTINGS}
-    Should Be True  ${is_subset}
-
 Must Be Registered In The System
     [Arguments]     ${posting}
     "Registered Postings" Are Read
@@ -121,11 +116,6 @@ Delete Posting
     Should Be Equal As Integers 	${GET_RESPONSE.status_code} 	200
     @{registered_postings} =    Set Variable  ${GET_RESPONSE.json()}
     Set Suite Variable   @{REGISTERED_POSTINGS}     @{registered_postings}
-
-"Target Postings" Are Read
-    "Registered Postings" Are Read
-    @{target_postings} =    Get Subset  subset=${INCOMPLETE_TARGET_POSTINGS}   superset=${REGISTERED_POSTINGS}
-    Set Suite Variable      @{TARGET_POSTINGS}     @{target_postings}
 
 BlogPostAPI Specification Is Correct
     Verify Options Response     options_response=${OPTIONS_RESPONSE}

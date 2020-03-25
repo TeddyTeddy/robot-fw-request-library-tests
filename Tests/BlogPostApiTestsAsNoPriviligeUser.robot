@@ -40,6 +40,20 @@ Test Teardown
     Only "Pre-Set Postings" Are Left In The System
     Set Suite Variable  ${RANDOM_TARGET_POSTING}      ${None}
 
+Create Posting
+    [Arguments]       ${posting}
+    ${POST_RESPONSE} =  NoPriviligeUser.Make Post Request  posting=${posting}
+    Set Test Variable   ${POST_RESPONSE}
+
+Verify Post Response Success Code
+    Should Be Equal As Integers 	${POST_RESPONSE.status_code} 	201  # Created
+
+"Target Postings" Are Created
+    FOR     ${p}    IN  @{INCOMPLETE_TARGET_POSTINGS}
+        Create Posting     posting=${p}
+        Verify Post Response Success Code
+    END
+
 "Registered Postings" Are Read
     ${GET_RESPONSE} =  NoPriviligeUser.Make Get Request
     Should Be Equal As Integers 	${GET_RESPONSE.status_code} 	200
@@ -62,6 +76,11 @@ BlogPostAPI Specification Is Queried
 Only "Pre-Set Postings" Are Left In The System
     Should Be True  $REGISTERED_POSTINGS == $PRE_SET_POSTINGS
 
+"Target Postings" Must Not Be Registered In The System
+    "Registered Postings" Are Read
+    ${none_of_target_postings_found} =  Is None Found  subset=${INCOMPLETE_TARGET_POSTINGS}  superset=${REGISTERED_POSTINGS}
+    Should Be True      ${none_of_target_postings_found}
+
 "Pre-Set Postings" Are Cached
     "Registered Postings" Are Read
     Set Suite Variable      @{PRE_SET_POSTINGS}     @{REGISTERED_POSTINGS}
@@ -78,6 +97,14 @@ Querying & Verifying Pre-Set Postings
     When "Registered Postings" Are Read
     Then "Registered Postings" Must Comply With "Posting Spec"
 
+Creating "Target Postings"
+    [Tags]              CRUD-operations-as-NoPriviligeUser    CRUD-success-as-NoPriviligeUser
+    Given "Target Postings" Must Not Be Registered In The System
+    When "Target Postings" Are Created
+    Then "Registered Postings" Are Read
+    Then "Registered Postings" Must Comply With "Posting Spec"
+    Then "Target Postings" Are Read
+    Then "Target Postings" Must Be Registered In The System
 
 
 

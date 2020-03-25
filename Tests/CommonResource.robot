@@ -12,3 +12,13 @@ ${RANDOM_TARGET_POSTING}    A dynamically picked target posting during test run.
 *** Keywords ***
 "Registered Postings" Must Comply With "Posting Spec"
     Verify All Postings     postings_to_verify=${REGISTERED_POSTINGS}   posting_spec=${POSTING_SPEC}
+
+"Target Postings" Are Read
+    "Registered Postings" Are Read
+    @{target_postings} =    Get Subset  subset=${INCOMPLETE_TARGET_POSTINGS}   superset=${REGISTERED_POSTINGS}
+    Set Suite Variable      @{TARGET_POSTINGS}     @{target_postings}
+
+"Target Postings" Must Be Registered In The System
+    "Target Postings" List Is Not Empty
+    ${is_subset} =  Is Subset   subset=${TARGET_POSTINGS}   superset=${INCOMPLETE_TARGET_POSTINGS}
+    Should Be True  ${is_subset}

@@ -85,6 +85,17 @@ Only "Pre-Set Postings" Are Left In The System
     "Registered Postings" Are Read
     Set Suite Variable      @{PRE_SET_POSTINGS}     @{REGISTERED_POSTINGS}
 
+"Target Postings" Are Attempted To Be Created
+    ${ALL_CREATE_ATTEMPTS_FAILED_WITH_401} =     Set Variable  ${True}
+    FOR     ${ptc}    IN  @{INCOMPLETE_TARGET_POSTINGS}  # ptc: posting_to_create
+        Create Posting    posting=${ptc}
+        ${ALL_CREATE_ATTEMPTS_FAILED_WITH_401} =     Evaluate    $ALL_CREATE_ATTEMPTS_FAILED_WITH_401 and $POST_RESPONSE.status_code==401
+    END
+    Set Test Variable   ${ALL_CREATE_ATTEMPTS_FAILED_WITH_401}
+
+All Create Responses Must Have Status Code "401-Unauthorized"
+    Should Be True  ${ALL_CREATE_ATTEMPTS_FAILED_WITH_401}
+
 *** Test Cases ***
 #########################  POSITIVE TESTS ################################################
 Checking BlogPostAPI specification
@@ -97,14 +108,16 @@ Querying & Verifying Pre-Set Postings
     When "Registered Postings" Are Read
     Then "Registered Postings" Must Comply With "Posting Spec"
 
-Creating "Target Postings"
-    [Tags]              CRUD-operations-as-NoPriviligeUser    CRUD-success-as-NoPriviligeUser
+#########################  NEGATIVE TESTS ################################################
+Attempting To Create "Target Postings" Fails
+    [Tags]              CRUD-operations-as-NoPriviligeUser    CRUD-failure-as-NoPriviligeUser
     Given "Target Postings" Must Not Be Registered In The System
-    When "Target Postings" Are Created
+    When "Target Postings" Are Attempted To Be Created
+    Then All Create Responses Must Have Status Code "401-Unauthorized"
+    Then "Target Postings" Must Not Be Registered In The System
     Then "Registered Postings" Are Read
     Then "Registered Postings" Must Comply With "Posting Spec"
-    Then "Target Postings" Are Read
-    Then "Target Postings" Must Be Registered In The System
+    Then Only "Pre-Set Postings" Are Left In The System
 
 
 

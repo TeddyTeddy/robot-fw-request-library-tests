@@ -53,6 +53,7 @@ Verify Post Response Success Code
     END
 
 "Target Postings" Are Attempted To Be Re-Created
+    # TODO: Consider to move the below logic to AdminUser.py
     ${ALL_CREATE_ATTEMPTS_FAILED_WITH_400} =    Set Variable    ${True}
     FOR     ${p}    IN  @{INCOMPLETE_TARGET_POSTINGS}
         Create Posting     posting=${p}
@@ -64,6 +65,7 @@ All Create Responses Have Status Code "400-Bad Request"
     Should Be True      ${ALL_CREATE_ATTEMPTS_FAILED_WITH_400}
 
 Non-Registered "Target Postings" Are Attempted To Be Updated
+    # TODO: Consider to move the below logic to AdminUser.py
     ${ALL_UPDATE_ATTEMPTS_FAILED_WITH_404} =    Set Variable    ${True}
     FOR     ${p}    IN  @{TARGET_POSTINGS}
         Update Posting     posting=${p}
@@ -138,6 +140,7 @@ Verify Delete Response Success Code
     END
 
 "Target Postings" Are Attempted To Be Deleted
+    # TODO: Consider to move the below logic to AdminUser.py
     ${ALL_DELETE_ATTEMPTS_FAILED_WITH_404} =     Set Variable  ${True}
     FOR     ${ptd}    IN  @{TARGET_POSTINGS}  # ptd: posting_to_delete
         Delete Posting    posting=${ptd}

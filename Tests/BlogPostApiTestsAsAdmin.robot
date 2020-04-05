@@ -205,6 +205,12 @@ Bad Read Request Is Made With Invalid URI
 Read Response Should Be "404-Not Found"
     Should Be True   $GET_RESPONSE.status_code == 404
 
+There Is No "Null Title Posting" Registered In The System
+    @{null-title-postings} =    Create List     ${NULL_TITLE_POSTING}
+    ${is_none_found} =     Is None Found     subset=${null-title-postings}   superset=${PRE_SET_POSTINGS}
+    Should Be True   ${is_none_found}
+
+
 *** Test Cases ***
 #########################  POSITIVE TESTS ################################################
 Checking BlogPostAPI specification
@@ -276,7 +282,7 @@ Updating "Random Target Posting" With Missing "content" Field And Modified "titl
 
 Creating "Null Title Posting"
     [Tags]                  CRUD-operations-as-admin     CRUD-success-as-admin
-    # TODO: Given   No "Null Title Posting" Must Be Registered In The System
+    Given There Is No "Null Title Posting" Registered In The System
     When "Null Title Posting" Is Created
     Then Verify Post Response Success Code
     Then "Null Title Posting" Must Be Registered In The System

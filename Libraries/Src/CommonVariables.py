@@ -4,7 +4,7 @@ def get_variables():
         'API_BASE_URL': 'https://glacial-earth-31542.herokuapp.com',
         'ADMIN': {
             'OPTIONS_REQUEST_HEADERS': {
-                'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x',
+                'Cookie': 'tabstyle=raw-tab; csrftoken=YZOeA3UsxKOCmIhaBPWP4o0Od2rBtkqo3cHCvcJpk45790iM37RHxbweEw7qWZ51; sessionid=rpibesdbd7s6wbwxwrriqi8seg2lsi7w',
                 'Host': 'glacial-earth-31542.herokuapp.com',
                 'Connection': 'keep-alive',
                 'Accept': 'application/json',
@@ -21,7 +21,7 @@ def get_variables():
                 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8',
             },
             'GET_REQUEST_HEADERS': {
-                'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x',
+                'Cookie': 'tabstyle=raw-tab; csrftoken=YZOeA3UsxKOCmIhaBPWP4o0Od2rBtkqo3cHCvcJpk45790iM37RHxbweEw7qWZ51; sessionid=rpibesdbd7s6wbwxwrriqi8seg2lsi7w',
                 'Host': 'glacial-earth-31542.herokuapp.com',
                 'Connection': 'keep-alive',
                 'Cache-Control': 'max-age=0',
@@ -46,13 +46,13 @@ def get_variables():
                 'Accept': 'text/html; q=1.0, */*',
                 'Sec-Fetch-Dest': 'empty',
                 'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW',
+                'X-CSRFTOKEN': '795vLL03vWakjyWxM3odA8Fs2OFy1J8VcmYTGUP0igrP6QX9elj53VbStilnuoNy',
                 'Sec-Fetch-Site': 'same-origin',
                 'Sec-Fetch-Mode': 'cors',
                 'Referer': 'https://glacial-earth-31542.herokuapp.com/api/postings/',
                 'Accept-Encoding': 'gzip, deflate, br',
                 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8',
-                'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x',
+                'Cookie': 'tabstyle=raw-tab; csrftoken=YZOeA3UsxKOCmIhaBPWP4o0Od2rBtkqo3cHCvcJpk45790iM37RHxbweEw7qWZ51; sessionid=rpibesdbd7s6wbwxwrriqi8seg2lsi7w',
             },
             'PUT_REQUEST_HEADERS': {
                 'Host': 'glacial-earth-31542.herokuapp.com',
@@ -64,13 +64,13 @@ def get_variables():
                 'Accept': 'text/html; q=1.0, */*',
                 'Sec-Fetch-Dest': 'empty',
                 'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW',
+                'X-CSRFTOKEN': '795vLL03vWakjyWxM3odA8Fs2OFy1J8VcmYTGUP0igrP6QX9elj53VbStilnuoNy',
                 'Sec-Fetch-Site': 'same-origin',
                 'Sec-Fetch-Mode': 'cors',
                 'Referer': '',  # expects the url of the posting resource here!
                 'Accept-Encoding': 'gzip, deflate, br',
                 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8',
-                'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x',
+                'Cookie': 'tabstyle=raw-tab; csrftoken=YZOeA3UsxKOCmIhaBPWP4o0Od2rBtkqo3cHCvcJpk45790iM37RHxbweEw7qWZ51; sessionid=rpibesdbd7s6wbwxwrriqi8seg2lsi7w',
             },
             'DELETE_REQUEST_HEADERS': {
                 'Host': 'glacial-earth-31542.herokuapp.com',
@@ -81,13 +81,13 @@ def get_variables():
                 'Accept': 'text/html; q=1.0, */*',
                 'Sec-Fetch-Dest': 'empty',
                 'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRFTOKEN': '5cLs1tbLS7a3xEEbwKWq8NkcWu585U26OZi9Ce3h6p5edoM3fbpdpiqmynhUQwfW',
+                'X-CSRFTOKEN': '795vLL03vWakjyWxM3odA8Fs2OFy1J8VcmYTGUP0igrP6QX9elj53VbStilnuoNy',
                 'Sec-Fetch-Site': 'same-origin',
                 'Sec-Fetch-Mode': 'cors',
                 'Referer': '',  # expects the url of the posting resource here!
                 'Accept-Encoding': 'gzip, deflate, br',
                 'Accept-Language': 'en-US,en;q=0.9,fi;q=0.8',
-                'Cookie': 'tabstyle=raw-tab; csrftoken=PEGpUJxFm7n1HZhkWTByL6J1YVg80jZKyrd6vupbApicnJpcFk4l2BPbAOsULVcA; sessionid=qn80bru50vcxk9r06tr9850w7v2de68x',
+                'Cookie': 'tabstyle=raw-tab; csrftoken=YZOeA3UsxKOCmIhaBPWP4o0Od2rBtkqo3cHCvcJpk45790iM37RHxbweEw7qWZ51; sessionid=rpibesdbd7s6wbwxwrriqi8seg2lsi7w',
             },
             'EXPECTED_API_SPEC': {
                 'name': 'Blog Post Api',

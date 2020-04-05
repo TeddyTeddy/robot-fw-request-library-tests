@@ -215,6 +215,11 @@ There Is No "Null Content Posting" Registered In The System
     ${is_none_found} =     Is None Found     subset=${null-content-postings}   superset=${PRE_SET_POSTINGS}
     Should Be True   ${is_none_found}
 
+There Is No "Null Title And Null Content Posting" Registered In The System
+    @{null-title-null-content-postings} =    Create List     ${NULL_TITLE_NULL_CONTENT_POSTING}
+    ${is_none_found} =     Is None Found     subset=${null-title-null-content-postings}   superset=${PRE_SET_POSTINGS}
+    Should Be True   ${is_none_found}
+
 *** Test Cases ***
 #########################  POSITIVE TESTS ################################################
 Checking BlogPostAPI specification
@@ -300,7 +305,7 @@ Creating "Null Content Posting"
 
 Creating "Null Title And Null Content Posting"
     [Tags]                  CRUD-operations-as-admin     CRUD-success-as-admin
-    # TODO: Given   No "Null Title And Null Content Posting" Must Be Registered In The System
+    Given There Is No "Null Title And Null Content Posting" Registered In The System
     When "Null Title And Null Content Posting" Is Created
     Then Verify Post Response Success Code
     Then "Null Title And Null Content Posting" Must Be Registered In The System

@@ -43,6 +43,8 @@ def is_match(expected_posting, super_set):
     is_match_found = False
     matched_posting = None
     for p in super_set:
+        # TODO: add id comparison between p and expected_posting. In case such a match occur, then skip the logic below.
+        # This will likely increase the test execution speed.
         titles_match = False
         contents_match = False
         title_exists = False

@@ -32,34 +32,23 @@ Suite Teardown
 Test Setup
     "Target Postings" Are Deleted
     "Pre-Set Postings" Are Cached
-    Set Suite Variable  ${RANDOM_TARGET_POSTING}      ${None}
 
 Test Teardown
     "Target Postings" Are Deleted
     "Registered Postings" Are Read
     Only "Pre-Set Postings" Are Left In The System
-    Set Suite Variable  ${RANDOM_TARGET_POSTING}      ${None}
 
 Create Posting
     [Arguments]       ${posting}
     ${POST_RESPONSE} =  NoPriviligeUser.Make Post Request  posting=${posting}
     Set Test Variable   ${POST_RESPONSE}
 
-Verify Post Response Success Code
-    Should Be Equal As Integers 	${POST_RESPONSE.status_code} 	201  # Created
-
-"Target Postings" Are Created
-    FOR     ${p}    IN  @{INCOMPLETE_TARGET_POSTINGS}
-        Create Posting     posting=${p}
-        Verify Post Response Success Code
-    END
-
 "Registered Postings" Are Read
     ${GET_RESPONSE} =  NoPriviligeUser.Make Get Request
     Should Be Equal As Integers 	${GET_RESPONSE.status_code} 	200
     @{registered_postings} =    Set Variable  ${GET_RESPONSE.json()}
     Set Suite Variable   @{REGISTERED_POSTINGS}     @{registered_postings}
-    
+
 BlogPostAPI Specification Is Correct
     NoPriviligeUser.Verify Options Response     options_response=${OPTIONS_RESPONSE}
 
@@ -173,7 +162,7 @@ Attempting To Delete "Pre-Set Postings" Fails
 
 Attempting To Read Postings with Invalid URI Fails
     [Tags]                  CRUD-operations-as-NoPriviligeUser     CRUD-failure-as-NoPriviligeUser
-    When Bad Read Request Is Made With Invalid URI
+    When Bad Read Request Is Made With Invalid URI   # TODO: make this data-driven
     Then Read Response Should Be "404-Not Found"
 
 

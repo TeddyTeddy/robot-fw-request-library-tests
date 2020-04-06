@@ -86,6 +86,7 @@ Only "Pre-Set Postings" Are Left In The System
     Set Suite Variable      @{PRE_SET_POSTINGS}     @{REGISTERED_POSTINGS}
 
 "Target Postings" Are Attempted To Be Created
+    # TODO: Move the logic below to NoPriviligeUser.py
     ${ALL_CREATE_ATTEMPTS_FAILED_WITH_401} =     Set Variable  ${True}
     FOR     ${ptc}    IN  @{INCOMPLETE_TARGET_POSTINGS}  # ptc: posting_to_create
         Create Posting    posting=${ptc}
@@ -102,6 +103,7 @@ Update Posting
     Set Test Variable   ${PUT_RESPONSE}
 
 "Pre-Set Postings" Are Attempted To Be Updated
+    # TODO: Move the logic below to NoPriviligeUser.py
     ${ALL_UPDATE_ATTEMPTS_FAILED_WITH_401} =     Set Variable  ${True}
     FOR     ${ptu}    IN  @{PRE_SET_POSTINGS}  # ptu: posting_to_update
         Update Posting    posting=${ptu}
@@ -118,6 +120,7 @@ Delete Posting
     Set Test Variable       ${DELETE_RESPONSE}
 
 "Pre-Set Postings" Are Attempted To Be Deleted
+    # TODO: Move the logic below to NoPriviligeUser.py
     ${ALL_DELETE_ATTEMPTS_FAILED_WITH_401} =     Set Variable  ${True}
     FOR     ${ptd}    IN  @{PRE_SET_POSTINGS}  # ptu: posting_to_delete
         Delete Posting    posting=${ptd}

@@ -1,0 +1,42 @@
+[
+    {
+        "url": "https://glacial-earth-31542.herokuapp.com/api/postings/2308/",
+        "id": 2308,
+        "user": 1,
+        "title": "Posting 1",
+        "content": "Posting 1 content",
+        "timestamp": "2020-04-06T13:16:03.136056+03:00"
+    },
+    {
+        "url": "https://glacial-earth-31542.herokuapp.com/api/postings/2309/",
+        "id": 2309,
+        "user": 1,
+        "title": "Posting 2",
+        "content": "Posting 2 content",
+        "timestamp": "2020-04-06T13:16:51.933964+03:00"
+    },
+    {
+        "url": "https://glacial-earth-31542.herokuapp.com/api/postings/2310/",
+        "id": 2310,
+        "user": 1,
+        "title": "Posting 3",
+        "content": "Posting 3 content",
+        "timestamp": "2020-04-06T13:17:14.018610+03:00"
+    },
+    {
+        "url": "https://glacial-earth-31542.herokuapp.com/api/postings/1/",
+        "id": 1,
+        "user": 1,
+        "title": "My First Posting",
+        "content": "My First Blog's content",
+        "timestamp": "2019-12-18T17:06:54.373451+02:00"
+    },
+    {
+        "url": "https://glacial-earth-31542.herokuapp.com/api/postings/2/",
+        "id": 2,
+        "user": 1,
+        "title": "My Second Posting",
+        "content": "My Second Posting Content",
+        "timestamp": "2019-12-18T17:07:34.938150+02:00"
+    }
+]

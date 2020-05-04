@@ -87,14 +87,8 @@ Must Be Registered In The System
     ${is_subset} =  Is Subset   subset=${expected_postings}    superset=${REGISTERED_POSTINGS}
     Should Be True   ${is_subset}
 
-"Null Title Posting" Must Be Registered In The System
-    Must Be Registered In The System    posting=${NULL_TITLE_POSTING}
-
 "Null Content Posting" Must Be Registered In The System
     Must Be Registered In The System    posting=${NULL_CONTENT_POSTING}
-
-"Null Title And Null Content Posting" Must Be Registered In The System
-    Must Be Registered In The System    posting=${NULL_TITLE_NULL_CONTENT_POSTING}
 
 "Random Target Posting" Must Be Registered In The System
     "Registered Postings" Are Read
@@ -192,15 +186,6 @@ Update Response Has Status Code 200
 "title" Field Is Modified in "Random Target Posting"
     Set To Dictionary   ${RANDOM_TARGET_POSTING}      title=${OVERWRITTEN_TITLE}
 
-"Null Title Posting" Is Created
-    Create Posting  posting=${NULL_TITLE_POSTING}
-
-"Null Content Posting" Is Created
-    Create Posting  posting=${NULL_CONTENT_POSTING}
-
-"Null Title And Null Content Posting" Is Created
-    Create Posting  posting=${NULL_TITLE_NULL_CONTENT_POSTING}
-
 Bad Read Request Is Made With Invalid URI
     ${GET_RESPONSE} =   Make Bad Get Request
     Set Test Variable   ${GET_RESPONSE}
@@ -216,11 +201,6 @@ There Is No "Null Title Posting" Registered In The System
 There Is No "Null Content Posting" Registered In The System
     @{null-content-postings} =    Create List     ${NULL_CONTENT_POSTING}
     ${is_none_found} =     Is None Found     subset=${null-content-postings}   superset=${PRE_SET_POSTINGS}
-    Should Be True   ${is_none_found}
-
-There Is No "Null Title And Null Content Posting" Registered In The System
-    @{null-title-null-content-postings} =    Create List     ${NULL_TITLE_NULL_CONTENT_POSTING}
-    ${is_none_found} =     Is None Found     subset=${null-title-null-content-postings}   superset=${PRE_SET_POSTINGS}
     Should Be True   ${is_none_found}
 
 *** Test Cases ***
@@ -291,13 +271,6 @@ Updating "Random Target Posting" With Missing "content" Field And Modified "titl
     When "Random Target Posting" Is Updated To The System
     Then Update Response Has Status Code 200
     Then "Random Target Posting" Must Be Registered In The System
-
-Creating "Null Title Posting"
-    [Tags]                  CRUD-operations-as-admin     CRUD-success-as-admin
-    Given There Is No "Null Title Posting" Registered In The System
-    When "Null Title Posting" Is Created
-    Then Verify Post Response Success Code
-    Then "Null Title Posting" Must Be Registered In The System
 
 Creating "Null Content Posting"
     [Tags]                  CRUD-operations-as-admin     CRUD-success-as-admin
